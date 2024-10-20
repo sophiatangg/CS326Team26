@@ -5,7 +5,7 @@
 This feature enables users and organizations to create an open-invite event that can reach the public and the broader community. The interface is designed to guide organizers through each step of the event setup, ensuring that all necessary details are captured accurately and efficiently. From adding an image to the event to selecting one of the preset categories, the process will encourage those interested to come. Users and organizations will be limited on the number of posts they can make within a day. 
 
 
-**Assigned to**: Mason Choi, Erika Lam
+**Assigned to**: Mason Choi, Erika Lam, Zhitong Liu
   
 ## Category-specific Feed
 
