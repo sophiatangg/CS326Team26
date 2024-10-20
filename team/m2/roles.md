@@ -34,3 +34,10 @@
   1.
   2.
   3.
+
+## Mason Choi - Tech Lead
+- **Role**: Oversees the technical development of the project, ensuring that the application's architecture and code quality meet the required standards. The Tech Lead coordinates the development team, makes key technical decisions, and ensures that the technical solutions align with the project's goals.
+- **Top 3 Commits**:
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/3e5cb94c2a28b0bd380c473130ec0672f4eb2a2a): Defined and finalized data usage in `team/m2/data.md`
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/da5616c0a0b835dca6f0ebba3a015b56a0294b54): Added a gitignore and readme to the project repo
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/cbd2ca78918d639a7aadf8259357844c0593a01b): Initialized user report files for each group member
