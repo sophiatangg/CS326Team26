@@ -2,10 +2,10 @@
 
 ## Erika Lam and Sophia Tang - Co-Project Managers
 - **Role**: Oversees the overall project timeline, ensures that milestones are met, and coordinates the team’s efforts. Erika and Sophia are responsible for setting meeting agendas and ensuring that the team stays focused on project goals. Sophia manages the timing of all team activities and ensures that meetings start and end on time, keeps track of deadlines, and reminds the team of upcoming due dates. Erika records detailed notes during meetings and ensures that action items are clearly communicated. She is responsible for distributing meeting minutes to the team after each session.
-- **Top 3 Commits**:
-  1.
-  2.
-  3.
+- **Top 3 Commits : Sophia**:
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/1d2cc991eb0bd3c60535b1777786ad1c4f0def92): Defined our target audience and their importance `team/m2/users.md`
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/b7d64b6acf6fffab0e15cd80240762dd8dd6a480): Created a mardown file for each team member to document their reports (each new file was made in a different commit)
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/e359efca76dc496a1d2dfe0317299702bdf4b559): Moved ui-diagrams.md into the correct folder
 
 ## Katie Xu - Task Manager
 - **Role**: Responsible for organizing and tracking team tasks. Katie manages the team’s Trello board and ensures that all tasks are properly assigned and completed on time.
