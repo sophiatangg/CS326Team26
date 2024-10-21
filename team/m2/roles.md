@@ -5,9 +5,9 @@
 
 
 - **Top 3 Commits : Erika**:
-  1.
-  2.
-  3.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/164c052847b3758280e0e74196ff704eb3167213): updated features to define two of them
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/61bf69fc92dd84f2d56da8b901a4074d51d412f0): updated problem.md to add more clarity
+  3. [commit 3](https://github.com/sophiatangg/CS326Team26/commit/50c8517807bb8b8e342a37a5522a371f6bff7976): Added everyone to the features they want to be assigned to
 
 ## Sophia Tang - Co-Project Manager / Time Keeper
 - **Role**: Co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team alongside Erika. She is responsible for keeping team discussions productive focused on project goals. Sophia also manages the timing of all team activities, ensures that meetings start and end on time, and sends out reminders about upcoming meetings and deadlines.
@@ -21,9 +21,9 @@
 - **Role**: Responsible for organizing and tracking individual and team tasks. Katie manages the team’s workflow board and ensures that all tasks are properly assigned and completed on time. She regularly checks in on task completion and overall progress and adjusts plans as necessary to address delays or obstacles.
 
 - **Top 3 Commits**:
-  1.
-  2.
-  3.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/50283695bf3d3a74b4379b08d4e2c08cc684a85d)
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/5276ba95276607d48b787a025a968646d90a3747)
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/7bd4f6f36b91b95ad18d88aa8add45722fa270cb)
 
 ## Zhitong Liu - Communication Lead
 - **Role**: Maintains and manages the team’s Discord channels and ensures that all members stay informed and engaged. Zhitong also schedules meeting times for the team, facilitates communication within the team, conducts private check-ins with each member and distributes feedback appropriately to resolve conflicts.
