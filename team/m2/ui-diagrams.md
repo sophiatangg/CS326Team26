@@ -4,7 +4,7 @@
 
 The **Main Screen** serves as the user's entry point after logging into the app, offering a curated feed of events happening in their area. The design is clean and visually engaging, showcasing event posts that include images, descriptions, the event host's name, and the number of likes. Users can explore a variety of events, from concerts and parties to study sessions.
 
-![Main Screen](./MainDashboard.png)
+![Main Screen](CS326Team26/team/MainDashboard.png)
 
 The screen provides a variety of interactive elements:
 
@@ -24,7 +24,7 @@ A user searching for nearby events can enter their location or keywords in the s
 
 The **User Profile Screen** offers an overview of a specific user's event activity, making it easy for others to follow their posts and explore all the events they've shared. The layout offers a convenient way to keep track of events posted by favorite organizers or friends.
 
-![User Profile Screen](./Profile.png)
+![User Profile Screen](CS326Team26/team/Profile.png)
 
 Features include:
 1. **Follow Button**: Located beneath the profile picture, this button allows users to follow or unfollow others. Once followed, future events from that user will automatically appear in the user's main feed.
@@ -37,7 +37,7 @@ A user interested in a specific organizer's events can visit their profile, foll
 
 ## Event Creation Screen
 
-![Event Creation](./Post.png)
+![Event Creation](CS326Team26/team/Post.png)
 
 The **Event Creation Screen** allows users to create new events. The screen has been designed for simplicity, and ease of use.
 
