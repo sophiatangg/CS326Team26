@@ -47,8 +47,8 @@
 
 
 - **Top 3 Commits**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/8819766545965c269c54a7d9a8043827d8b3589a): Created files for the images (MainDashboard, Post and Profile) in `team`so they could easily be linked in `team/ui-diagrams.md`.
-  2.[Commit 2](https://github.com/sophiatangg/CS326Team26/commit/2a19df3075743f73fb67cd4c3020d5b9388cdeab): Resolved image display issues by moving the images files to the `team/m2` directory.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/8819766545965c269c54a7d9a8043827d8b3589a): Created files for the images (MainDashboard, Post and Profile) in `team`so they could easily be linked in `team/ui-diagrams.md`
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/2a19df3075743f73fb67cd4c3020d5b9388cdeab): Resolved image display issues by moving the images files to the `team/m2` directory.
   3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/effc6a7111f80f2eaa48261caa94097c8c6d800b): Updated the image file paths in `ui-diagrams.md` to ensure proper referencing and display.
 
 ## Mason Choi - Tech Lead
