@@ -19,3 +19,33 @@ The screen provides a variety of interactive elements:
 **Use Case**: 
 
 A user searching for nearby events can enter their location or keywords in the search bar, then browse through the feed. They might spot an event that catches their eye based on the image, description and title. If they like the event, they can save it by liking the post, or explore similar events by following the user who shared it.
+
+## User Profile Screen
+
+The **User Profile Screen** offers an overview of a specific user's event activity, making it easy for others to follow their posts and explore all the events they've shared. The layout offers a convenient way to keep track of events posted by favorite organizers or friends.
+
+![User Profile Screen Placeholder](/Users/anne-colombesinkpon/Desktop/Profile.png)
+
+Features include:
+1. **Follow Button**: Located beneath the profile picture, this button allows users to follow or unfollow others. Once followed, future events from that user will automatically appear in the user's main feed.
+2. **Posts**: All events posted by the user are displayed with event titles, descriptions, and number of likes.
+3. **Back Button**: Located at the top-left of the screen, this button provides a quick way to return to the main screen once the user has finished viewing a profile.
+
+**Use Case**: 
+
+A user interested in a specific organizer's events can visit their profile, follow them for updates, and easily browse through their upcoming or past events. After following the profile, the user can click on the back button to return to the main screen where the "Following" feed will now include new events from this organizer.
+
+## Event Creation Screen
+
+![Event Creation Placeholder](/Users/anne-colombesinkpon/Desktop/Post.png)
+
+The **Event Creation Screen** allows users to create new events. The screen has been designed for simplicity, and ease of use.
+
+The key features include:
+1. **Upload Button**: Users can upload an image to represent their event by clicking the "Upload an image" button. This image will be featured on the post.
+2. **Event Details Form**: This form allows posters to input essential details, including the event's name and a description, providing all the necessary information for potential attendees. 
+3. **Post Button**: Positioned at the bottom-right corner, the "Post" button allows users to publish their event once all the details are filled out.
+
+**Use Case**: 
+
+After planning an event, a user can upload a relevant image, fill in the event name and description, and click on "Post" to share the event with others. 
