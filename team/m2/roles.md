@@ -5,9 +5,9 @@
 
 
 - **Top 3 Commits : Erika**:
-  1.
-  2.
-  3.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/164c052847b3758280e0e74196ff704eb3167213): updated features to define two of them
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/61bf69fc92dd84f2d56da8b901a4074d51d412f0): updated problem.md to add more clarity
+  3. [commit 3](https://github.com/sophiatangg/CS326Team26/commit/50c8517807bb8b8e342a37a5522a371f6bff7976): Added everyone to the features they want to be assigned to
 
 ## Sophia Tang - Co-Project Manager / Time Keeper
 - **Role**: Co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team alongside Erika. She is responsible for keeping team discussions productive focused on project goals. Sophia also manages the timing of all team activities, ensures that meetings start and end on time, and sends out reminders about upcoming meetings and deadlines.
