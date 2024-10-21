@@ -12,14 +12,14 @@ This feature enables users and organizations to create an open-invite event that
 Users will be allowed to find events in a certain category, displaying all events in that category. From there, they can once again use the filter to sort by location or time posted. On this feed, they are allowed to click further into the display, bringing them up to the specific event page. The specific event page allows them to further like an event, which will add the event's category to their list of interests in their profile.
 
 
-**Assigned to**: 
+**Assigned to**: Sophia Tang, Mehek Shah
 
 ## Event finder
 The Event finder will be used to filter out events based on users' choice. We will have pre-set college areas across the country to choose from and the events will be sorted from the most recent to the furthest one. Also, the user can search specific keywords, and events which match the keyword will be displayed. This will help the user in searching events near them.
 
-**Assigned to**: 
+**Assigned to**: Katie Xu
 
 ## Profiles
 The profile section will provide more details about the organizations or individuals who post events. This will give the organizers a chance to introduce themselves, describe what kind of events they host and provide the audience with contact information such as social media platforms or their own website.
 
-**Assigned to**: 
+**Assigned to**: Anne Colombe Sinkpon
