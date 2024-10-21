@@ -2,7 +2,7 @@
 
 ## Problem Description
 
-Currently there is no organized way to view community related events in a cohesive application. Students and individuals must use university websites such as Campus Pulse or rely on social media (Facebook, Snapchat, Instagram) to find local events. This approach makes it challenging to keep up-to-date with upcoming events happening nearby. 
+Currently, there is no organized way for students to view community-related events simply and cohesively. Individuals must navigate through university-affiliated websites, such as Campus Pulse, and social media (Facebook, Snapchat, Instagram) to find local events. This approach makes it challenging to keep up-to-date with upcoming events happening nearby. It demotivates students from attending and finding events that may enrich their social and academic lives. 
 
 ## Proposed Solution
 
@@ -10,8 +10,8 @@ Our proposed web application, **OpenInvite**, aims to centralize the process of 
 
 Key features include:
 
-- **Event Creation**: Users can easily create and publicize their events specifying details such as location, time, description and additional information.
-- **Location Based Discovery**: Events will be displayed in chronological order and proximity to user.
+- **Event Creation**: Users can easily create and publicize their events specifying details such as location, time, description, and additional information.
+- **Location-Based Discovery**: Events will be displayed in chronological order and proximity to the user.
 - **User Friendly Interface**: OpenInvite offers an intuitive and easily understood interface allowing users to find events quickly.
 - **Multi-Device Access**: This app will be available on both desktop and mobile devices to ensure maximum accessibility
 
@@ -19,9 +19,9 @@ Key features include:
 
 ## Why This Matters
 
-Event participation is integral for people--especially students--to network, socialize and unwind; however, discovery of such events can be difficult due to a lack of a centralized platform. **OpenInvite** simplifies the process of finding and publishing events, some of which may be overlooked if users were not actively searching for a specific event.
+Event participation is integral for people--especially students--to network, socialize and unwind; however, the discovery of such events can be difficult due to a lack of a centralized platform. **OpenInvite** simplifies the process of finding and publishing events, some of which may be overlooked if users are not actively searching for a specific event.
 
-**OpenInvite** offers a convenient and comprehensive view of all published activities in the area--driving community participation and engagement. In the long run, this app will help foster meaningful connections among various members of the local community and builds a stronger and more connected community on campus and beyond. 
+**OpenInvite** offers a convenient and comprehensive view of all published activities in the area--driving community participation and engagement. In the long run, this app will help foster meaningful connections among various members of the local community and strengthen the connections in the community both on campus and beyond. 
 
 
 
