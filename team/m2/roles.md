@@ -34,7 +34,7 @@
   2.
   3.
 
-## Mehek Sheh - Quality Control
+## Mehek Shah - Quality Control
 - **Role**: Proofreads team submissions and ensures that all deliverables adhere to project guidelines and meet the necessary quality standards. Mehek develops and maintains quality checklists, conducts regular reviews of documents before submission, and identifies areas for improvement within the team’s deliverables. 
 
 - **Top 3 Commits**:
