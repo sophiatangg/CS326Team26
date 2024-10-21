@@ -20,6 +20,6 @@ The Event finder will be used to filter out events based on users' choice. We wi
 **Assigned to**: 
 
 ## Profiles
-
+The profile section will provide more details about the organizations or individuals who post events. This will give the organizers a chance to introduce themselves, describe what kind of events they host and provide the audience with contact information such as social media platforms or their own website.
 
 **Assigned to**: 
