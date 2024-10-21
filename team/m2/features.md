@@ -15,8 +15,7 @@ Users will be allowed to find events in a certain category, displaying all event
 **Assigned to**: 
 
 ## Event finder
-
-
+The Event finder will be used to filter out events based on users' choice. We will have pre-set college areas across the country to choose from and the events will be sorted from the most recent to the furthest one. Also, the user can search specific keywords, and events which match the keyword will be displayed. This will help the user in searching events near them.
 
 **Assigned to**: 
 
