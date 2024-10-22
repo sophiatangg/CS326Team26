@@ -26,7 +26,7 @@
   3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/7bd4f6f36b91b95ad18d88aa8add45722fa270cb): Created m2 folder
 
 ## Zhitong Liu - Communication Lead
-- **Role**: Maintains and manages the team’s Discord channels and ensures that all members stay informed and engaged. Zhitong also schedules meeting times for the team, facilitates communication within the team, conducts private check-ins with each member and distributes feedback appropriately to resolve conflicts.
+- **Role**: Maintains and manages the team’s communication channels over text and Discord. Ensures that all members stay informed, engaged and aware of any major updates regarding the project. Zhitong also schedules meeting times for the team, facilitates communication within the team, conducts private check-ins with each member and distributes feedback appropriately to resolve conflicts.
 
 - **Top 3 Commits**:
   1.
