@@ -16,3 +16,7 @@
 [MainDashboard.png commit](https://github.com/sophiatangg/CS326Team26/commit/95fe25dc8ebaa667d0d9d70936345a9db1b667c1)
 
 - **Link to Commit**: [Updated the image file paths in `ui-diagrams.md` to ensure proper referencing and display.](https://github.com/sophiatangg/CS326Team26/commit/effc6a7111f80f2eaa48261caa94097c8c6d800b)
+
+- **Task**: Reviewed and fixed issues in documentation as part of my role as documentation lead.
+- **Details**: Edited the roles.md markdown file to remove typos and make sure the document was well-organized.
+- **Links to Commit**: [Commit to remove typo](https://github.com/sophiatangg/CS326Team26/commit/fbe84902eeaf2c84aa0760bf0ff984510acd39ea)
