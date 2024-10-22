@@ -37,7 +37,7 @@
 - **Role**: Proofreads team submissions and ensures that all deliverables adhere to project guidelines and meet the necessary quality standards. Mehek develops and maintains quality checklists, conducts regular reviews of documents before submission, and identifies areas for improvement within the team’s deliverables. 
 
 - **Top 3 Commits**:
-  1.
+  1.[Commit 1](https://github.com/sophiatangg/CS326Team26/commit/2e23a7385c2b8e7e90ed5caadd85197adf84a2ee): Proofread users.md and made minor edits in some sentences. Also removed a repeated paragraph.
   2.
   3.
 
