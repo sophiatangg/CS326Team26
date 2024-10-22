@@ -5,7 +5,7 @@
 - **Details**: Edited the ui-diagrams.md markdown file to include a description of the web application, detailing its functionality from the user's perspective. I also linked the corresponding UI images in the file by creating image files in the local directory.
 - **Links to Commit**: [Commits to add details about the main screen, the profile screen and event creation screen](https://github.com/sophiatangg/CS326Team26/commit/37624c35e02c695d473b8093d3c98d014fbb783e)
 
-(https://github.com/sophiatangg/CS326Team26/commit/cf6d85afbc261fda4f1ed07de0f03dc47af14cd0)
+[Profile and event creation commit](https://github.com/sophiatangg/CS326Team26/commit/cf6d85afbc261fda4f1ed07de0f03dc47af14cd0)
 
 - **Link to Commit**: [Created files for the images (MainDashboard, Post and Profile) in 'team' directory so they could easily be linked in team/ui-diagrams.md](https://github.com/sophiatangg/CS326Team26/commit/8819766545965c269c54a7d9a8043827d8b3589a)
 
