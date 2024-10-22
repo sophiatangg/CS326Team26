@@ -21,9 +21,9 @@
 - **Role**: Responsible for organizing and tracking individual and team tasks. Katie manages the team’s workflow board and ensures that all tasks are properly assigned and completed on time. She regularly checks in on task completion and overall progress and adjusts plans as necessary to address delays or obstacles.
 
 - **Top 3 Commits**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/50283695bf3d3a74b4379b08d4e2c08cc684a85d)
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/5276ba95276607d48b787a025a968646d90a3747)
-  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/7bd4f6f36b91b95ad18d88aa8add45722fa270cb)
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/50283695bf3d3a74b4379b08d4e2c08cc684a85d): Defined team roles
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/5276ba95276607d48b787a025a968646d90a3747): Elaborated on team roles
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/7bd4f6f36b91b95ad18d88aa8add45722fa270cb): Created m2 folder
 
 ## Zhitong Liu - Communication Lead
 - **Role**: Maintains and manages the team’s Discord channels and ensures that all members stay informed and engaged. Zhitong also schedules meeting times for the team, facilitates communication within the team, conducts private check-ins with each member and distributes feedback appropriately to resolve conflicts.
