@@ -29,9 +29,9 @@
 - **Role**: Maintains and manages the team’s communication channels over text and Discord. Ensures that all members stay informed, engaged and aware of any major updates regarding the project. Zhitong also schedules meeting times for the team, facilitates communication within the team, conducts private check-ins with each member and distributes feedback appropriately to resolve conflicts.
 
 - **Top 3 Commits**:
-  1.
-  2.
-  3.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/494e08f9c93c8877b11a624cf08484e4e6f24f77): Created problem description mark down file and refined problem statement and overview.
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/57d9b8f13effca6f5c6ab8b6830ac9ca4888ae19): Initialized users.md file responsible for describing targeted audience and user needs.
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/1507d841495881f6d4d420e21d7ba10f113e365c): Refined specific role responsibility.
 
 ## Mehek Shah - Quality Control
 - **Role**: Proofreads team submissions and ensures that all deliverables adhere to project guidelines and meet the necessary quality standards. Mehek develops and maintains quality checklists, conducts regular reviews of documents before submission, and identifies areas for improvement within the team’s deliverables. 
