@@ -28,7 +28,6 @@
 ## Zhitong Liu - Communication Lead
 - **Role**: Maintains and manages the team’s Discord channels and ensures that all members stay informed and engaged. Zhitong also schedules meeting times for the team, facilitates communication within the team, conducts private check-ins with each member and distributes feedback appropriately to resolve conflicts.
 
-. Sfeedback between team members.Facilitates . 
 - **Top 3 Commits**:
   1.
   2.
