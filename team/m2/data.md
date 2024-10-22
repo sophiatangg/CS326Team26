@@ -72,7 +72,7 @@
   - `timestamp` (timestamp): When the comment was posted.
 - **Data Source**: User-input data when posting a comment on an event.
 
-### 6. Location Data
+<!-- ### 6. Location Data
 
 - **Description**: Stores users' location data for proximity-based event discovery.
 - **Attributes**:
@@ -80,9 +80,9 @@
   - `latitude` (float): The user's current geographical latitude.
   - `longitude` (float): The user's current geographical longitude.
   - `updated_at` (timestamp): When the location data was last updated.
-- **Data Source**: User-input data or device location services with user permission.
+- **Data Source**: User-input data or device location services with user permission. -->
 
-### 7. Category
+### 6. Category
 
 - **Description**: Defines the different categories under which events can be classified.
 - **Attributes**:
