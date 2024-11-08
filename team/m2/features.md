@@ -1,25 +1,57 @@
-# Application Features
+# Feature Descriptions and Ownership
 
-## Event Creation
+## Small Features (1 point)
 
-This feature enables users and organizations to create an open-invite event that can reach the public and the broader community. The interface is designed to guide organizers through each step of the event setup, ensuring that all necessary details are captured accurately and efficiently. From adding an image to the event to selecting one of the preset categories, the process will encourage those interested to come. Users and organizations will be limited on the number of posts they can make within a day. 
+### Feature Name: Basic Event Form
+**Description**: A simple form that allows users to input the event title, description, date, and location. Basic validation ensures all fields are filled correctly before submission. No interaction with IndexedDB is required for this feature.
+**Point Value**: 1 point  
+**Team Member**: Mason Choi
 
+### Feature Name: Static About Page
+**Description**: A static HTML page that provides information about the purpose of the OpenInvite app, including a short description, the mission statement, and the team. It contains no interactive elements.
+**Point Value**: 1 point  
+**Team Member**: Anne Colombe Sinkpon
 
-**Assigned to**: Mason Choi, Erika Lam, Zhitong Liu
-  
-## Category-specific Feed
+### Feature Name: Event Reminder Notification
+**Description**: A notification system that displays a reminder to users when an event is upcoming. This feature triggers a simple pop-up notification, but does not involve complex data interaction or dynamic content.
+**Point Value**: 1 point  
+**Team Member**: Zhitong Liu
 
-Users will be allowed to find events in a certain category, displaying all events in that category. From there, they can once again use the filter to sort by location or time posted. On this feed, they are allowed to click further into the display, bringing them up to the specific event page. The specific event page allows them to further like an event, which will add the event's category to their list of interests in their profile.
+## Medium Features (2-3 points)
 
+### Feature Name: Event Category Filter
+**Description**: A filter that allows users to select and view events based on categories such as "Music," "Sports," or "Social." The events in the feed dynamically update to reflect the selected category, and the feature pulls data from IndexedDB to store user preferences.
+**Point Value**: 2 points  
+**Team Member**: Mason Choi
 
-**Assigned to**: Sophia Tang, Mehek Shah
+### Feature Name: RSVP System
+**Description**: A system that allows users to RSVP to events. Users can select "Yes," "No," or "Maybe" for attending, and their response is stored in IndexedDB. The RSVP status updates dynamically in the event detail page.
+**Point Value**: 2 points  
+**Team Member**: Sophia Tang
 
-## Event finder
-The Event finder will be used to filter out events based on users' choice. We will have pre-set college areas across the country to choose from and the events will be sorted from the most recent to the furthest one. Also, the user can search specific keywords, and events which match the keyword will be displayed. This will help the user in searching events near them.
+### Feature Name: Event Search Bar
+**Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
+**Point Value**: 3 points  
+**Team Member**: Mehek Shah
 
-**Assigned to**: Katie Xu
+## Large Features (4-5 points)
 
-## Profiles
-The profile section will provide more details about the organizations or individuals who post events. This will give the organizers a chance to introduce themselves, describe what kind of events they host and provide the audience with contact information such as social media platforms or their own website.
+### Feature Name: User Profile Dashboard
+**Description**: A dynamic user profile page that displays the user's details, including their RSVP history, events they’ve posted, and their preferences. The dashboard fetches data from IndexedDB and updates in real-time based on user interaction. This feature also allows users to edit their profile details and save them.
+**Point Value**: 4 points  
+**Team Member**: Anne Colombe Sinkpon
 
-**Assigned to**: Anne Colombe Sinkpon
+### Feature Name: Event Feed with Sorting and Filtering
+**Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
+**Point Value**: 4 points  
+**Team Member**: Zhitong Liu
+
+### Feature Name: Event Creation and Management
+**Description**: A comprehensive feature that allows users to create new events, edit them, and delete them. The system validates inputs, ensures the event data is saved to IndexedDB, and allows for updates. Users can also track and manage the number of RSVPs for their events.
+**Point Value**: 5 points  
+**Team Member**: Mason Choi
+
+### Feature Name: Multi-step RSVP Process with Confirmation
+**Description**: A multi-step RSVP form that guides users through the process of confirming attendance, adding optional details like dietary restrictions, and finalizing their RSVP. The feature saves progress to IndexedDB between steps, ensuring users can continue later. Confirmation emails are sent after submission.
+**Point Value**: 5 points  
+**Team Member**: Erika Lam
