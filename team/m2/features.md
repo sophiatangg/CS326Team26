@@ -32,7 +32,7 @@
 ### Feature Name: Event Search Bar
 **Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
 **Point Value**: 3 points  
-**Team Member**: Mehek Shah
+**Team Member**: Mehek Shah, Sophia Tang
 
 ## Large Features (4-5 points)
 
@@ -49,7 +49,7 @@
 ### Feature Name: Event Creation and Management
 **Description**: A comprehensive feature that allows users to create new events, edit them, and delete them. The system validates inputs, ensures the event data is saved to IndexedDB, and allows for updates. Users can also track and manage the number of RSVPs for their events.
 **Point Value**: 5 points  
-**Team Member**: Mason Choi
+**Team Member**: Mason Choi, Sophia Tang
 
 ### Feature Name: Multi-step RSVP Process with Confirmation
 **Description**: A multi-step RSVP form that guides users through the process of confirming attendance, adding optional details like dietary restrictions, and finalizing their RSVP. The feature saves progress to IndexedDB between steps, ensuring users can continue later. Confirmation emails are sent after submission.
