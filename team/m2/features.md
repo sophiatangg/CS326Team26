@@ -54,4 +54,4 @@
 ### Feature Name: Multi-step RSVP Process with Confirmation
 **Description**: A multi-step RSVP form that guides users through the process of confirming attendance, adding optional details like dietary restrictions, and finalizing their RSVP. The feature saves progress to IndexedDB between steps, ensuring users can continue later. Confirmation emails are sent after submission.
 **Point Value**: 5 points  
-**Team Member**: Erika Lam
+**Team Member**: Erika Lam, Anne-Colombe Sinkpon
