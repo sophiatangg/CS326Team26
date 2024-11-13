@@ -2,78 +2,112 @@
 <html lang = "en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> OpenInvite </title>
         <script src="app.js" type="module"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    </div>
-    <nav>
-        <button id="home">Home</button>
-        <button id="profile">Profile</button>
-        <button id="about">About</button>
-    </nav>
-    <div id="views">      
-        <div id="homeView" class="view">
-            <h1>Home</h1>
+        <header>
+            <div class="search-container"> 
+                <input type="text" placeholder="Search for events">
+                <input type="text" placeholder="Enter location">
+                <button class="Search-button">Search</button>
+            </div>
+        </header>
+        <div id="views">      
+            <div id="homeView" class="view">
+                <h1>Home</h1>
+            </div>
+            <div id="profileView" class="view" style="display:none">
+                <h1>Profile</h1>
+            </div>
+            <div id="aboutView" class="view" style="display:none">
+                <br>
+                <h1>About OpenInvite</h1>
+                <br>
+                <p class ="purpose">OpenInvite, aims to centralize the process of discovering and engaging with public events.
+                    Users can advertise their "open invite" events which are directly visible to 
+                    the public and displayed within a certain distance of the event's location.</p>
+                <br>
+                <h1>Our Team</h1>
+                <div id = "team-cards">
+                    <div class ="team-card">
+                        <h3>Erika Lam</h3>
+                        <h5>Co-Project Manager / Note-Taker</h5>
+                        <br>
+                        <p>Erika co-manages the overall project timeline, ensures that milestones are met, and 
+                            facilitates collaboration within the team. She creates an agenda before each team meeting
+                            to ensure all necessary topics are covered, records detailed notes during meetings, makes 
+                            sure action items are communicated properly, and distributes meeting minutes to the team 
+                            after every meeting.</p>
+                    </div>
+                    <div class ="team-card">
+                        <h3>Sophia Tang</h3>
+                        <h5>Co-Project Manager / Time Keeper</h5>
+                        <br>
+                        <p>Co-manages the overall project timeline, ensures that milestones are met, and facilitates 
+                            collaboration within the team alongside Erika. She is responsible for keeping team 
+                            discussions productive focused on project goals. Sophia also manages the timing of all 
+                            team activities, ensures that meetings start and end on time, and sends out reminders 
+                            about upcoming meetings and deadlines.</p>
+                    </div>
+                    <div class ="team-card">
+                        <h3>Katie Xu</h3>
+                        <h5>Task Manager</h5>
+                        <br>
+                        <p> Responsible for organizing and tracking individual and team tasks. Katie manages the 
+                            team’s workflow board and ensures that all tasks are properly assigned and completed on 
+                            time. She regularly checks in on task completion and overall progress and adjusts plans as 
+                            necessary to address delays or obstacles.</p>                    
+                    </div>
+                    <div class ="team-card">
+                        <h3>Zhitong Liu</h3>
+                        <h5>Communication Lead</h5>
+                        <br>
+                        <p> Maintains and manages the team’s communication channels over text and Discord. 
+                            Ensures that all members stay informed, engaged and aware of any major updates 
+                            regarding the project. Zhitong also schedules meeting times for the team, facilitates
+                            communication within the team, conducts private check-ins with each member and 
+                            distributes feedback appropriately to resolve conflicts.</p>                    
+                    </div>
+                    <div class ="team-card">
+                        <h3>Mehek Shah</h3>
+                        <h5>Quality Control</h5>
+                        <br>
+                        <p> Proofreads team submissions and ensures that all deliverables adhere to project guidelines
+                            and meet the necessary quality standards. Mehek develops and maintains quality checklists,
+                            conducts regular reviews of documents before submission, and identifies areas for 
+                            improvement within the team’s deliverables.</p>                    
+                    </div>
+                    <div class ="team-card">
+                        <h3>Anne-Colombe Sinkpon</h3>
+                        <h5>Documentation Lead</h5>
+                        <br>
+                        <p> Responsible for overseeing and maintaining comprehensive project documentation. Anne 
+                            manages relevant information and revises project plans to ensure all documents are up to 
+                            date, well-organized, and accessible to team members. She coordinates with the Time Keeper
+                            and Task Manager to help the team stay aligned on project objectives and processes.</p>                    
+                    </div>
+                    <div class ="team-card">
+                        <h3>Mason Choi</h3>
+                        <h5>Tech Lead</h5>
+                        <br>
+                        <p> Oversees the technical development of the project, makes key decisions regarding 
+                            technologies and tools, and ensures that the application's architecture and code quality 
+                            adhere to project requirements. Mason provides technical direction and expertise to ensure
+                            that the best practices are followed in development and implementation.</p>                    
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="profileView" class="view" style="display:none">
-            <h1>Profile</h1>
-        </div>
-        <div id="aboutView" class="view" style="display:none">
-            <h1>About OpenInvite</h1>
-            <p>OpenInvite, aims to centralize the process of discovering and engaging with public events.
-                Users can advertise their "open invite" events which are directly visible to 
-                the public and displayed within a certain distance of the event's location.</p>
-            <h1>Our Team</h1>
-            <h3>Erika Lam</h3>
-            <h3>Co-Project Manager / Note-Taker</h3>
-            <p>Erika co-manages the overall project timeline, ensures that milestones are met, and 
-                facilitates collaboration within the team. She creates an agenda before each team meeting
-                to ensure all necessary topics are covered, records detailed notes during meetings, makes 
-                sure action items are communicated properly, and distributes meeting minutes to the team 
-                after every meeting.</p>
-            <h3>Sophia Tang</h3>
-            <h3>Co-Project Manager / Time Keeper</h3>
-            <p>Co-manages the overall project timeline, ensures that milestones are met, and facilitates 
-                collaboration within the team alongside Erika. She is responsible for keeping team 
-                discussions productive focused on project goals. Sophia also manages the timing of all 
-                team activities, ensures that meetings start and end on time, and sends out reminders 
-                about upcoming meetings and deadlines.</p>
-            <h3>Katie Xu</h3>
-            <h3>Task Manager</h3>
-            <p> Responsible for organizing and tracking individual and team tasks. Katie manages the 
-                team’s workflow board and ensures that all tasks are properly assigned and completed on 
-                time. She regularly checks in on task completion and overall progress and adjusts plans as 
-                necessary to address delays or obstacles.</p>
-            <h3>Zhitong Liu</h3>
-            <h3>Communication Lead</h3>
-            <p> Maintains and manages the team’s communication channels over text and Discord. 
-                Ensures that all members stay informed, engaged and aware of any major updates 
-                regarding the project. Zhitong also schedules meeting times for the team, facilitates
-                communication within the team, conducts private check-ins with each member and 
-                distributes feedback appropriately to resolve conflicts.</p>
-            <h3>Mehek Shah</h3>
-            <h3>Quality Control</h3>
-            <p> Proofreads team submissions and ensures that all deliverables adhere to project guidelines
-                and meet the necessary quality standards. Mehek develops and maintains quality checklists,
-                conducts regular reviews of documents before submission, and identifies areas for 
-                improvement within the team’s deliverables.</p>
-            <h3>Anne-Colombe Sinkpon</h3>
-            <h3>Documentation Lead</h3>
-            <p> Responsible for overseeing and maintaining comprehensive project documentation. Anne 
-                manages relevant information and revises project plans to ensure all documents are up to 
-                date, well-organized, and accessible to team members. She coordinates with the Time Keeper
-                and Task Manager to help the team stay aligned on project objectives and processes.</p>
-            <h3>Mason Choi</h3>
-            <h3>Tech Lead</h3>
-            <p> Oversees the technical development of the project, makes key decisions regarding 
-                technologies and tools, and ensures that the application's architecture and code quality 
-                adhere to project requirements. Mason provides technical direction and expertise to ensure
-                that the best practices are followed in development and implementation.</p>
-        </div>
-    </div>
-    </div>    
-
+        <div class = "footer">
+            <nav>
+                <button id="home">Home</button>
+                <button id="profile">Profile</button>
+                <button id="about">About Us</button>
+            </nav>   
+        </div> 
     </body>
 
 </html>
