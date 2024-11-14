@@ -39,12 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Load the event form if the events view is selected
                 if (view === "events") {
-                    loadComponent("components/EventForm/EventForm.html", "eventFormContainer");
+                    setupCreateEventButton();
                 }
             })
             .catch(error => {
                 console.error("Error loading view:", error);
             });
+    }
+
+    // Function to setup "Create Event" button behavior
+    function setupCreateEventButton() {
+        const createEventButton = document.getElementById("createEventButton");
+        const eventFormContainer = document.getElementById("eventFormContainer");
+
+        createEventButton.addEventListener("click", () => {
+            // Toggle the visibility of the event form
+            if (eventFormContainer.classList.contains("hidden")) {
+                loadComponent("components/EventForm/EventForm.html", "eventFormContainer");
+                eventFormContainer.classList.remove("hidden");
+            } else {
+                eventFormContainer.classList.add("hidden");
+            }
+        });
     }
 
     // Function to load an HTML component into a specified container
