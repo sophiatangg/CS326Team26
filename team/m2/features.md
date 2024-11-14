@@ -5,7 +5,7 @@
 ### Feature Name: Basic Event Form
 **Description**: A simple form that allows users to input the event title, description, date, and location. Basic validation ensures all fields are filled correctly before submission. No interaction with IndexedDB is required for this feature.
 **Point Value**: 1 point  
-**Team Member**: Mason Choi
+**Team Member**: Mason Choi, Erika Lam
 
 ### Feature Name: Static About Page
 **Description**: A static HTML page that provides information about the purpose of the OpenInvite app, including a short description, the mission statement, and the team. It contains no interactive elements.
@@ -16,6 +16,11 @@
 **Description**: A notification system that displays a reminder to users when an event is upcoming. This feature triggers a simple pop-up notification, but does not involve complex data interaction or dynamic content.
 **Point Value**: 1 point  
 **Team Member**: Zhitong Liu
+
+### Feature Name: Followers Page
+**Description**: A page on the profile that allows users to see who they are following. It will notify them of the events posted by the people or groups they follow. Similarly, groups can see how many members are following them.
+**Point Value**: 1 point  
+**Team Member**: Erika Lam
 
 ## Medium Features (2-3 points)
 
