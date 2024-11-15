@@ -7,7 +7,7 @@ const MockEvents = [
 		desc: "Boba night at ten one",
 		category: "social",
 		date: "11/17/2024",
-		cover: "./mockImages/tenOneLogo.png",
+		cover: "./static/event_images/tenOneLogo.png",
 	},
     {
 		id: 1,
@@ -17,7 +17,7 @@ const MockEvents = [
 		desc: "chatting with guacemole",
 		category: "social",
 		date: "11/23/2024",
-		cover: "./mockImages/guacAndTalk.png",
+		cover: "./static/event_images/guacAndTalk.png",
 	},
     {
 		id: 2,
@@ -27,7 +27,7 @@ const MockEvents = [
 		desc: "Enroll in HackUmass, 3 day coding challenge!",
 		category: "academic",
 		date: "11/27/2024",
-		cover: "./mockImages/hackUMASS.png",
+		cover: "./static/event_images/hackUMASS.png",
 	},
 ];
 
