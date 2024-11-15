@@ -1,5 +1,7 @@
 import { BaseComponent } from '../BaseComponent/BaseComponent.js';
 import { EventForm } from '../EventForm/EventForm.js';
+import { RsvpInputInfo } from '../RsvpInputInfo/RsvpInputInfo.js';
+import { RsvpDetails } from '../RsvpDetails/RsvpDetails.js';
 import MockEvents from './mockEvents.js';
 
 export class Events extends BaseComponent {
@@ -7,6 +9,7 @@ export class Events extends BaseComponent {
         super();
         this.loadCSS('Events');
         this.isCreatingEvent = false; // State to track if we're in "create event" mode
+        this.isRsvpMode = false; // State to track if we're in RSVP mode
     }
 
     render() {
@@ -37,6 +40,11 @@ export class Events extends BaseComponent {
         const eventSectionElem = document.createElement('div');
         eventSectionElem.id = 'events';
 
+        // RSVP container for rendering RSVP form or details
+        const rsvpContainer = document.createElement('div');
+        rsvpContainer.id = 'rsvpContainer';
+        rsvpContainer.classList.add('hidden');
+
         // Populate events from MockEvents
         MockEvents.forEach((event) => {
             const elem = document.createElement('div');
@@ -54,6 +62,13 @@ export class Events extends BaseComponent {
                 </div>
             `;
 
+            // Add RSVP button to each event
+            const rsvpButton = document.createElement('button');
+            rsvpButton.textContent = 'RSVP';
+            rsvpButton.classList.add('rsvp-button');
+            rsvpButton.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer));
+
+            elem.appendChild(rsvpButton);
             eventSectionElem.appendChild(elem);
         });
 
@@ -61,6 +76,7 @@ export class Events extends BaseComponent {
         container.appendChild(header);
         container.appendChild(eventFormContainer);
         container.appendChild(eventSectionElem);
+        container.appendChild(rsvpContainer);
 
         return container;
     }
@@ -69,15 +85,12 @@ export class Events extends BaseComponent {
         this.isCreatingEvent = !this.isCreatingEvent; // Toggle the state
 
         if (this.isCreatingEvent) {
-            console.log("creating event");
             // Show the event form and hide the event list
             eventFormContainer.innerHTML = '';
             const eventForm = new EventForm();
             eventFormContainer.appendChild(eventForm.render());
-            console.log("event form rendered")
             eventFormContainer.classList.remove('hidden');
             eventSectionElem.classList.add('hidden');
-            console.log("event section hidden?")
 
             button.textContent = 'Back to Browse Events';
         } else {
@@ -87,5 +100,32 @@ export class Events extends BaseComponent {
 
             button.textContent = 'Create Event';
         }
+    }
+
+    showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer) {
+        this.isRsvpMode = !this.isRsvpMode; // Toggle RSVP mode
+
+        if (this.isRsvpMode) {
+            // Hide other sections and show RSVP input form
+            eventSectionElem.classList.add('hidden');
+            eventFormContainer.classList.add('hidden');
+
+            // Create RSVP input form with callback for review
+            const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer));
+            rsvpContainer.innerHTML = '';
+            rsvpContainer.appendChild(rsvpInput.render());
+            rsvpContainer.classList.remove('hidden');
+        } else {
+            // Show the event list and hide the RSVP form
+            rsvpContainer.classList.add('hidden');
+            eventSectionElem.classList.remove('hidden');
+        }
+    }
+
+    showRsvpDetails(details, rsvpContainer) {
+        // Display RSVP details confirmation
+        const rsvpDetails = new RsvpDetails(details);
+        rsvpContainer.innerHTML = '';
+        rsvpContainer.appendChild(rsvpDetails.render());
     }
 }
