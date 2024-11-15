@@ -34,16 +34,21 @@
 **Point Value**: 3 points  
 **Team Member**: Mehek Shah, Sophia Tang
 
+### Feature Name: Enpand Events 
+**Description**: A functionality feature that allows users to click on events to show more information about the event such as the time, location, and type of event.
+**Point Value**: 3 points  
+**Team Member**: Sophia Tang
+
 ## Large Features (4-5 points)
 
 ### Feature Name: User Profile Dashboard
 **Description**: A dynamic user profile page that displays the user's details, including their RSVP history, events they’ve posted, and their preferences. The dashboard fetches data from IndexedDB and updates in real-time based on user interaction. This feature also allows users to edit their profile details and save them.
 **Point Value**: 4 points  
-**Team Member**: Anne Colombe Sinkpon
+**Team Member**: Anne Colombe Sinkpon, Erika Lam
 
 ### Feature Name: Event Display
 **Description**: A dynamic events default page that displays a feed of all upcoming events. The page fetches fetches events from IndexedDB, allowing users to view up-to-date event information. The page will update whenever a new event is added and updated accordingly when a user changes their event information. 
-**Point Value**: 4
+**Point Value**: 5
 **Team Member**: Sophia Tang
 
 ### Feature Name: Event Feed with Sorting and Filtering
