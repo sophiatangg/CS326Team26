@@ -1,5 +1,5 @@
 // dummy for now
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Welcome to OpenInvite!");
+    console.log("Welcome to OpenInvite! - Home page");
 });
 
