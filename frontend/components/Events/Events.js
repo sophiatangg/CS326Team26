@@ -6,6 +6,7 @@ export class Events extends BaseComponent {
     constructor() {
         super();
         this.loadCSS('Events');
+        this.isCreatingEvent = false; // State to track if we're in "create event" mode
     }
 
     render() {
@@ -19,13 +20,13 @@ export class Events extends BaseComponent {
         const title = document.createElement('h2');
         title.textContent = 'Events';
 
-        const createButton = document.createElement('button');
-        createButton.textContent = 'Create Event';
-        createButton.classList.add('create-event-button');
-        createButton.addEventListener('click', () => this.toggleEventForm());
+        const toggleButton = document.createElement('button');
+        toggleButton.textContent = 'Create Event';
+        toggleButton.classList.add('toggle-button');
+        toggleButton.addEventListener('click', () => this.toggleEventForm(toggleButton, eventSectionElem, eventFormContainer));
 
         header.appendChild(title);
-        header.appendChild(createButton);
+        header.appendChild(toggleButton);
 
         // Event form container, initially hidden
         const eventFormContainer = document.createElement('div');
@@ -43,14 +44,13 @@ export class Events extends BaseComponent {
             elem.className = 'eventContainer';
 
             elem.innerHTML = `
-                <div><strong>${event.username}</strong> posted an event</div>
-                <div>${event.title}</div>
-                <div><img src="${event.cover.replace('./mockImages/', './static/event_images/')}" alt="${event.title}"/></div>
+                <div class="eventHeader"><strong>${event.username}</strong> posted an event</div>
+                <h3>${event.title}</h3>
+                <div class="eventImage"><img src="${event.cover.replace('./mockImages/', './static/event_images/')}" alt="${event.title}"/></div>
                 <div class="eventDetails">
-                    <div><strong>Description:</strong></div>
-                    <div>${event.desc}</div>
-                    <div><strong>Category:</strong> ${event.category}</div>
-                    <div><strong>When:</strong> ${event.date}</div>
+                    <p><strong>Description:</strong> ${event.desc}</p>
+                    <p><strong>Category:</strong> ${event.category}</p>
+                    <p><strong>When:</strong> ${event.date}</p>
                 </div>
             `;
 
@@ -65,15 +65,27 @@ export class Events extends BaseComponent {
         return container;
     }
 
-    toggleEventForm() {
-        const eventFormContainer = document.getElementById('eventFormContainer');
-        if (eventFormContainer.classList.contains('hidden')) {
+    toggleEventForm(button, eventSectionElem, eventFormContainer) {
+        this.isCreatingEvent = !this.isCreatingEvent; // Toggle the state
+
+        if (this.isCreatingEvent) {
+            console.log("creating event");
+            // Show the event form and hide the event list
+            eventFormContainer.innerHTML = '';
             const eventForm = new EventForm();
             eventFormContainer.appendChild(eventForm.render());
+            console.log("event form rendered")
             eventFormContainer.classList.remove('hidden');
+            eventSectionElem.classList.add('hidden');
+            console.log("event section hidden?")
+
+            button.textContent = 'Back to Browse Events';
         } else {
+            // Show the event list and hide the event form
             eventFormContainer.classList.add('hidden');
-            eventFormContainer.innerHTML = '';
+            eventSectionElem.classList.remove('hidden');
+
+            button.textContent = 'Create Event';
         }
     }
 }
