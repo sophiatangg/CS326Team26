@@ -10,7 +10,7 @@
 ### Feature Name: Static About Page
 **Description**: A static HTML page that provides information about the purpose of the OpenInvite app, including a short description, the mission statement, and the team. It contains no interactive elements.
 **Point Value**: 1 point  
-**Team Member**: Anne Colombe Sinkpon
+**Team Member**: Anne Colombe Sinkpon, Mason Choi
 
 ### Feature Name: Event Reminder Notification
 **Description**: A notification system that displays a reminder to users when an event is upcoming. This feature triggers a simple pop-up notification, but does not involve complex data interaction or dynamic content.
