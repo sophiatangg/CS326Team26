@@ -1,0 +1,139 @@
+.rsvp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally within the container */
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 20px;
+  width: fit-content;
+  height: fit-content;
+  font-family: 'Instrument Sans', sans-serif;
+}
+
+.rsvp-content {
+  align-self: center;
+  display: flex;
+  max-width: 100%;
+  flex: 1;
+}
+
+.title {
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.rsvp-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  width: 100%;
+  font-size: 18px;
+  color: #5e5e5e;
+  font-weight: 500;
+}
+
+.restriction-row {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  align-items: center;
+  gap: 18px; 
+  justify-content: start;
+  flex-wrap: nowrap;
+}
+
+.input-boxes {
+  border: 1px solid #5e5e5e;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.description-input {
+  flex: 1; /* Allows the description input to take the remaining space */
+  min-width: 240px;
+}
+
+.accessibility-input {
+  width: 49rem;
+  min-height: 3rem;
+}
+
+.type-label {
+  position: absolute;
+  z-index: 0;
+  left: 14px;
+  top: 13px;
+  width: 41px;
+  height: 21px;
+}
+
+.buttons {
+  background-color: #881c1b;
+  color: #fff;
+  border-radius: 40px;
+  padding: 1rem;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.review-button {
+  position: absolute;
+  min-height: 55px;
+  font-weight: 500;
+  right: 43px;
+  bottom: 5rem;
+  height: 55px;
+}
+
+
+@media (max-width: 991px) {
+  .restriction-row {
+    max-width: 100%;
+    flex-wrap: wrap; 
+    white-space: initial;
+  }
+
+  .rsvp-title {
+    max-width: 100%;
+  }
+
+  .restrictions-container {
+    max-width: 100%;
+  }
+
+  .type-selection {
+    width: 100%; 
+  }
+
+  .input-boxes {
+    width: 100%;
+  }
+
+  .review-button {
+    white-space: initial;
+    padding: 0 20px;
+  }
+
+  .accessibility-input {
+    max-width: 100%;
+    padding-right: 20px;
+  }
+
+  .accessibility-input-container {
+    max-width: 100%;
+  }
+}

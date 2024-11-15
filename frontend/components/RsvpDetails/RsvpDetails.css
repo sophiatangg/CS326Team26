@@ -1,0 +1,23 @@
+/* RsvpDetailsComponent.css */
+.rsvp-container {
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 0 auto; /* Center horizontally within the parent */
+    background-color: #fff; /* Optional: Ensure visibility against the background */
+}
+
+.rsvp-button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #881C1C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.rsvp-button:hover {
+    background-color: #37474F;
+}
+  
