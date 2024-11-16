@@ -33,7 +33,7 @@ export class Profile extends BaseComponent {
         profile_info.innerHTML = '<img src = "./static/images/logo.png" id = "picture" alt = "Profile Picture"> \
         <h2 id = "username"> username</h2> <div class = "follows">\
         <span> <button class="followers">50 Followers</button>  <button class="following">50 Following</button></span></div>\
-        <p id = "userbio">Posting fun events involving music.</p>\
+        <p id = "userbio">Looking to enjoy and post events.</p>\
         <button class="edit-profile">Edit Profile</button>'
         header.appendChild(profile_info);
 
