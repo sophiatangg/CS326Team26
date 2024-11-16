@@ -23,6 +23,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -36,8 +37,10 @@ header {
 }
 
 nav ul {
+    margin-top: 15px;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -53,7 +56,6 @@ nav ul li a {
 main {
     padding: 20px;
     width: 100%;
-    max-width: 800px;
     text-align: center;
 }
 
@@ -64,4 +66,14 @@ footer {
     color: #E0E4E7;
     padding: 10px;
     text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    nav ul {
+        margin-top: auto;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
 }
