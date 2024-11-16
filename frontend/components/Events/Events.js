@@ -57,7 +57,17 @@ export class Events extends BaseComponent {
                 <div><strong> Catergory:</strong> ${event.category}</div>
                 <div><strong> Time:</strong> ${event.time}</div>
                 <div><strong> Where:</strong> ${event.where}</div>
+
+                <div class="rsvpSection">
+                    <h4>RSVP:</h4>
+                    <button class="rsvpButton" data-response="yes" data-event-id="${event.id}">Yes</button>
+                    <button class="rsvpButton" data-response="no" data-event-id="${event.id}">No</button>
+                    <button class="rsvpButton" data-response="maybe" data-event-id="${event.id}">Maybe</button>
+                </div>
+                <div class="rsvpCount" id="rsvp-count-${event.id}"></div>
+    
             </div>
+
             
         `;
         const additionalInfo = elem.querySelector(".additionalInfo");
@@ -67,6 +77,11 @@ export class Events extends BaseComponent {
         elem.addEventListener("click", () => {
             elem.classList.toggle("expanded");
             additionalInfo.style.display = elem.classList.contains("expanded") ? "block" : "none";
+        });
+
+        const rsvpButtons = elem.querySelectorAll('.rsvpButton');
+            rsvpButtons.forEach((button) => {
+            button.addEventListener('click', (event) => this.rsvpButton(event));
         });
 
             eventSectionElem.appendChild(elem);
@@ -103,4 +118,31 @@ export class Events extends BaseComponent {
             button.textContent = 'Create Event';
         }
     }
+
+    rsvpButton(event){
+        //stop on click function for enlarge 
+        event.stopPropagation();
+        const button = event.target;
+        //get the button clicked
+        const response= button.getAttribute('data-response');
+        //get the specific event for the DB
+        const eventID = button.getAttribute('data-event-id');
+        const eventContainer = button.closest('.eventContainer');
+         
+        const rsvpButtons = eventContainer.querySelectorAll('.rsvpButton');
+        rsvpButtons.forEach((btn) => {
+            btn.style.backgroundColor = ''; 
+        });
+
+        if (response ==='yes'){
+            button.style.backgroundColor='green';
+        } else if (response === 'no') {
+            button.style.backgroundColor = 'red';
+        } else if (response === 'maybe') {
+            button.style.backgroundColor = 'orange';
+        }
+
+        //call function to update indexedDB
+    }
+
 }
