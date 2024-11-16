@@ -60,7 +60,22 @@ export class Events extends BaseComponent {
                     <p><strong>Category:</strong> ${event.category}</p>
                     <p><strong>When:</strong> ${event.date}</p>
                 </div>
-            `;
+
+                <div class="additionalInfo">
+                <div><strong> Catergory:</strong> ${event.category}</div>
+                <div><strong> Time:</strong> ${event.time}</div>
+                <div><strong> Where:</strong> ${event.where}</div>
+            </div>
+            
+        `;
+        const additionalInfo = elem.querySelector(".additionalInfo");
+        additionalInfo.style.display = "none";
+
+        // Add click event listener to toggle the expanded state
+        elem.addEventListener("click", () => {
+            elem.classList.toggle("expanded");
+            additionalInfo.style.display = elem.classList.contains("expanded") ? "block" : "none";
+        });
 
             // Add RSVP button to each event
             const rsvpButton = document.createElement('button');

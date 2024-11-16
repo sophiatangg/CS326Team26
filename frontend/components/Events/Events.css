@@ -83,6 +83,10 @@
 .eventDetails strong {
     font-weight: bold;
 }
+.additionalInfo{
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
 
 .hidden {
     display: none !important;
