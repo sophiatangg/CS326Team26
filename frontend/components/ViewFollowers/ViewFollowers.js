@@ -42,8 +42,12 @@ export class ViewFollowers extends BaseComponent {
         const backButton = document.createElement('button');
         backButton.className = 'back-button';
         backButton.textContent = 'Back';
-        backButton.addEventListener('click', () => this.goBack());
-
+        backButton.addEventListener('click', () => {
+            if (typeof this.goBack === 'function') {
+                this.goBack();
+            }
+        });
+    
         const title = document.createElement('div');
         title.className = 'title';
         title.textContent = this.isFollowers ? 'Followers' : 'Following';
@@ -64,6 +68,13 @@ export class ViewFollowers extends BaseComponent {
                 <div class="person-name">${person.name}</div>
             `;
 
+            // Add click listener to navigate to the selected person's profile
+            personCard.addEventListener('click', () => {
+                if (typeof this.viewProfile === 'function') {
+                    this.viewProfile(person); // Pass the clicked person's data
+                }
+            });
+    
             listContainer.appendChild(personCard);
         });
 
@@ -74,7 +85,8 @@ export class ViewFollowers extends BaseComponent {
     }
 
     goBack() {
-        
-        this.dispatchCustomEvent('go-back');
+        if (typeof this.goBack === 'function') {
+            this.goBack(); // Call the parent's renderProfile method
+        }
     }
 }

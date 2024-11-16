@@ -1,12 +1,14 @@
 import { BaseComponent } from '../BaseComponent/BaseComponent.js';
 import { RsvpInputInfo } from '../RsvpInputInfo/RsvpInputInfo.js';
 import { RsvpDetails } from '../RsvpDetails/RsvpDetails.js';
+import { ViewFollowers } from '../ViewFollowers/ViewFollowers.js';
 import MockEvents from '../Events/mockEvents.js';
 
 export class OtherProfile extends BaseComponent {
-    constructor(user) {
+    constructor(user, previousPage = null) {
         super();
-        this.user = user; // Take in the User 
+        this.user = user; // Current user profile data
+        this.previousPage = previousPage; // The previous page or state
         this.loadCSS('OtherProfile'); // Load the CSS file for styling this component
         this.isRsvpMode = false; // State to track if RSVP mode is active
     }
@@ -15,6 +17,17 @@ export class OtherProfile extends BaseComponent {
     render() {
         const profileContainer = document.createElement('div'); // Main container for the profile
         profileContainer.className = 'profile-screen';
+
+        // Create a header with a back button
+        const header = document.createElement('div');
+        header.className = 'header';
+
+        const backButton = document.createElement('button');
+        backButton.className = 'back-button';
+        backButton.textContent = 'Back';
+        backButton.addEventListener('click', () => this.goBack());
+
+        header.appendChild(backButton);
 
         // Create the user info section (e.g., profile picture, username, followers & following, bio, follow button)
         const userInfo = document.createElement('div');
@@ -29,6 +42,13 @@ export class OtherProfile extends BaseComponent {
             <div class="user-bio">${this.user.bio || ''}</div> <!-- Bio Section -->
         `;
 
+        // Add event listeners for followers and following
+        const followersElement = userInfo.querySelector('.followers');
+        const followingElement = userInfo.querySelector('.following');
+
+        followersElement.addEventListener('click', () => this.viewFollows(true));
+        followingElement.addEventListener('click', () => this.viewFollows(false));
+
         // Create a "Follow" button 
         const followButton = document.createElement('button');
         followButton.className = 'follow-button';
@@ -42,11 +62,21 @@ export class OtherProfile extends BaseComponent {
         // Create the events container to display events
         const eventsContainer = this.createEventsContainer();
 
-        // Append the user info and events container to the profile container
+        // Append the header, user info, and events container to the profile container
+        profileContainer.appendChild(header);
         profileContainer.appendChild(userInfo);
         profileContainer.appendChild(eventsContainer);
 
         return profileContainer; // Return the complete profile UI
+    }
+
+    // Handles the back button action
+    goBack() {
+        if (this.previousPage) {
+            const profileContainer = document.querySelector('.profile-screen');
+            profileContainer.innerHTML = '';
+            profileContainer.appendChild(this.previousPage.render());
+        }
     }
 
     // Toggles the follow/unfollow button state
@@ -61,7 +91,49 @@ export class OtherProfile extends BaseComponent {
             button.classList.remove('unfollow-button');
         }
     }
-    
+
+    viewFollows(isFollowers) {
+        const viewFollowers = new ViewFollowers(this.user.username, isFollowers);
+
+        // Attach the goBack callback
+        viewFollowers.goBack = () => this.renderProfile();
+
+        // Attach the viewProfile callback
+        viewFollowers.viewProfile = (person) => this.switchToProfile(person, viewFollowers);
+
+        const profileContainer = document.querySelector('.profile-screen');
+        profileContainer.innerHTML = '';
+        profileContainer.appendChild(viewFollowers.render());
+    }
+
+    switchToProfile(person, previousPage) {
+
+        //Create a new instance of the calss so that when it is passed through. 
+        //need to make it adaptable to take in their followers/Followings but it at least
+        //toggles through right now
+        const otherProfile = new OtherProfile(
+            {
+                username: person.name,
+                profileImage: person.profileImage,
+                followers: Math.floor(Math.random() * 500),
+                following: Math.floor(Math.random() * 500), 
+                bio: 'This is a bio of ' + person.name 
+            },
+            previousPage // Pass the ViewFollowers page as the previousPage
+        );
+
+        const profileContainer = document.querySelector('.profile-screen');
+        profileContainer.innerHTML = '';
+        profileContainer.appendChild(otherProfile.render());
+    }
+
+    // Restores the profile view
+    renderProfile() {
+        const container = document.querySelector('.profile-screen');
+        container.innerHTML = '';
+        container.appendChild(this.render());
+    }
+
     // Creates the container for displaying events and RSVP functionality
     createEventsContainer() {
         const container = document.createElement('section'); // Main container for events
@@ -98,15 +170,14 @@ export class OtherProfile extends BaseComponent {
             rsvpButton.classList.add('rsvp-button');
             rsvpButton.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem));
 
-            elem.appendChild(rsvpButton); // Append the RSVP button to the event element
-            eventSectionElem.appendChild(elem); // Append the event element to the event section
+            elem.appendChild(rsvpButton); 
+            eventSectionElem.appendChild(elem);
         });
 
-        // Append the different parts
         container.appendChild(eventSectionElem);
         container.appendChild(rsvpContainer);
 
-        return container; // Return the events container
+        return container;
     }
 
     // Displays the RSVP input form for a specific event
@@ -115,8 +186,8 @@ export class OtherProfile extends BaseComponent {
 
         // Clear previous content and render a new RSVP input form
         const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer));
-        rsvpContainer.innerHTML = ''; // Clear the container
-        rsvpContainer.appendChild(rsvpInput.render()); // Add the new form
+        rsvpContainer.innerHTML = '';
+        rsvpContainer.appendChild(rsvpInput.render());
 
         // Hide the event list while showing the RSVP form - otherwise the events will show instead
         eventSectionElem.classList.add('hidden');
@@ -124,11 +195,10 @@ export class OtherProfile extends BaseComponent {
 
     // Displays the RSVP details after the user submits the RSVP form
     showRsvpDetails(details, rsvpContainer) {
-        const rsvpDetails = new RsvpDetails(details, () => this.closeRsvp(rsvpContainer)); // Create RSVP details view
-        rsvpContainer.innerHTML = ''; // Clear the container
-        rsvpContainer.appendChild(rsvpDetails.render()); // Add the RSVP details view
+        const rsvpDetails = new RsvpDetails(details, () => this.closeRsvp(rsvpContainer));
+        rsvpContainer.innerHTML = '';
+        rsvpContainer.appendChild(rsvpDetails.render());
     }
-    
     // Closes the RSVP view and restores the event list
     closeRsvp(rsvpContainer) {
         rsvpContainer.classList.remove('active'); // Remove the active and make it back to the event list
