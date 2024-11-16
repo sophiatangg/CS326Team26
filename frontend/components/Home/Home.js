@@ -10,7 +10,7 @@ export class Home extends BaseComponent {
         const container = document.createElement('section');
         container.id = 'home-view';
         const header = document.createElement('h1');
-        header.textContent = 'OpenInvite';
+        header.innerText = 'OpenInvite';
         header.classList.add("openInvite")
         const mainDiv = document.createElement("div");
         
@@ -28,6 +28,7 @@ export class Home extends BaseComponent {
         const explore = document.createElement("a");
         explore.innerHTML = "Explore Events";
         explore.classList.add("btn-secondary")
+        explore.setAttribute("data-view", "Search");
         const btnDiv = document.createElement("div");
         btnDiv.classList.add("cta-buttons")
         btnDiv.appendChild(signUp);
@@ -36,10 +37,7 @@ export class Home extends BaseComponent {
         
         const docHeader = document.getElementById("viewContainer");
         docHeader.appendChild(container);
-
+   
         return container;
     }
 }
-
-
-

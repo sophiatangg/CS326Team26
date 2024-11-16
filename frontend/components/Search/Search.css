@@ -1,0 +1,53 @@
+label {
+    padding: 8px 16px;
+    display: inline-block; 
+    cursor: pointer; 
+}
+
+.bar{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.search-bar{
+    display: flex;
+    align-self: center;
+    width: 800px;
+    height: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(26, 19, 56, 0.863);
+}
+.search-bar:focus {
+    
+    box-shadow: 0 0 5px rgba(234, 237, 239, 0.3);
+}
+.find{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: fixed;
+    left: 10px;
+    justify-content: left;
+    color: palevioletred;
+    font-weight: 545;
+}
+
+.find div{
+    display: flex;
+    border-top: 1mm;
+    border-bottom: 1mm;
+    border-color: rgb(204, 210, 210);
+    gap: 10px;
+}
+
+.find div:hover{
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+label {
+    padding: 8px 16px; /* Add padding to create space around text */
+    display: inline-block; /* Ensure the label is inline with the checkbox */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: box-shadow 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
+}
