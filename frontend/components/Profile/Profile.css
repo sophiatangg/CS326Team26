@@ -38,7 +38,7 @@ section .header {
     font-weight: bold;
 }
 
-.profile-info .description {
+.profile-info #userbio {
     font-size: 14px;
     text-align: center;
     margin-bottom: 15px;
@@ -79,3 +79,109 @@ section .header {
     background-color: #c9cccf;
     border: 1px solid black;
 }
+
+/* The Modal (background) */
+.modal-overlay {
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    overflow: auto; /* Enable scroll if needed */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Modal Box */
+  .modal {
+    background-color: #fefefe;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Could be more or less, depending on screen size */
+    position: relative; 
+  }
+  
+  /* The Close Button */
+  .close-btn {
+    position: absolute; 
+    color: white;
+    background-color: #37474F;
+    border-radius: 5px;
+    width: 25px;
+    top: 10px;
+    right: 15px;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .profilepic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 7px;
+  }
+
+  .modal label {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  .modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .modal form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 15px;
+    resize: none;
+  }
+
+  .edit-picture {
+    background-color: #37474F;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 7px;
+    cursor: pointer;
+  }
+
+  .edit-picture:hover, .done-btn:hover {
+    background-color: #2a373d;
+  }
+
+  .done-btn {
+    background-color: #37474F;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
