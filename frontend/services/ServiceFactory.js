@@ -1,10 +1,10 @@
-import { localService } from "./localService.js";
+import { localService } from "./localUserService.js";
 
 /**
- * Factory class to create instances of task repository services.
+ * Factory class to create instances of repository services.
  * 
  * This class provides a static method to get an appropriate instance
- * of a task repository service based on the specified repository type.
+ * of a repository service based on the specified repository type.
  * It cannot be instantiated.
  */
 export class ServiceFactory {
@@ -13,7 +13,7 @@ export class ServiceFactory {
   }
 
   /**
-   * Returns an instance of a task repository service based on the given
+   * Returns an instance of a repository service based on the given
    * repository type.
    *
    * @param {string} [repoType='local'] - The type of repository service to
