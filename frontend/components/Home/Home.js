@@ -18,7 +18,7 @@ export class Home extends BaseComponent {
         motto.classList.add("motto");
         motto.innerHTML="Connect, Share, Belong"
 
-        mainDiv.appendChild("motto");
+        mainDiv.appendChild(motto);
         container.appendChild(header);
         container.appendChild(mainDiv);
 
