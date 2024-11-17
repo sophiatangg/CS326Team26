@@ -91,3 +91,18 @@
 .hidden {
     display: none !important;
 }
+
+/* RSVP Button Styling */
+.rsvp-button {
+    padding: 10px 15px;
+    background-color: #881C1C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.rsvp-button:hover {
+    background-color: #37474F;
+}
