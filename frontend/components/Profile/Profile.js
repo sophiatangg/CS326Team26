@@ -66,11 +66,11 @@ export class Profile extends BaseComponent {
         
         modal.innerHTML = `
             <div class= "profilepic">
-                <img src="./static/images/logo.png" id = "picture" alt="Profile Picture">
-                <button class= "edit-picture" onclick="document.getElementById('pfp').click()">Edit Picture</button>
+                <img src="./static/images/logo.png" id = "pic" alt="Profile Picture">
             </div>
+            <label class= "edit-picture" for ="pfp">Edit Picture</label>
+            <input type="file" id="pfp" style="display:none" accept="image/png, image/jpg, image/jpeg"/>
             <form>
-                <input type="file" id="pfp" style="display:none" accept="image/png, image/gif, image/jpeg" />
                 <label>Username</label>
                 <input type="text" id="UsernameInput" placeholder="Username">
                 <label>Bio</label>
@@ -82,6 +82,10 @@ export class Profile extends BaseComponent {
         modalOverlay.appendChild(modal);
 
         document.getElementById(containerId).appendChild(modalOverlay);
+        const input = document.getElementById("pfp");
+        input.onchange = ()=>{
+          document.getElementById("pic").src = URL.createObjectURL(input.files[0]);
+        }
       }
 
       #closeModal(modalId) {
@@ -101,23 +105,23 @@ export class Profile extends BaseComponent {
                 this.#openEditModal(this.#container.id);
             }
             if (event.target.matches(".done-btn")){
-                const usernameInput = this.#container.querySelector('#UsernameInput');
-                const bioInput = this.#container.querySelector('#BioInput');
-                const fileInput = this.#container.querySelector('#pfp');
-                this.#handleProfileEdit(usernameInput,bioInput,fileInput);
-                this.#closeModal("unique");
+                const usernameInput = document.getElementById('UsernameInput');
+                const bioInput = document.getElementById('BioInput');
+                const chosenpfp = document.getElementById('pic');
+                this.#handleProfileEdit(usernameInput,bioInput,chosenpfp);
             }
         })
 
       }
 
-      #handleProfileEdit(name, bio, pfp){
+      #handleProfileEdit(name, bio, chosenpfp){
+        console.log("Test");
         const usrname = name.value;
         const bioinfo = bio.value;
-        const file = pfp.files[0];
+        const file = chosenpfp.src;
 
         if (!name.value) {
-            alert('Please enter a task.');
+            alert('Please enter a username.');
             return;   
         }
 
@@ -125,6 +129,7 @@ export class Profile extends BaseComponent {
 
         // Clear inputs
         this.#clearInputs(name, bio, pfp);
+        this.#closeModal("unique");
       }
 
     #publishNewUser(name, bio, pfp){
@@ -134,13 +139,11 @@ export class Profile extends BaseComponent {
     }
 
     #clearInputs(name, bio, pfp) {
-        const usrname = '';
-        const bioinfo = '';
-        const file = '';
+        name.value = '';
+        bio.value = '';
       }
 
     #updateProfileInfo(profileinfo){
-        if (profileinfo.profile_picture)
             document.getElementById("picture").src = profileinfo.profile_picture;
             document.getElementById("username").textContent = profileinfo.username;
             document.getElementById("userbio").textContent = profileinfo.bio;

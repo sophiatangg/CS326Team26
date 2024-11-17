@@ -9,11 +9,17 @@
 
 * {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
+main{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    text-align: center;
+}
 /* Body and Layout */
 body {
     display: flex;
@@ -69,14 +75,6 @@ nav ul li a {
     font-weight: bold;
 }
 
-main {
-    width: 100%;
-    height: 100%;
-    display:flex;
-    text-align: center;
-    
-}
-
 footer {
     margin-top: auto;
     width: 100%;
@@ -84,7 +82,6 @@ footer {
     text-align: center;
     background-color: var(--primary-navy);
     color: white;
-    padding: 20px;
 }
 
 @media screen and (min-width: 768px) {
