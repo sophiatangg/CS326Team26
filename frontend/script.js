@@ -37,6 +37,7 @@ function loadView(view) {
             break;
         case 'Search':
             component = new Search();
+            break;
         case 'profile':
             component = new Profile();
             break;
