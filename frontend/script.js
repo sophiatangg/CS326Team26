@@ -37,6 +37,7 @@ function loadView(view) {
             break;
         case 'Search':
             component = new Search();
+            break;
         case 'profile':
             component = new Profile();
             break;
@@ -44,7 +45,6 @@ function loadView(view) {
             console.error("View not found:", view);
             return;
     }
-    const searchBar = document.getElementById('search-bar');
 
     if (component) {
         viewContainer.appendChild(component.render());
