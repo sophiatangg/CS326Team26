@@ -5,7 +5,7 @@
 ### Feature Name: Basic Event Form
 **Description**: A simple form that allows users to input the event title, description, date, and location. Basic validation ensures all fields are filled correctly before submission. No interaction with IndexedDB is required for this feature.
 **Point Value**: 1 point  
-**Team Member**: Mason Choi, Erika Lam
+**Team Member**: Mason Choi
 
 ### Feature Name: Static About Page
 **Description**: A static HTML page that provides information about the purpose of the OpenInvite app, including a short description, the mission statement, and the team. It contains no interactive elements.
@@ -44,7 +44,7 @@
 ### Feature Name: User Profile Dashboard
 **Description**: A dynamic user profile page that displays the user's details, including their RSVP history, events they’ve posted, and their preferences. The dashboard fetches data from IndexedDB and updates in real-time based on user interaction. This feature also allows users to edit their profile details and save them.
 **Point Value**: 4 points  
-**Team Member**: Anne Colombe Sinkpon, Mason Choi
+**Team Member**: Anne Colombe Sinkpon, Erika Lam, Mason Choi
 
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.

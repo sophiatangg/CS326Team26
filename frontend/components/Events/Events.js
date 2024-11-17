@@ -65,7 +65,17 @@ export class Events extends BaseComponent {
                 <div><strong> Catergory:</strong> ${event.category}</div>
                 <div><strong> Time:</strong> ${event.time}</div>
                 <div><strong> Where:</strong> ${event.where}</div>
+
+                <div class="rsvpSection">
+                    <h4>RSVP:</h4>
+                    <button class="rsvpButton" data-response="yes" data-event-id="${event.id}">Yes</button>
+                    <button class="rsvpButton" data-response="no" data-event-id="${event.id}">No</button>
+                    <button class="rsvpButton" data-response="maybe" data-event-id="${event.id}">Maybe</button>
+                </div>
+                <div class="rsvpCount" id="rsvp-count-${event.id}"></div>
+    
             </div>
+
             
         `;
         const additionalInfo = elem.querySelector(".additionalInfo");
@@ -77,13 +87,16 @@ export class Events extends BaseComponent {
             additionalInfo.style.display = elem.classList.contains("expanded") ? "block" : "none";
         });
 
-            // Add RSVP button to each event
-            const rsvpButton = document.createElement('button');
-            rsvpButton.textContent = 'RSVP';
-            rsvpButton.classList.add('rsvp-button');
-            rsvpButton.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer));
-
-            elem.appendChild(rsvpButton);
+        const rsvpButtons = elem.querySelectorAll('.rsvpButton');
+            rsvpButtons.forEach((button) => {
+            button.addEventListener('click', (event) => this.rsvpButton(event));
+            if (button.dataset.response ==='yes'){
+                button.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer));
+            }
+            
+            
+        });
+  
             eventSectionElem.appendChild(elem);
         });
 
@@ -117,6 +130,32 @@ export class Events extends BaseComponent {
         }
     }
 
+    rsvpButton(event){
+        //stop on click function for enlarge 
+        event.stopPropagation();
+        const button = event.target;
+        //get the button clicked
+        const response= button.getAttribute('data-response');
+        //get the specific event for the DB
+        const eventID = button.getAttribute('data-event-id');
+        const eventContainer = button.closest('.eventContainer');
+         
+        const rsvpButtons = eventContainer.querySelectorAll('.rsvpButton');
+        rsvpButtons.forEach((btn) => {
+            btn.style.backgroundColor = ''; 
+        });
+
+        if (response ==='yes'){
+            button.style.backgroundColor='green';
+        } else if (response === 'no') {
+            button.style.backgroundColor = 'red';
+        } else if (response === 'maybe') {
+            button.style.backgroundColor = 'orange';
+        }
+
+        //call function to update indexedDB
+    }
+
     showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer) {
         this.isRsvpMode = !this.isRsvpMode; // Toggle RSVP mode
 
@@ -126,10 +165,11 @@ export class Events extends BaseComponent {
             eventFormContainer.classList.add('hidden');
 
             // Create RSVP input form with callback for review
-            const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer));
+            const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer,eventSectionElem));
             rsvpContainer.innerHTML = '';
             rsvpContainer.appendChild(rsvpInput.render());
             rsvpContainer.classList.remove('hidden');
+            
         } else {
             // Show the event list and hide the RSVP form
             rsvpContainer.classList.add('hidden');
@@ -137,10 +177,13 @@ export class Events extends BaseComponent {
         }
     }
 
-    showRsvpDetails(details, rsvpContainer) {
+    showRsvpDetails(details, rsvpContainer,eventSectionElem) {
         // Display RSVP details confirmation
         const rsvpDetails = new RsvpDetails(details);
         rsvpContainer.innerHTML = '';
         rsvpContainer.appendChild(rsvpDetails.render());
+        rsvpContainer.classList.add('hidden');
+        eventSectionElem.classList.remove('hidden');
+
     }
 }

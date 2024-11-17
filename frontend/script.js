@@ -17,9 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
             loadView(view);
         });
     });
-    
-    
-    
 });
 
 function loadView(view) {
@@ -32,7 +29,8 @@ function loadView(view) {
             component = new Home();
             break;
         case 'events':
-            component = new EventSorting();
+            component = new Events();
+            // component = new EventSorting();
             break;
         case 'about':
             component = new About();
@@ -67,3 +65,4 @@ function loadView(view) {
     }
     
 }
+
