@@ -41,7 +41,6 @@ function loadView(view) {
             console.error("View not found:", view);
             return;
     }
-    const searchBar = document.getElementById('search-bar');
 
     if (component) {
         viewContainer.appendChild(component.render());
