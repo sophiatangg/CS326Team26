@@ -10,19 +10,25 @@ export class About extends BaseComponent {
         const container = document.createElement('section');
         container.id = 'about';
 
+        // Create the header for the about section
         const header = document.createElement('h1');
         header.textContent = 'About OpenInvite';
 
+        // Add purpose paragraph
         const purpose = document.createElement('p');
         purpose.classList.add('purpose');
-        purpose.textContent = 'OpenInvite aims to centralize the process of discovering and engaging with public events. Users can advertise their "open invite" events which are directly visible to the public and displayed within a certain distance of the event\'s location.';
+        purpose.textContent =
+            'OpenInvite aims to centralize the process of discovering and engaging with public events. Users can advertise their "open invite" events which are directly visible to the public and displayed within a certain distance of the event\'s location.';
 
+        // Add team section header
         const teamHeader = document.createElement('h1');
-        teamHeader.textContent = 'Our Team';
+        teamHeader.textContent = 'Meet Our Team';
 
+        // Add team cards container
         const teamCards = document.createElement('div');
         teamCards.id = 'team-cards';
 
+        // Define team member details
         const teamMembers = [
             { name: 'Erika Lam', role: 'Co-Project Manager / Note-Taker', description: 'Erika co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team. She creates an agenda before each team meeting to ensure all necessary topics are covered, records detailed notes during meetings, makes sure action items are communicated properly, and distributes meeting minutes to the team after every meeting.' },
             { name: 'Sophia Tang', role: 'Co-Project Manager / Time-Keeper', description: 'Co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team alongside Erika. She is responsible for keeping team discussions productive focused on project goals. Sophia also manages the timing of all team activities, ensures that meetings start and end on time, and sends out reminders about upcoming meetings and deadlines.' },
@@ -33,6 +39,7 @@ export class About extends BaseComponent {
             { name: 'Mason Choi', role: 'Tech Lead', description: 'Oversees the technical development of the project, makes key decisions regarding technologies and tools, and ensures that the application\'s architecture and code quality adhere to project requirements. Mason provides technical direction and expertise to ensure that the best practices are followed in development and implementation.' },
         ];
 
+        // Create cards for each team member
         teamMembers.forEach(member => {
             const card = document.createElement('div');
             card.classList.add('team-card');
