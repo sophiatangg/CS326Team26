@@ -27,9 +27,10 @@ header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center; 
     position: relative;
     color: white;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -52,8 +53,10 @@ header {
 
 
 nav ul {
+    margin-top: 15px;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -82,4 +85,14 @@ footer {
     background-color: var(--primary-navy);
     color: white;
     padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    nav ul {
+        margin-top: auto;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
 }

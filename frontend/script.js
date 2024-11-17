@@ -2,6 +2,7 @@ import { Home } from './components/Home/Home.js';
 import { Events } from './components/Events/Events.js';
 import { About } from './components/About/About.js';
 import { Search } from './components/Search/Search.js';
+import { Profile } from './components/Profile/Profile.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     loadView("home");
@@ -36,6 +37,8 @@ function loadView(view) {
             break;
         case 'Search':
             component = new Search();
+        case 'profile':
+            component = new Profile();
             break;
         default:
             console.error("View not found:", view);
