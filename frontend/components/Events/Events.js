@@ -90,15 +90,13 @@ export class Events extends BaseComponent {
         const rsvpButtons = elem.querySelectorAll('.rsvpButton');
             rsvpButtons.forEach((button) => {
             button.addEventListener('click', (event) => this.rsvpButton(event));
+            if (button.dataset.response ==='yes'){
+                button.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer));
+            }
+            
+            
         });
-
-            // Add RSVP button to each event
-            const rsvpButton = document.createElement('button');
-            rsvpButton.textContent = 'RSVP';
-            rsvpButton.classList.add('rsvp-button');
-            rsvpButton.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer));
-
-            elem.appendChild(rsvpButton);
+  
             eventSectionElem.appendChild(elem);
         });
 
@@ -167,10 +165,11 @@ export class Events extends BaseComponent {
             eventFormContainer.classList.add('hidden');
 
             // Create RSVP input form with callback for review
-            const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer));
+            const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer,eventSectionElem));
             rsvpContainer.innerHTML = '';
             rsvpContainer.appendChild(rsvpInput.render());
             rsvpContainer.classList.remove('hidden');
+            
         } else {
             // Show the event list and hide the RSVP form
             rsvpContainer.classList.add('hidden');
@@ -178,10 +177,13 @@ export class Events extends BaseComponent {
         }
     }
 
-    showRsvpDetails(details, rsvpContainer) {
+    showRsvpDetails(details, rsvpContainer,eventSectionElem) {
         // Display RSVP details confirmation
         const rsvpDetails = new RsvpDetails(details);
         rsvpContainer.innerHTML = '';
         rsvpContainer.appendChild(rsvpDetails.render());
+        rsvpContainer.classList.add('hidden');
+        eventSectionElem.classList.remove('hidden');
+
     }
 }
