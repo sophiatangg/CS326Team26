@@ -32,9 +32,9 @@
 ### Feature Name: Event Search Bar
 **Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
 **Point Value**: 3 points  
-**Team Member**: Mehek Shah, Sophia Tang
+**Team Member**: Mehek Shah
 
-### Feature Name: Enpand Events 
+### Feature Name: Expand Events 
 **Description**: A functionality feature that allows users to click on events to show more information about the event such as the time, location, and type of event.
 **Point Value**: 3 points  
 **Team Member**: Sophia Tang
