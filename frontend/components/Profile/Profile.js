@@ -1,9 +1,8 @@
-import { EventHub } from '../../eventhub/EventHub.js';
 import { BaseComponent } from '../BaseComponent/BaseComponent.js';
-import { Events } from '../../eventhub/EventNames.js';
 
 export class Profile extends BaseComponent {
     #container = null;
+    #isEditingProfile = false;
 
     constructor() {
         super();
@@ -11,141 +10,148 @@ export class Profile extends BaseComponent {
     }
 
     render() {
-        if (this.#container) {
-            return this.#container;
-          }
-          
-        this.#createContainer();   
-        this.#attachEventListeners();
+        if (!this.#container) {
+            this.#container = document.createElement('section');
+            this.#container.id = 'profile';
+            this.#renderProfileView();
+        }
         return this.#container;
     }
 
-    #createContainer() {
-        // Create and configure the container element
-        this.#container = document.createElement('section');
-        this.#container.id = 'profile';
+    #renderProfileView() {
+        this.#isEditingProfile = false;
+        this.#container.innerHTML = ''; // Clear the container
+
         const header = document.createElement('div');
         header.classList.add('header');
 
-        const profile_info = document.createElement('div');
-        header.classList.add('profile-info');
+        const profileInfo = document.createElement('div');
+        profileInfo.classList.add('profile-info');
 
-        profile_info.innerHTML = '<img src = "./static/images/logo.png" id = "picture" alt = "Profile Picture"> \
-        <h2 id = "username"> username</h2> <div class = "follows">\
-        <span> <button class="followers">50 Followers</button>  <button class="following">50 Following</button></span></div>\
-        <p id = "userbio">Looking to enjoy and post events.</p>\
-        <button class="edit-profile">Edit Profile</button>'
-        header.appendChild(profile_info);
-
-        const option = document.createElement('div');
-        option.classList.add('options');
-        option.innerHTML = "<button class = 'Post'>Posts</button>\
-        <button class = 'RSVP'>RSVP History</button>";
-        
-        this.#container.appendChild(header);
-        this.#container.appendChild(option);
-      }
-
-    #openEditModal(containerId) {
-        this.#createEditModal(containerId,"unique");
-    }
-
-    #createEditModal(containerId, modalId) {
-        const modalOverlay = document.createElement('div');
-        modalOverlay.classList.add('modal-overlay');
-        modalOverlay.id = modalId;
-
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
-
-        const closeModalButton = document.createElement('button');
-        closeModalButton.textContent = 'x';
-        closeModalButton.classList.add('close-btn');
-        // remove modal when clicking on close
-        closeModalButton.addEventListener('click', () => this.#closeModal(modalId));
-        
-        modal.innerHTML = `
-            <div class= "profilepic">
-                <img src="./static/images/logo.png" id = "pic" alt="Profile Picture">
+        profileInfo.innerHTML = `
+            <img src="./static/images/logo.png" id="picture" alt="Profile Picture">
+            <h2 id="username">Username</h2>
+            <div class="follows">
+                <span><button class="followers">50 Followers</button></span>
+                <span><button class="following">50 Following</button></span>
             </div>
-            <label class= "edit-picture" for ="pfp">Edit Picture</label>
-            <input type="file" id="pfp" style="display:none" accept="image/png, image/jpg, image/jpeg"/>
-            <form>
-                <label>Username</label>
-                <input type="text" id="UsernameInput" placeholder="Username">
-                <label>Bio</label>
-                <input type="text" id="BioInput" placeholder="Bio">
-            </form>
-            <button class= "done-btn">Done</button>
-        `
-        modal.appendChild(closeModalButton);
-        modalOverlay.appendChild(modal);
+            <p id="userbio">Looking to enjoy and post events.</p>
+            <button class="edit-profile">Edit Profile</button>
+        `;
+        header.appendChild(profileInfo);
 
-        document.getElementById(containerId).appendChild(modalOverlay);
-        const input = document.getElementById("pfp");
-        input.onchange = ()=>{
-          document.getElementById("pic").src = URL.createObjectURL(input.files[0]);
-        }
-      }
+        const options = document.createElement('div');
+        options.classList.add('options');
+        options.innerHTML = `
+            <button class="Post">Posts</button>
+            <button class="RSVP">RSVP History</button>
+        `;
 
-      #closeModal(modalId) {
-        const modalOverlay = document.getElementById(modalId);
-        if (modalOverlay) {
-          modalOverlay.remove();
-        }
-      };
-      
-      #attachEventListeners() {
-        const hub = EventHub.getInstance();
+        this.#container.appendChild(header);
+        this.#container.appendChild(options);
 
-        hub.subscribe(Events.StoreProfileInfo, (data) => this.#updateProfileInfo(data));
-        // Attach event listeners to the input and button elements
-        this.#container.addEventListener('click', (event) =>{
-            if (event.target.matches(".edit-profile")){
-                this.#openEditModal(this.#container.id);
-            }
-            if (event.target.matches(".done-btn")){
-                const usernameInput = document.getElementById('UsernameInput');
-                const bioInput = document.getElementById('BioInput');
-                const chosenpfp = document.getElementById('pic');
-                this.#handleProfileEdit(usernameInput,bioInput,chosenpfp);
-            }
-        })
-
-      }
-
-      #handleProfileEdit(name, bio, chosenpfp){
-        console.log("Test");
-        const usrname = name.value;
-        const bioinfo = bio.value;
-        const file = chosenpfp.src;
-
-        if (!name.value) {
-            alert('Please enter a username.');
-            return;   
-        }
-
-        this.#publishNewUser(usrname, bioinfo, file);
-
-        // Clear inputs
-        this.#clearInputs(name, bio, pfp);
-        this.#closeModal("unique");
-      }
-
-    #publishNewUser(name, bio, pfp){
-        const hub = EventHub.getInstance();
-        hub.publish(Events.StoreProfileInfo, {username: name, bio: bio, profile_picture: pfp})
-
+        this.#attachEventListeners();
     }
 
-    #clearInputs(name, bio, pfp) {
-        name.value = '';
-        bio.value = '';
-      }
+    #openEditProfile() {
+        this.#isEditingProfile = true;
+        this.#container.innerHTML = ''; // Clear the profile view
 
-    #updateProfileInfo(profileinfo){
-            document.getElementById("picture").src = profileinfo.profile_picture;
-            document.getElementById("username").textContent = profileinfo.username;
-            document.getElementById("userbio").textContent = profileinfo.bio;
-      }
+        const editContainer = document.createElement('div');
+        editContainer.classList.add('edit-profile-container');
+
+        editContainer.innerHTML = `
+            <div class="profile-edit-header">
+                <h1>Edit Profile</h1>
+            </div>
+            <div class="profile-edit-form">
+                <div class="edit-profile-picture">
+                    <img src="./static/images/logo.png" id="edit-pic" alt="Profile Picture">
+                    <label class="edit-picture-label" for="edit-pfp">Change Picture</label>
+                    <input type="file" id="edit-pfp" accept="image/png, image/jpg, image/jpeg" style="display:none;">
+                </div>
+                <form>
+                    <label for="edit-username">Username</label>
+                    <input type="text" id="edit-username" placeholder="Enter new username">
+                    <label for="edit-bio">Bio</label>
+                    <textarea id="edit-bio" placeholder="Enter new bio"></textarea>
+                </form>
+                <div class="edit-buttons">
+                    <button class="save-profile">Save</button>
+                    <button class="cancel-profile">Cancel</button>
+                </div>
+            </div>
+        `;
+
+        this.#container.appendChild(editContainer);
+
+        const profilePicInput = document.getElementById('edit-pfp');
+        const profilePic = document.getElementById('edit-pic');
+
+        profilePicInput.addEventListener('change', () => {
+            const file = profilePicInput.files[0];
+            if (file) {
+                profilePic.src = URL.createObjectURL(file);
+            }
+        });
+
+        this.#attachEditProfileListeners();
+    }
+
+    #attachEditProfileListeners() {
+        const saveButton = this.#container.querySelector('.save-profile');
+        const cancelButton = this.#container.querySelector('.cancel-profile');
+
+        saveButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            this.#saveProfileChanges();
+        });
+
+        cancelButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            this.#cancelEditProfile();
+        });
+    }
+
+    #saveProfileChanges() {
+        const usernameInput = document.getElementById('edit-username');
+        const bioInput = document.getElementById('edit-bio');
+        const profilePic = document.getElementById('edit-pic').src;
+
+        if (!usernameInput.value.trim()) {
+            alert('Please enter a username.');
+            return;
+        }
+
+        const profileData = {
+            username: usernameInput.value,
+            bio: bioInput.value,
+            profile_picture: profilePic
+        };
+
+        this.#updateProfileInfo(profileData);
+        this.#renderProfileView(); // Re-render the profile view
+    }
+
+    #cancelEditProfile() {
+        this.#renderProfileView(); // Restore the original profile view
+    }
+
+    #attachEventListeners() {
+        this.#container.addEventListener('click', (event) => {
+            if (event.target.matches('.edit-profile')) {
+                this.#openEditProfile();
+            }
+        });
+    }
+
+    #updateProfileInfo(profileData) {
+        const pictureElem = this.#container.querySelector('#picture');
+        const usernameElem = this.#container.querySelector('#username');
+        const userBioElem = this.#container.querySelector('#userbio');
+
+        if (pictureElem) pictureElem.src = profileData.profile_picture;
+        if (usernameElem) usernameElem.textContent = profileData.username;
+        if (userBioElem) userBioElem.textContent = profileData.bio;
+    }
 }
