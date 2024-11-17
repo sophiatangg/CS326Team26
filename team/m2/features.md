@@ -39,6 +39,11 @@
 **Point Value**: 3 points  
 **Team Member**: Sophia Tang
 
+### Feature Name: Event Geolocation
+**Description**: A feature that calculates the distance from the user and location of the event
+**Point Value**: 3 points  
+**Team Member**: Zhitong Liu
+
 ## Large Features (4-5 points)
 
 ### Feature Name: User Profile Dashboard
@@ -53,7 +58,7 @@
 
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
-**Point Value**: 4 points  
+**Point Value**: 5 points  
 **Team Member**: Zhitong Liu
 
 ### Feature Name: Event Creation and Management
