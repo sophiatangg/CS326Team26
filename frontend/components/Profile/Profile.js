@@ -139,13 +139,11 @@ export class Profile extends BaseComponent {
     }
 
     #clearInputs(name, bio, pfp) {
-        const usrname = '';
-        const bioinfo = '';
-        const file = '';
+        name.value = '';
+        bio.value = '';
       }
 
     #updateProfileInfo(profileinfo){
-        // if (profileinfo.profile_picture)
             document.getElementById("picture").src = profileinfo.profile_picture;
             document.getElementById("username").textContent = profileinfo.username;
             document.getElementById("userbio").textContent = profileinfo.bio;
