@@ -3,19 +3,20 @@ import { BaseComponent } from '../BaseComponent/BaseComponent.js';
 import { Events } from '../../eventhub/EventNames.js';
 import { ViewFollowers } from '../ViewFollowers/ViewFollowers.js';
 import { OtherProfile } from '../OtherProfile/OtherProfile.js';
+import { mainRepository } from '../../script.js';
 
 export class Profile extends BaseComponent {
     #container = null;
 
     constructor() {
-        super();
+        super();      
         this.user = {
-          username: 'JohnDoe',
-          profileImage: './static/images/logo.png',
-          followers: 120,
-          following: 80,
-          bio: 'Enjoying life and posting events!',
-        };
+            username: 'Your username',
+            profileImage: './static/images/logo.png',
+            followers: 120,
+            following: 80,
+            bio: 'Enjoying life and posting events!',
+            };
         this.loadCSS('Profile');
     }
 
@@ -23,7 +24,6 @@ export class Profile extends BaseComponent {
         if (this.#container) {
             return this.#container;
         }
-          
         this.#createContainer();   
         this.#attachEventListeners();
         return this.#container;
@@ -118,6 +118,7 @@ export class Profile extends BaseComponent {
         const hub = EventHub.getInstance();
 
         hub.subscribe(Events.StoreProfileInfo, (data) => this.#updateProfileInfo(data));
+
         // Attach event listeners to the input and button elements
         this.#container.addEventListener('click', (event) =>{
             if (event.target.matches(".edit-profile")){
@@ -141,7 +142,6 @@ export class Profile extends BaseComponent {
     }
 
     #handleProfileEdit(name, bio, chosenpfp){
-        console.log("Test");
         const usrname = name.value;
         const bioinfo = bio.value;
         const file = chosenpfp.src;
@@ -170,9 +170,9 @@ export class Profile extends BaseComponent {
     }
 
     #updateProfileInfo(profileinfo){
-            document.getElementById("picture").src = profileinfo.profile_picture;
-            document.getElementById("username").textContent = profileinfo.username;
-            document.getElementById("userbio").textContent = profileinfo.bio;
+        document.getElementById("picture").src = profileinfo.profile_picture;
+        document.getElementById("username").textContent = profileinfo.username;
+        document.getElementById("userbio").textContent = profileinfo.bio;
     }
 
     //taken from OtherProfile.js
