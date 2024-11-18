@@ -1,3 +1,4 @@
+
 graph TD
     A[Start: User visits Explore Events page] --> B[Render Search UI]
     B --> C[Render Filters Checkboxes]
