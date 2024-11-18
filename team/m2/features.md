@@ -49,7 +49,7 @@
 ### Feature Name: Event Display
 **Description**: A dynamic events default page that displays a feed of all upcoming events. The page fetches fetches events from IndexedDB, allowing users to view up-to-date event information. The page will update whenever a new event is added and updated accordingly when a user changes their event information. 
 **Point Value**: 5
-**Team Member**: Sophia Tang, Mason Choi
+**Team Member**: Sophia Tang, Mason Choi, Zhitong Liu
 
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
