@@ -27,7 +27,7 @@
 ### Feature Name: Event Category Filter
 **Description**: A filter that allows users to select and view events based on categories such as "Music," "Sports," or "Social." The events in the feed dynamically update to reflect the selected category, and the feature pulls data from IndexedDB to store user preferences.
 **Point Value**: 2 points  
-**Team Member**: Mason Choi
+**Team Member**: Zhitong Liu
 
 ### Feature Name: RSVP System
 **Description**: A system that allows users to RSVP to events. Users can select "Yes," "No," or "Maybe" for attending, and their response is stored in IndexedDB. The RSVP status updates dynamically in the event detail page.
@@ -37,7 +37,7 @@
 ### Feature Name: Event Search Bar
 **Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
 **Point Value**: 3 points  
-**Team Member**: Mehek Shah, Sophia Tang
+**Team Member**: Mehek Shah
 
 ## Large Features (4-5 points)
 
@@ -49,7 +49,7 @@
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
 **Point Value**: 4 points  
-**Team Member**: Zhitong Liu
+**Team Member**: Zhitong Liu, Mehek Shah
 
 ### Feature Name: Event Creation and Management
 **Description**: A comprehensive feature that allows users to create new events, edit them, and delete them. The system validates inputs, ensures the event data is saved to IndexedDB, and allows for updates. Users can also track and manage the number of RSVPs for their events.
@@ -59,4 +59,4 @@
 ### Feature Name: Multi-step RSVP Process with Confirmation
 **Description**: A multi-step RSVP form that guides users through the process of confirming attendance, adding optional details like dietary restrictions, and finalizing their RSVP. The feature saves progress to IndexedDB between steps, ensuring users can continue later. Confirmation emails are sent after submission.
 **Point Value**: 5 points  
-**Team Member**: Erika Lam, Anne-Colombe Sinkpon
+**Team Member**: Erika Lam, Anne-Colombe Sinkpon, Mason Choi
