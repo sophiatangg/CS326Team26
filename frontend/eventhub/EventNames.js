@@ -20,5 +20,7 @@ export const Events = {
     StoreProfileInfoSuccess: 'StoreProfileInfoSuccess',
     StoreProfileInfoFailure: 'StoreProfileInfoFailure',
 
+    User: 'User',
+
   };
   

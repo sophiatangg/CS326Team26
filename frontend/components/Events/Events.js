@@ -51,62 +51,101 @@ export class Events extends BaseComponent {
             elem.id = `event-${event.id}`;
             elem.className = 'eventContainer';
 
-            elem.innerHTML = `
-                <div class="eventHeader"><strong>${event.username}</strong> posted an event</div>
-                <h3>${event.title}</h3>
-                <div class="eventImage"><img src="${event.cover.replace('./mockImages/', './static/event_images/')}" alt="${event.title}"/></div>
-                <div class="eventDetails">
-                    <p><strong>Description:</strong> ${event.desc}</p>
-                    <p><strong>Category:</strong> ${event.category}</p>
-                    <p><strong>When:</strong> ${event.date}</p>
-                </div>
+            // Create event header
+            const eventHeader = document.createElement('div');
+            eventHeader.className = 'eventHeader';
+            eventHeader.textContent = `${event.username} posted an event`;
 
-                <div class="additionalInfo">
-                <div><strong> Catergory:</strong> ${event.category}</div>
-                <div><strong> Time:</strong> ${event.time}</div>
-                <div><strong> Where:</strong> ${event.where}</div>
+            // Create event title
+            const eventTitle = document.createElement('h3');
+            eventTitle.textContent = event.title;
 
-                <div class="rsvpSection">
-                    <h4>RSVP:</h4>
-                    <button class="rsvpButton" data-response="yes" data-event-id="${event.id}">Yes</button>
-                    <button class="rsvpButton" data-response="no" data-event-id="${event.id}">No</button>
-                    <button class="rsvpButton" data-response="maybe" data-event-id="${event.id}">Maybe</button>
-                </div>
-                <div class="rsvpCount" id="rsvp-count-${event.id}"></div>
-    
-            </div>
+            // Create event image
+            const eventImage = document.createElement('div');
+            eventImage.className = 'eventImage';
+            const image = document.createElement('img');
+            image.src = event.cover.replace('./mockImages/', './static/event_images/');
+            image.alt = event.title;
+            eventImage.appendChild(image);
 
-            
-        `;
-        const additionalInfo = elem.querySelector(".additionalInfo");
-        additionalInfo.style.display = "none";
+            // Create event details
+            const eventDetails = document.createElement('div');
+            eventDetails.className = 'eventDetails';
 
-        // Add click event listener to toggle the expanded state
-        elem.addEventListener("click", () => {
-            elem.classList.toggle("expanded");
-            additionalInfo.style.display = elem.classList.contains("expanded") ? "block" : "none";
-        });
+            const description = document.createElement('p');
+            description.innerHTML = `<strong>Description:</strong> ${event.desc}`;
+            const category = document.createElement('p');
+            category.innerHTML = `<strong>Category:</strong> ${event.category}`;
+            const date = document.createElement('p');
+            date.innerHTML = `<strong>When:</strong> ${event.date || 'TBD'}`;
+            const location = document.createElement('p');
+            location.innerHTML = `<strong>Where:</strong> ${event.where || 'TBD'}`;
 
-        const rsvpButtons = elem.querySelectorAll('.rsvpButton');
-            rsvpButtons.forEach((button) => {
-            button.addEventListener('click', (event) => this.rsvpButton(event));
-            if (button.dataset.response ==='yes'){
-                button.addEventListener('click', () => this.showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer));
-            }
-            
-            
-        });
-  
+            eventDetails.append(description, category, date, location);
+
+            // Hide additional details initially
+            const additionalInfo = document.createElement('div');
+            additionalInfo.className = 'additionalInfo hidden';
+            additionalInfo.innerHTML = `
+                <p><strong>Additional Details:</strong> ${(event.time || event.time) ? '' : 'No additional details available.'}</p>
+                <p><strong>Category:</strong> ${event.category || 'TBD'}</p>
+                <p><strong>Time:</strong> ${event.time || 'TBD'}</p>
+            `;
+
+            // RSVP buttons
+            const rsvpSection = document.createElement('div');
+            rsvpSection.className = 'rsvpSection';
+
+            const rsvpYes = this.createRsvpButton('Yes', 'green', event.id);
+            const rsvpNo = this.createRsvpButton('No', 'red', event.id);
+            const rsvpMaybe = this.createRsvpButton('Maybe', 'orange', event.id);
+
+            rsvpSection.append(rsvpYes, rsvpNo, rsvpMaybe);
+
+            // Add click functionality to expand/collapse details
+            elem.addEventListener('click', () => {
+                const isExpanded = additionalInfo.classList.contains('hidden');
+                additionalInfo.classList.toggle('hidden', !isExpanded);
+                elem.classList.toggle('expanded', isExpanded);
+            });
+
+            // Append all elements to the event container
+            elem.append(eventHeader, eventTitle, eventImage, eventDetails, additionalInfo, rsvpSection);
             eventSectionElem.appendChild(elem);
         });
 
         // Append all elements to the container
-        container.appendChild(header);
-        container.appendChild(eventFormContainer);
-        container.appendChild(eventSectionElem);
-        container.appendChild(rsvpContainer);
+        container.append(header, eventFormContainer, eventSectionElem, rsvpContainer);
 
         return container;
+    }
+
+    createRsvpButton(text, color, eventId) {
+        const button = document.createElement('button');
+        button.className = 'rsvpButton';
+        button.textContent = text;
+        button.style.backgroundColor = color;
+        button.setAttribute('data-response', text.toLowerCase());
+        button.setAttribute('data-event-id', eventId);
+
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            this.handleRsvp(event, color);
+        });
+
+        return button;
+    }
+
+    handleRsvp(event, color) {
+        const button = event.target;
+        const eventContainer = button.closest('.eventContainer');
+        const rsvpButtons = eventContainer.querySelectorAll('.rsvpButton');
+
+        // Reset colors for all buttons
+        rsvpButtons.forEach((btn) => (btn.style.backgroundColor = ''));
+
+        // Highlight the selected button
+        button.style.backgroundColor = color;
     }
 
     toggleEventForm(button, eventSectionElem, eventFormContainer) {
@@ -128,62 +167,5 @@ export class Events extends BaseComponent {
 
             button.textContent = 'Create Event';
         }
-    }
-
-    rsvpButton(event){
-        //stop on click function for enlarge 
-        event.stopPropagation();
-        const button = event.target;
-        //get the button clicked
-        const response= button.getAttribute('data-response');
-        //get the specific event for the DB
-        const eventID = button.getAttribute('data-event-id');
-        const eventContainer = button.closest('.eventContainer');
-         
-        const rsvpButtons = eventContainer.querySelectorAll('.rsvpButton');
-        rsvpButtons.forEach((btn) => {
-            btn.style.backgroundColor = ''; 
-        });
-
-        if (response ==='yes'){
-            button.style.backgroundColor='green';
-        } else if (response === 'no') {
-            button.style.backgroundColor = 'red';
-        } else if (response === 'maybe') {
-            button.style.backgroundColor = 'orange';
-        }
-
-        //call function to update indexedDB
-    }
-
-    showRsvpInput(rsvpContainer, eventSectionElem, eventFormContainer) {
-        this.isRsvpMode = !this.isRsvpMode; // Toggle RSVP mode
-
-        if (this.isRsvpMode) {
-            // Hide other sections and show RSVP input form
-            eventSectionElem.classList.add('hidden');
-            eventFormContainer.classList.add('hidden');
-
-            // Create RSVP input form with callback for review
-            const rsvpInput = new RsvpInputInfo((details) => this.showRsvpDetails(details, rsvpContainer,eventSectionElem));
-            rsvpContainer.innerHTML = '';
-            rsvpContainer.appendChild(rsvpInput.render());
-            rsvpContainer.classList.remove('hidden');
-            
-        } else {
-            // Show the event list and hide the RSVP form
-            rsvpContainer.classList.add('hidden');
-            eventSectionElem.classList.remove('hidden');
-        }
-    }
-
-    showRsvpDetails(details, rsvpContainer,eventSectionElem) {
-        // Display RSVP details confirmation
-        const rsvpDetails = new RsvpDetails(details);
-        rsvpContainer.innerHTML = '';
-        rsvpContainer.appendChild(rsvpDetails.render());
-        rsvpContainer.classList.add('hidden');
-        eventSectionElem.classList.remove('hidden');
-
     }
 }
