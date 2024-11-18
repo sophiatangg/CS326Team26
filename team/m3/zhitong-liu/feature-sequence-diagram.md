@@ -1,4 +1,5 @@
-flowchart TD
+'''mermaid
+Events Sort Feature Diagram
     A["User visits Event page"] --> B("Javascript fetches event data")
     B --> C["Render events list in UI"]
     C --> D{"User toggles event sorting options"}
@@ -8,6 +9,7 @@ flowchart TD
     G --> n1
     n1 --> H["Javascript reorders IndexDB data"]
     H --> C
+'''
 
 
 
