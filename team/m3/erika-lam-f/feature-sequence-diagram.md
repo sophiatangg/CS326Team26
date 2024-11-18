@@ -17,7 +17,7 @@ flowchart TD
     K --> L[Display followers/following page];
     L --> O{User clicks Back button};
     O --> P[Load previous profile information]
-    p --> D
+    p --> D[Display UI]
 
     D --> M[User clicks on an event];
     M --> N[Trigger event to load event page];
