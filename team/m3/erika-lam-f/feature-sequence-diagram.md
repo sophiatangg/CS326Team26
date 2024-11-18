@@ -9,7 +9,7 @@ flowchart TD
     D --> E[User clicks follow/unfollow button];
     E --> F[Trigger follow/unfollow event];
     F --> G[Update follow/unfollow status in IndexedDB];
-    G --> H[Update UI to reflect follow/unfollow state];
+    G --> D[Update UI to reflect follow/unfollow state];
 
     D --> I[User clicks Followers/Following];
     I --> J[Trigger event to help view Followers/Following pages];
@@ -17,7 +17,5 @@ flowchart TD
     K --> L[Display followers/following list in UI];
 
     D --> M[User clicks on an event];
-    M --> N[Trigger event that loads the event pages];
-    N --> O[Fetch event details from IndexedDB];
-    O --> P[Display event details in UI];
+    M --> N[Trigger event to load event page];
 ```
