@@ -13,9 +13,9 @@
 - **Role**: Co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team alongside Erika. She is responsible for keeping team discussions productive focused on project goals. Sophia also manages the timing of all team activities, ensures that meetings start and end on time, and sends out reminders about upcoming meetings and deadlines.
 
 - **Top 3 Commits : Sophia**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/1d2cc991eb0bd3c60535b1777786ad1c4f0def92): Defined our target audience and their importance `team/m2/users.md`
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/b7d64b6acf6fffab0e15cd80240762dd8dd6a480): Created a mardown file for each team member to document their reports (each new file was made in a different commit)
-  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/e359efca76dc496a1d2dfe0317299702bdf4b559): Moved ui-diagrams.md into the correct folder
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/001c4a894c25e0a6879f638e460b1078783b9c5e): created mock events and event display implementation on the events page.
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/89ed1c35188c89e19ba0b95e4d72b18f42cbdcc1): implemented functionality to show more information about the events when the events are clicked on. 
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/8adfbd6438f14ffc42115eef39bf56cc30f78a45): Added in 3 rsvp buttons that change color and adjusted functionality so that the rsvp form only appears when rsvped 'yes'.
 
 ## Katie Xu - Task Manager
 - **Role**: Responsible for organizing and tracking individual and team tasks. Katie manages the team’s workflow board and ensures that all tasks are properly assigned and completed on time. She regularly checks in on task completion and overall progress and adjusts plans as necessary to address delays or obstacles.

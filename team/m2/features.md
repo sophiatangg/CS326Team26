@@ -44,19 +44,24 @@
 ### Feature Name: User Profile Dashboard
 **Description**: A dynamic user profile page that displays the user's details, including their RSVP history, events they’ve posted, and their preferences. The dashboard fetches data from IndexedDB and updates in real-time based on user interaction. This feature also allows users to edit their profile details and save them.
 **Point Value**: 4 points  
-**Team Member**: Anne Colombe Sinkpon, Erika Lam, Mason Choi
+**Team Member**: Anne Colombe Sinkpon, Erika Lam
+
+### Feature Name: Event Display
+**Description**: A dynamic events default page that displays a feed of all upcoming events. The page fetches fetches events from IndexedDB, allowing users to view up-to-date event information. The page will update whenever a new event is added and updated accordingly when a user changes their event information. 
+**Point Value**: 5
+**Team Member**: Sophia Tang, Mason Choi
 
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
-**Point Value**: 4 points  
+**Point Value**: 5 points  
 **Team Member**: Zhitong Liu, Mehek Shah
 
 ### Feature Name: Event Creation and Management
 **Description**: A comprehensive feature that allows users to create new events, edit them, and delete them. The system validates inputs, ensures the event data is saved to IndexedDB, and allows for updates. Users can also track and manage the number of RSVPs for their events.
 **Point Value**: 5 points  
-**Team Member**: Mason Choi, Sophia Tang
+**Team Member**: Mason Choi
 
 ### Feature Name: Multi-step RSVP Process with Confirmation
 **Description**: A multi-step RSVP form that guides users through the process of confirming attendance, adding optional details like dietary restrictions, and finalizing their RSVP. The feature saves progress to IndexedDB between steps, ensuring users can continue later. Confirmation emails are sent after submission.
 **Point Value**: 5 points  
-**Team Member**: Erika Lam, Anne-Colombe Sinkpon, Mason Choi
+**Team Member**: Erika Lam, Anne-Colombe Sinkpon
