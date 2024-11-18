@@ -24,7 +24,8 @@ export class Home extends BaseComponent {
 
         const signUp = document.createElement("a");
         signUp.innerHTML = "Sign Up";
-        signUp.classList.add("btn-primary")
+        signUp.classList.add("btn-primary");
+        signUp.setAttribute("data-view", "signup");
         const explore = document.createElement("a");
         explore.innerHTML = "Explore Events";
         explore.classList.add("btn-secondary")
