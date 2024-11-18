@@ -1,31 +1,25 @@
 ### User Profile Feature Sequence Diagram
 This feature allows the user to edit their profile (e.g., name, bio, profile picture) and save updates dynamically. Changes are reflected in the UI immediately after being saved in the database. I worked on this with Erika Lam.
 
-
 ```mermaid
 flowchart TD
-    sequenceDiagram
-    participant User
-    participant UI
-    participant JavaScript
-    participant IndexedDB
+    A[User clicks on Profile picture] --> B[Trigger navigate to profile event];
+    B --> C[Fetch profile data from IndexedDB];
+    C --> D[Update UI with profile information];
 
-    User->>UI: Navigate to Profile Page
-    UI->>JavaScript: Initialize profile component
-    JavaScript->>IndexedDB: Fetch user details (transaction: "read")
-    IndexedDB-->>JavaScript: Return user details (e.g., RSVP history, events, preferences)
-    JavaScript->>UI: Populate profile data on the page
+    D --> E{User clicks follow/unfollow button};
+    E --> F[Trigger follow/unfollow event];
+    F --> G[Update follow/unfollow status in IndexedDB];
+    G --> D[Update UI to reflect follow/unfollow state];
 
-    User->>UI: Edit profile details (e.g., name, preferences)
-    UI->>JavaScript: Trigger updateProfile event
-    JavaScript->>IndexedDB: Save updated details (transaction: "write")
-    IndexedDB-->>JavaScript: Confirm update success
-    JavaScript->>UI: Update profile data in real-time
+    D --> I{User clicks Followers/Following};
+    I --> J[Trigger event to help view Followers/Following pages];
+    J --> K[Fetch followers/following data from IndexedDB];
+    K --> L[Display followers/following page];
+    L --> O{User clicks Back button};
+    O --> P[Load previous profile information]
+    P --> D
 
-    User->>UI: Refresh profile page
-    UI->>JavaScript: Re-fetch updated user data
-    JavaScript->>IndexedDB: Fetch data from database
-    IndexedDB-->>JavaScript: Return updated data
-    JavaScript->>UI: Update UI with new data
-
+    D --> M[User clicks on an event];
+    M --> N[Trigger event to load event page];
 ```
