@@ -7,7 +7,7 @@ import { EventHub } from '../eventhub/EventHub.js';
  * @abstract
  * @class Service
  */
-export default class Service {
+export class Service {
   constructor() {
     if (new.target === Service) {
       throw new Error(

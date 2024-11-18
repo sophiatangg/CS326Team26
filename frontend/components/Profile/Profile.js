@@ -1,20 +1,29 @@
 import { EventHub } from '../../eventhub/EventHub.js';
 import { BaseComponent } from '../BaseComponent/BaseComponent.js';
 import { Events } from '../../eventhub/EventNames.js';
+import { ViewFollowers } from '../ViewFollowers/ViewFollowers.js';
+import { OtherProfile } from '../OtherProfile/OtherProfile.js';
+import { mainRepository } from '../../script.js';
 
 export class Profile extends BaseComponent {
     #container = null;
 
     constructor() {
-        super();
+        super();      
+        this.user = {
+            username: 'Your username',
+            profileImage: './static/images/logo.png',
+            followers: 120,
+            following: 80,
+            bio: 'Enjoying life and posting events!',
+            };
         this.loadCSS('Profile');
     }
 
     render() {
         if (this.#container) {
             return this.#container;
-          }
-          
+        }
         this.#createContainer();   
         this.#attachEventListeners();
         return this.#container;
@@ -24,23 +33,33 @@ export class Profile extends BaseComponent {
         // Create and configure the container element
         this.#container = document.createElement('section');
         this.#container.id = 'profile';
+        this.#container.className = 'profile-screen';
         const header = document.createElement('div');
         header.classList.add('header');
 
         const profile_info = document.createElement('div');
         header.classList.add('profile-info');
 
-        profile_info.innerHTML = '<img src = "./static/images/logo.png" id = "picture" alt = "Profile Picture"> \
-        <h2 id = "username"> username</h2> <div class = "follows">\
-        <span> <button class="followers">50 Followers</button>  <button class="following">50 Following</button></span></div>\
-        <p id = "userbio">Looking to enjoy and post events.</p>\
-        <button class="edit-profile">Edit Profile</button>'
+        profile_info.innerHTML = `
+            <img src="${this.user.profileImage}" id="picture" alt="Profile Picture">
+            <h2 id="username">${this.user.username}</h2>
+            <div class="follows">
+                <span>
+                    <button class="followers">${this.user.followers} Followers</button>
+                    <button class="following">${this.user.following} Following</button>
+                </span>
+            </div>
+            <p id="userbio">${this.user.bio || 'No bio available.'}</p>
+            <button class="edit-profile">Edit Profile</button>
+        `;
         header.appendChild(profile_info);
 
         const option = document.createElement('div');
         option.classList.add('options');
-        option.innerHTML = "<button class = 'Post'>Posts</button>\
-        <button class = 'RSVP'>RSVP History</button>";
+        option.innerHTML = `
+            <button class="post">Posts</button>
+            <button class="rsvp">RSVP History</button>
+        `;
         
         this.#container.appendChild(header);
         this.#container.appendChild(option);
@@ -88,17 +107,18 @@ export class Profile extends BaseComponent {
         }
       }
 
-      #closeModal(modalId) {
+    #closeModal(modalId) {
         const modalOverlay = document.getElementById(modalId);
         if (modalOverlay) {
           modalOverlay.remove();
         }
-      };
+    };
       
-      #attachEventListeners() {
+    #attachEventListeners() {
         const hub = EventHub.getInstance();
 
         hub.subscribe(Events.StoreProfileInfo, (data) => this.#updateProfileInfo(data));
+
         // Attach event listeners to the input and button elements
         this.#container.addEventListener('click', (event) =>{
             if (event.target.matches(".edit-profile")){
@@ -109,13 +129,19 @@ export class Profile extends BaseComponent {
                 const bioInput = document.getElementById('BioInput');
                 const chosenpfp = document.getElementById('pic');
                 this.#handleProfileEdit(usernameInput,bioInput,chosenpfp);
+            }            
+            // Handle "Followers" button click
+            if (event.target.matches('.followers')) {
+                this.#viewFollows(true); 
+            }
+            // Handle "Following" button click
+            if (event.target.matches('.following')) {
+                this.#viewFollows(false); 
             }
         })
+    }
 
-      }
-
-      #handleProfileEdit(name, bio, chosenpfp){
-        console.log("Test");
+    #handleProfileEdit(name, bio, chosenpfp){
         const usrname = name.value;
         const bioinfo = bio.value;
         const file = chosenpfp.src;
@@ -130,7 +156,7 @@ export class Profile extends BaseComponent {
         // Clear inputs
         this.#clearInputs(name, bio, pfp);
         this.#closeModal("unique");
-      }
+    }
 
     #publishNewUser(name, bio, pfp){
         const hub = EventHub.getInstance();
@@ -141,11 +167,63 @@ export class Profile extends BaseComponent {
     #clearInputs(name, bio, pfp) {
         name.value = '';
         bio.value = '';
-      }
+    }
 
     #updateProfileInfo(profileinfo){
-            document.getElementById("picture").src = profileinfo.profile_picture;
-            document.getElementById("username").textContent = profileinfo.username;
-            document.getElementById("userbio").textContent = profileinfo.bio;
-      }
+        document.getElementById("picture").src = profileinfo.profile_picture;
+        document.getElementById("username").textContent = profileinfo.username;
+        document.getElementById("userbio").textContent = profileinfo.bio;
+    }
+
+    //taken from OtherProfile.js
+    #viewFollows(isFollowers) {
+        // Create a new instance of ViewFollowers
+        const viewFollowers = new ViewFollowers(this.user.username, isFollowers);
+    
+        // Attach the goBack callback to return to the profile view
+        viewFollowers.goBack = () => this.#renderProfile();
+        viewFollowers.viewProfile = (person) => this.#switchToProfile(person, viewFollowers);
+    
+        // Render the ViewFollowers page inside the container
+        const profileContainer = document.querySelector('.profile-screen');
+        profileContainer.innerHTML = '';
+        profileContainer.appendChild(viewFollowers.render());
+    }
+
+    #switchToProfile(person, previousPage) {
+        //Create a new instance of the calss so that when it is passed through. 
+        //need to make it adaptable to take in their followers/Followings but it at least
+        //toggles through right now
+        const otherProfile = new OtherProfile(
+            {
+                username: person.name,
+                profileImage: person.profileImage,
+                followers: Math.floor(Math.random() * 500),
+                following: Math.floor(Math.random() * 500), 
+                bio: 'This is a bio of ' + person.name 
+            },
+            previousPage // Pass the ViewFollowers page as the previousPage
+        );
+
+        const profileContainer = document.querySelector('.profile-screen');
+        profileContainer.innerHTML = '';
+        profileContainer.appendChild(otherProfile.render());
+    }
+    
+    #renderProfile() {
+        console.log('Current container:', this.#container);
+        console.log('Appending new profile content...');
+    
+        this.#container.innerHTML = ''; 
+        this.#createContainer(); 
+        this.#attachEventListeners(); 
+    
+        const viewContainer = document.getElementById('viewContainer');
+        if (!viewContainer.contains(this.#container)) {
+            console.log('Appending the profile container to the viewContainer.');
+            viewContainer.innerHTML = ''; // Clear previous content in viewContainer
+            viewContainer.appendChild(this.#container); // Make sure this current container is attached in the correct spot
+        }
+    }
+
 }

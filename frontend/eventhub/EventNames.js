@@ -8,6 +8,10 @@ export const Events = {
     LoadProfileInfoSuccess: 'LoadProfileInfoSuccess',
     LoadProfileInfoFailure: 'LoadProfileInfoFailure',
 
+    LoadOtherProfilesInfo: 'LoadOtherProfilesInfo',
+    LoadOtherProfilesInfoSuccess: 'LoadOtherProfilesInfoSuccess',
+    LoadOtherProfilesInfoFailure: 'LoadOtherProfilesInfoFailure',
+
     LoadPosts: 'LoadPosts',
     LoadPostsSuccess: 'LoadPostsSuccess',
     LoadPostsFailure: 'LoadPostsFailure',
