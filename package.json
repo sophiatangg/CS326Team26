@@ -1,0 +1,34 @@
+{
+  "name": "frontend-m3",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "AGPL-version-3.0",
+  "private": false,
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": "",
+  "keywords": [],
+  "author": {
+    "name": "Anne-Colombe Sinkpon",
+    "email": "asinkpon@umass.edu"
+  },
+  "contributors": [
+
+  ],
+  "scripts": {
+    "start-server": "http-server ./src -p 3000"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

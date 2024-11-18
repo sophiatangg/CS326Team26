@@ -1,1 +1,38 @@
+User Profiles sequenceDiagram
+    participant User
+    participant UI
+    participant JavaScript
+    participant IndexedDB
 
+    User->>UI: Clicks on Profile picture
+    UI->>JavaScript: Trigger "navigateToProfile" event
+    JavaScript->>IndexedDB: Fetch profile data for the selected user
+    IndexedDB-->>JavaScript: Returns profile data
+    JavaScript->>UI: Update UI with profile information
+
+    User->>UI: Clicks "Follow/Unfollow" button
+    UI->>JavaScript: Trigger "toggleFollow" event
+    JavaScript->>IndexedDB: Update follow status in the database
+    IndexedDB-->>JavaScript: Confirmation of follow status update
+    JavaScript->>UI: Update UI to reflect follow/unfollow state
+
+    User->>UI: Clicks "Followers/Following"
+    UI->>JavaScript: Trigger "viewFollowersOrFollowing" event
+    JavaScript->>IndexedDB: Fetch followers/following data
+    IndexedDB-->>JavaScript: Returns followers/following data
+    JavaScript->>UI: Display followers/following list in UI
+
+    User->>UI: Clicks on an event
+    UI->>JavaScript: Trigger "navigateToEventDetails" event
+    JavaScript->>IndexedDB: Fetch event details
+    IndexedDB-->>JavaScript: Returns event details
+    JavaScript->>UI: Display event details in UI
+
+
+Note: 
+->> : solid arrows (messages)
+-->> : dotted arrows (return)
+
+The chosen feature is for accessing another user's profile. You should be able to interact with the User in multiple ways. When you click on their profile, 
+whether in the following or in the followers, clicking the profile picture should guide you to the account. Then, the follow/unfollow button should 
+update with their status. Then, when you click an event from a user, it should show all the event information. I worked on this with Anne-Colombe Sinkpon.

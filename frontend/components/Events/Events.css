@@ -1,0 +1,130 @@
+/* Events View Styling */
+#events-view {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    color: #ffffff;
+}
+
+.toggle-button {
+    padding: 10px 20px;
+    background-color: #de4558;
+    color: #E0E4E7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.toggle-button:hover {
+    background-color: #2C3B42;
+}
+
+#events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.eventContainer {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s;
+}
+
+.eventContainer:hover {
+    transform: scale(1.02);
+}
+
+.eventHeader {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.eventContainer h3 {
+    margin: 10px 0;
+    font-size: 1.4em;
+    color: #37474F;
+}
+
+.eventImage img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.eventDetails {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    color: #444;
+}
+
+.rsvpButton {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+#sortOptions {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: var(--secondary-aqua);
+    color: #FFF;
+    border: 0px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#sortOptions:hover {
+    background-color: #648d8c;
+    color: #FFF;
+}
+
+/* Sort Events button styling */
+.sort-events-button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background: var(--secondary-aqua);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-events-button:hover {
+    background: #648d8c;
+}
+
+

@@ -4,22 +4,23 @@
 
 ### 1. User Profile
 
-- **Description**: Contains personal information about the user, including login details and preferences.
+- **Description**: Contains personal information about the user, including login details and preferences. The profile can now be edited dynamically, including updating the profile picture, username, and bio.
 - **Attributes**:
   - `user_id` (string): A unique identifier for each user.
-  - `name` (string): The user's full name.
+  - `username` (string): The user's display name.
   - `email` (string): The user's email address.
   - `password` (string): A hashed version of the user's password.
   - `profile_picture` (string): URL to the user's profile image.
   - `bio` (string): A brief biography or description provided by the user.
-  - `interests` (array of strings): A list of user interests for event recommendations.
+  - `followers` (integer): Number of followers the user has.
+  - `following` (integer): Number of accounts the user is following.
   - `created_at` (timestamp): The date and time when the account was created.
   - `updated_at` (timestamp): The last time the user's profile was updated.
-- **Data Source**: User-input data during registration or profile updates.
+- **Data Source**: User-input data during registration, profile updates, or actions such as following/unfollowing other users.
 
 ### 2. Event
 
-- **Description**: Details of events created by users or organizations, available for others to view and RSVP to.
+- **Description**: Details of events created by users or organizations. Events now include expanded RSVP interactions and additional dynamic attributes for displaying detailed event information.
 - **Attributes**:
   - `event_id` (string): A unique identifier for each event.
   - `creator_id` (string): The `user_id` or `organization_id` of the event creator.
@@ -29,22 +30,26 @@
   - `start_time` (datetime): The date and time when the event starts.
   - `end_time` (datetime): The date and time when the event ends.
   - `category` (string): The category of the event (e.g., social, educational, cultural).
-  - `capacity` (integer): The maximum number of attendees allowed.
-  - `image` (string): URL to an image representing the event.
+  - `cover_image` (string): URL to an image representing the event.
+  - `rsvp_count` (object): Tracks RSVP responses with counts for "Yes," "No," and "Maybe."
   - `created_at` (timestamp): When the event was created.
   - `updated_at` (timestamp): When the event details were last updated.
 - **Data Source**: User-input data when creating or editing an event.
 
 ### 3. RSVP
 
-- **Description**: Tracks users' responses to events, indicating their intention to attend.
+- **Description**: Tracks users' responses to events, including additional details such as dietary restrictions and accessibility needs.
 - **Attributes**:
   - `rsvp_id` (string): A unique identifier for each RSVP.
   - `user_id` (string): The unique identifier of the user responding to the event.
   - `event_id` (string): The unique identifier of the event.
-  - `response` (string): The user's response (e.g., "Going", "Interested", "Not Going").
+  - `response` (string): The user's response (e.g., "Yes," "No," "Maybe").
+  - `dietary_restrictions` (array of objects): A list of dietary restrictions, where each object contains:
+    - `type` (string): The type of restriction (e.g., "Food," "Skin").
+    - `description` (string): Additional details about the restriction.
+  - `accessibility_needs` (string): Details about the user's accessibility requirements.
   - `timestamp` (timestamp): The date and time when the RSVP was made.
-- **Data Source**: User-input data when responding to an event invitation.
+- **Data Source**: User-input data during RSVP submission.
 
 ### 4. Organization Profile
 
@@ -72,39 +77,35 @@
   - `timestamp` (timestamp): When the comment was posted.
 - **Data Source**: User-input data when posting a comment on an event.
 
-<!-- ### 6. Location Data
-
-- **Description**: Stores users' location data for proximity-based event discovery.
-- **Attributes**:
-  - `user_id` (string): The unique identifier of the user.
-  - `latitude` (float): The user's current geographical latitude.
-  - `longitude` (float): The user's current geographical longitude.
-  - `updated_at` (timestamp): When the location data was last updated.
-- **Data Source**: User-input data or device location services with user permission. -->
-
 ### 6. Category
 
 - **Description**: Defines the different categories under which events can be classified.
 - **Attributes**:
   - `category_id` (string): A unique identifier for each category.
-  - `name` (string): The name of the category (e.g., "Networking", "Sports").
+  - `name` (string): The name of the category (e.g., "Networking," "Sports").
   - `description` (string): A brief description of the category.
 - **Data Source**: Predefined by the system or added by administrators.
 
 ## Data Relationships
 
 - **User Profile to Event**: One-to-many relationship (a user can create multiple events).
-- **Organization Profile to Event**: One-to-many relationship (an organization can create multiple events).
 - **User Profile to RSVP**: One-to-many relationship (a user can RSVP to multiple events).
 - **Event to RSVP**: One-to-many relationship (an event can have multiple RSVPs).
 - **Event to Comment**: One-to-many relationship (an event can have multiple comments).
 - **User Profile to Comment**: One-to-many relationship (a user can post multiple comments).
-- **User Profile to Notification**: One-to-many relationship (a user can receive multiple notifications).
 - **Event to Category**: Many-to-one relationship (an event belongs to one category).
 
 ## Data Sources
 
 - **User-Input Data**: Collected when users register, create profiles, post events, RSVP, comment, and update settings.
-- **System-Generated Data**: Notifications, event recommendations, and aggregated statistics are generated by the application based on user interactions and preferences.
-<!-- - **Device Location Services**: With user permission, location data is collected to provide location-based event listings. -->
-- **Administrators**: Categories are managed by system administrators to maintain consistency.
+- **System-Generated Data**: Includes RSVP counts, recommendations, and aggregated statistics based on user interactions.
+- **Administrators**: Categories are predefined and maintained by system administrators to ensure consistency. 
+
+### Interaction with IndexedDB
+
+The front-end leverages IndexedDB for persistent client-side data storage, ensuring users can save and retrieve data seamlessly across sessions. Data includes:
+- RSVP details (e.g., responses, dietary restrictions).
+- User profile updates.
+- Event details, including RSVP counts and comments.
+
+No storage methods are described in this document to maintain focus on data structure and interaction.
