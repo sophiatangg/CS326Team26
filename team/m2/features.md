@@ -27,7 +27,7 @@
 ### Feature Name: Event Category Filter
 **Description**: A filter that allows users to select and view events based on categories such as "Music," "Sports," or "Social." The events in the feed dynamically update to reflect the selected category, and the feature pulls data from IndexedDB to store user preferences.
 **Point Value**: 2 points  
-**Team Member**: Mason Choi
+**Team Member**: Zhitong Liu
 
 ### Feature Name: RSVP System
 **Description**: A system that allows users to RSVP to events. Users can select "Yes," "No," or "Maybe" for attending, and their response is stored in IndexedDB. The RSVP status updates dynamically in the event detail page.
@@ -59,4 +59,4 @@
 ### Feature Name: Multi-step RSVP Process with Confirmation
 **Description**: A multi-step RSVP form that guides users through the process of confirming attendance, adding optional details like dietary restrictions, and finalizing their RSVP. The feature saves progress to IndexedDB between steps, ensuring users can continue later. Confirmation emails are sent after submission.
 **Point Value**: 5 points  
-**Team Member**: Erika Lam, Anne-Colombe Sinkpon
+**Team Member**: Erika Lam, Anne-Colombe Sinkpon, Mason Choi
