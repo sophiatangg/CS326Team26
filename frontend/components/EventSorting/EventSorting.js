@@ -3,7 +3,7 @@ import { BaseComponent } from "../BaseComponent/BaseComponent.js";
 export class EventSorting extends BaseComponent {
     constructor() {
         super();
-        this.loadCSS('EventSorting'); // Ensure this method exists in BaseComponent
+        this.loadCSS('EventSorting');
     }
 
     render() {
