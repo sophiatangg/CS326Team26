@@ -37,7 +37,7 @@
 ### Feature Name: Event Search Bar
 **Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
 **Point Value**: 3 points  
-**Team Member**: Mehek Shah, Sophia Tang
+**Team Member**: Mehek Shah
 
 ## Large Features (4-5 points)
 
@@ -49,7 +49,7 @@
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
 **Point Value**: 4 points  
-**Team Member**: Zhitong Liu
+**Team Member**: Zhitong Liu, Mehek Shah
 
 ### Feature Name: Event Creation and Management
 **Description**: A comprehensive feature that allows users to create new events, edit them, and delete them. The system validates inputs, ensures the event data is saved to IndexedDB, and allows for updates. Users can also track and manage the number of RSVPs for their events.
