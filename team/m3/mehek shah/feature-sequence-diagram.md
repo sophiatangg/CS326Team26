@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start: User visits Explore Events page] --> B[Render Search UI]
     B --> C[Render Filters Checkboxes]
@@ -15,5 +16,5 @@ graph TD
     H --> K[Display Matching Events]
     K --> L[User views Event Details]
     L --> M[End]
-
+```
 The feature is to search events based on keywords(still in progress) or filters. The feed section renders event cards which either have the search keyword or match the selected event type filter or both.
