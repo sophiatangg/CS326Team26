@@ -4,6 +4,7 @@ import { About } from './components/About/About.js';
 import { Search } from './components/Search/Search.js';
 import { Profile } from './components/Profile/Profile.js';
 import { EventSorting } from './components/EventSorting/EventSorting.js';
+import { ServiceFactory } from './services/ServiceFactory.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     loadView("home");
@@ -73,3 +74,5 @@ function loadView(view) {
         }
     }
 }
+
+export const mainRepository = ServiceFactory.get('local'); // create storage
