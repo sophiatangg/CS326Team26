@@ -88,3 +88,43 @@
 .hidden {
     display: none !important;
 }
+
+
+#sortOptions {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: var(--secondary-aqua);
+    color: #FFF;
+    border: 0px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#sortOptions:hover {
+    background-color: #648d8c;
+    color: #FFF;
+}
+
+/* Sort Events button styling */
+.sort-events-button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background: var(--secondary-aqua);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-events-button:hover {
+    background: #648d8c;
+}
+
+
