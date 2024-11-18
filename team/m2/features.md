@@ -34,9 +34,18 @@
 **Point Value**: 2 points  
 **Team Member**: Sophia Tang
 
-### Feature Name: Event Search Bar
-**Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
+### Feature Name: Event Finder
+**Description**: A search with filters that allows users to search for events. The list of events updates dynamically based on the user's search term and filters.
+
 **Point Value**: 3 points  
+
+**Team Member**: Mehek Shah
+
+### Feature Name: Sign Up or Login Page
+**Description**: Loads the sign in page when clicked on sign in and prompts the user to create an account if they do not have one aldeady.
+
+**Point Value**: 3 points
+
 **Team Member**: Mehek Shah
 
 ## Large Features (4-5 points)

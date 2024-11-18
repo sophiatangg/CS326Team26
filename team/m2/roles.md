@@ -5,9 +5,9 @@
 
 
 - **Top 3 Commits : Erika**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/164c052847b3758280e0e74196ff704eb3167213): updated features to define two of them
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/61bf69fc92dd84f2d56da8b901a4074d51d412f0): updated problem.md to add more clarity
-  3. [commit 3](https://github.com/sophiatangg/CS326Team26/commit/50c8517807bb8b8e342a37a5522a371f6bff7976): Added everyone to the features they want to be assigned to
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/a2a607839ec0e4c72a68af53ef399a69bb653f29#diff-e2eb93a61ffd7877ea5c751abcb3a618e8e2e9a2073a27f66d4114fe10819f86): Made the profile screen for when you click on another users account.
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/bcaae32c3dbf2495eacc3b2e0e66c48a1027c873): committed RSVP pages with overall layout for users to change and then review before submission
+  3. [commit 3](https://github.com/sophiatangg/CS326Team26/pull/46/commits/0ae60c018710e8b2499929bf658f13e4a388673d): Integrated the profile page with the followers page to easily interact back and forth
 
 ## Sophia Tang - Co-Project Manager / Time Keeper
 - **Role**: Co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team alongside Erika. She is responsible for keeping team discussions productive focused on project goals. Sophia also manages the timing of all team activities, ensures that meetings start and end on time, and sends out reminders about upcoming meetings and deadlines.
@@ -37,9 +37,9 @@
 - **Role**: Proofreads team submissions and ensures that all deliverables adhere to project guidelines and meet the necessary quality standards. Mehek develops and maintains quality checklists, conducts regular reviews of documents before submission, and identifies areas for improvement within the team’s deliverables. 
 
 - **Top 3 Commits**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/2e23a7385c2b8e7e90ed5caadd85197adf84a2ee): Proofread users.md and made minor edits in some sentences. Also removed a repeated paragraph.
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/pull/10/commits/73125b3af62f981cbcff168ed414e53bf1061f19): Proofread data.md and modified certain data values that might not be used.
-  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/0e41ddac1d528d5b3089ee155c905c4ec83c42e4): Made a separate folder for ui with images and the markdown file in it.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/pull/27#issue-2663928490): Took care of the overall UI and saw that it was even.
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/pull/30#issue-2665123514):Made some basic changes for smooth functioning of the application
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/pull/49#issue-2666818201): Edited features.md with new features that were not added previously.
 
 
 ## Anne Sinkpon - Documentation Lead
