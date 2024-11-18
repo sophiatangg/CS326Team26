@@ -79,7 +79,7 @@ section .header {
     align-items: center;
     width: 100%;
 }
-.options .Post, .options .RSVP {
+.options .post, .options .rsvp {
     background-color: #E0E4E7;
     border: #E0E4E7;
     flex :1;
@@ -92,7 +92,7 @@ section .header {
     font-weight: bold;
 }
 
-.options .Post:hover, .options .RSVP:hover {
+.options .post:hover, .options .rsvp:hover {
     background-color: #c9cccf;
     border: 1px solid black;
 }
