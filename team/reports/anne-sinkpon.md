@@ -20,3 +20,38 @@
 - **Task**: Reviewed and fixed issues in documentation as part of my role as documentation lead.
 - **Details**: Edited the roles.md markdown file to remove typos and make sure the document was well-organized.
 - **Links to Commit**: [Commit to remove typo](https://github.com/sophiatangg/CS326Team26/commit/fbe84902eeaf2c84aa0760bf0ff984510acd39ea)
+
+### Nov 12, 2024
+- **Task**: added package.json and eventhub folder
+- **Details**: I added a package.json and eventhub folder.
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/commit/d5b0ec950b8c2dd527f1cec75d348441496f7ca2)
+
+### Nov 15, 2024
+- **Task**: changed the css for main page to make it more responsive
+- **Details**: I changed the css for main page to make it more responsive
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/commit/191af350a9dc93ce862a187071787bc626c5594c)
+
+- **Task**: I added event folder.
+- **Details**: I added an event folder.
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/commit/fd81a93ef241ccc5b436aef0b9ee223f208d9889)
+
+### Nov 16, 2024
+- **Task**: Users can edit their profile information. Still need to fix issues with pfp.
+- **Details**: Users can edit their profile information. Still need to fix issues with pfp.
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/commit/0a544f8f936e57f0bad4363939c00417ff31a4fb)
+
+### Nov 17, 2024
+
+- **Task**: fixed issues with profile pic change.
+- **Details**: fixed issues with profile pic change.
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/commit/bef1fee7b01aa24af518116fdb4bdc91e45dee9b)
+
+- **Task**: added reference to profile storage.
+- **Details**: added reference to profile storage.
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/commit/a61b7209666fb9079a9ba5209b3f260bf6739ba8)
