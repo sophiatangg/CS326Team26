@@ -87,4 +87,4 @@ function loadView(view) {
     }
 }
 
-export const mainRepository = ServiceFactory.get('local'); // create storage
+// export const mainRepository = ServiceFactory.get('local'); // create storage
