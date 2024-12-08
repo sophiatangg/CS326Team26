@@ -23,7 +23,7 @@
 
   ],
   "scripts": {
-    "start-server": "http-server ./src -p 3000"
+    "start-server": "http-server ./backend -p 3000"
   },
   "dependencies": {
 

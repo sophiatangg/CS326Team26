@@ -3,11 +3,20 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./routes');
 
+const sequelize = require('./config/database');
+
+
+sequelize.sync().then(() =>{
+    console.log('connect to db');
+}).catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+
 const app = express();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
 // Routes
 app.use('/api', routes);
