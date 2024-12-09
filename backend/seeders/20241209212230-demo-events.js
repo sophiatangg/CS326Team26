@@ -12,7 +12,6 @@ module.exports = {
             where: "integrated learning center lobby"
         },
         {
-            id: 0,
             username: "John Doe",
             title: "Boba Night",
             desc: "Boba night at ten one",
@@ -23,7 +22,6 @@ module.exports = {
             where: "TenOne Amherst"
         },
         {
-            id: 1,
             username: "John Doe2",
             title: "Guac and Talk",
             desc: "chatting with guacemole",
@@ -33,7 +31,7 @@ module.exports = {
             time: "7:00 pm to 9:00 pm",
             where: "student union ballroom"
             
-        }
+        },
       ], {});
   },
   down: async (queryInterface, Sequelize) => {
