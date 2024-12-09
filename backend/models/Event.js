@@ -1,17 +1,26 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User');
+const { Model, DataTypes } = require('sequelize');
 
-const Event = sequelize.define('Event', {
-    title: { type: DataTypes.STRING, allowNull: false },
-    description: { type: DataTypes.TEXT },
-    location: { type: DataTypes.STRING, allowNull: false },
-    start_time: { type: DataTypes.DATE, allowNull: false },
-    end_time: { type: DataTypes.DATE, allowNull: false },
-    category: { type: DataTypes.STRING },
-    cover_image: { type: DataTypes.STRING },
-});
+module.exports = (sequelize) => {
+    class Event extends Model {
+        static associate(models) {
+            // Define associations here
+            Event.belongsTo(models.User, { foreignKey: 'creator_id' });
+        }
+    }
 
-Event.belongsTo(User, { foreignKey: 'creator_id' });
+    Event.init({
+        title: { type: DataTypes.STRING, allowNull: false },
+        description: DataTypes.TEXT,
+        location: { type: DataTypes.STRING, allowNull: false },
+        start_time: { type: DataTypes.DATE, allowNull: false },
+        end_time: { type: DataTypes.DATE, allowNull: false },
+        category: DataTypes.STRING,
+        cover_image: DataTypes.STRING,
+        creator_id: { type: DataTypes.INTEGER, allowNull: false },
+    }, {
+        sequelize,
+        modelName: 'Event',
+    });
 
-module.exports = Event;
+    return Event;
+};
