@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.post('/', createEvent);
 router.get('/', getEvents);
+router.get('/', filterEvents);
 
 module.exports = router;
