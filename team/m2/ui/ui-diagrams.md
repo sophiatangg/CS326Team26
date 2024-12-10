@@ -1,121 +1,51 @@
 # # UI Diagrams
 
-## Landing/Home Screen
+## Main Screen
 
-The **Landing Screen** is the entry point of the OpenInvite platform, designed to welcome users and provide clear navigation options.
+The **Main Screen** serves as the user's entry point after logging into the app, offering a curated feed of events happening in their area. The design is clean and visually engaging, showcasing event posts that include images, descriptions, the event host's name, and the number of likes. Users can explore a variety of events, from concerts and parties to study sessions.
 
-![Landing/Home Screen](Landing.png)
+![Main Screen](MainDashboard.png)
 
 The screen provides a variety of interactive elements:
 
-1. **Sign Up Button**: Allows new users to create an account.
-2. **Explore Events Button**: Redirects users to browse events.
-3. **Navigation Bar**: Includes links to "Home," "Events," "About," and "Profile," pages.
+1. **Posts**: Each post features an event image, title, a short description, and the number of likes. The name of the event host appears at the top, helping users identify who shared the event.
+2. **Filters and Sorting**: Located at the top right of the feed, the filter and sort options allow users to tailor their feed. Events can be filtered by interests, while sorting can be adjusted to show the nearest upcoming events or the most recent posts.
+3. **Search Bar**: Positioned at the top of the screen, the search bar allows users to find specific events using keywords or locations, making it easier to search based on their preferences.
+4. **Feed Buttons**: In the center of the screen, users can choose between “Nearby,” “Following,” or “Liked” feeds, offering the ability to view local events, events posted by people they follow, or their liked events.
+5. **Home and Post Buttons**: On the top left of the screen, the "Home" button indicates that the user is on the main screen, while the "Post" button allows hosts to easily create and share new events.
+6. **Profile Icon**: Located in the top right of the screen, the profile icon gives users quick access to their own profile to manage their account or view their posted events.
+6. **Username**: Users can interact with others by hovering over a username (Here John D) in a post. This feature allows users to visit a poster’s profile by clicking on their name.
 
 **Use Case**: 
 
-A first-time visitor can sign up for an account using the "Sign Up" button or explore available events. Returning users can explore events and use the navigation bar to access other features.
+A user searching for nearby events can enter their location or keywords in the search bar, then browse through the feed. They might spot an event that catches their eye based on the image, description and title. If they like the event, they can save it by liking the post, or explore similar events by following the user who shared it.
 
-## Login/Sign-Up Screen
+## User Profile Screen
 
-The **Login/Sign-Up Screen** allows users to log in to their existing accounts or create a new account.
+The **User Profile Screen** offers an overview of a specific user's event activity, making it easy for others to follow their posts and explore all the events they've shared. The layout offers a convenient way to keep track of events posted by favorite organizers or friends.
 
-![Login/Sign-Up Screen](Signup.png)
+![User Profile Screen](Profile.png)
 
 Features include:
-1. **Login Form**: Includes fields for "Username" and "Password," along with a "Sign In" button.
-2. **Posts**: Provides a link for new users to create an account with the "Create Account" button.
+1. **Follow Button**: Located beneath the profile picture, this button allows users to follow or unfollow others. Once followed, future events from that user will automatically appear in the user's main feed.
+2. **Posts**: All events posted by the user are displayed with event titles, descriptions, and number of likes.
+3. **Back Button**: Located at the top-left of the screen, this button provides a quick way to return to the main screen once the user has finished viewing a profile.
 
 **Use Case**: 
 
-A user can enter their credentials and sign in to access their account. If they don’t have an account, they can click "Create Account" to register.
-
-## Search Screen
-
-![Search Screen](Explore.png)
-
-The **Search Screen** allows users to browse and search for events based on their interests or location.
-
-The key features include:
-1. **Search Bar**: Positioned at the top for users to search for events by keywords or location.
-2. **Filter Categories**: Includes options to refine event browsing.
-
-**Use Case**: 
-
-A user looking for a specific event can select the desired filter or type specific keywords into the search bar to find relevant events.
-
-## Event Screen
-
-The **Event Screen** provides a scrollable feed of events, allowing users to explore and RSVP to events.
-
-![Event Screen](Events.png)
-
-The screen provides a variety of interactive elements:
-
-1. **Post**: Each post provides a scrollable feed of events, allowing users to explore and RSVP to events.
-2. **Sorting Options**: Users can sort events by date or category using the buttons at the top.
-3. **Create Event Button**: Allows users to create and share their own events.
-
-**Use Case**: 
-
-A user can scroll through the feed, find an event they’re interested in, and RSVP directly by clicking one of the options.
+A user interested in a specific organizer's events can visit their profile, follow them for updates, and easily browse through their upcoming or past events. After following the profile, the user can click on the back button to return to the main screen where the "Following" feed will now include new events from this organizer.
 
 ## Event Creation Screen
 
-The **Event Creation Screen**  allows users to create and publish new events.
+![Event Creation](Post.png)
 
-![Event Creation Screen](Create.png)
-
-Features include:
-1. **Form Fields**: input fields for event title, description, date, and location.
-2. **Submit Button**: A "Create Event" button at the bottom enables users to post their event.
-3. **Back Button**:  A "Back to Browse Events" button lets users return to the event feed.
-
-**Use Case**: 
-
-A user planning an event can fill in the details and click "Create Event" to share it with others.
-
-## Profile Page
-
-![Profile Page](Profile.png)
-
-The **Profile Page** displays a user’s activity and allows them to manage their account.
+The **Event Creation Screen** allows users to create new events. The screen has been designed for simplicity, and ease of use.
 
 The key features include:
-1. **Profile Overview**: Displays the user’s username, profile picture, follower count, and bio.
-2. **Tabs**: Provides "Posts" and "RSVP History" sections for users to view their shared events or RSVP history.
-3. **Edit Profile**: An "Edit Profile" button allows users to update their bio, username or profile picture.
+1. **Upload Button**: Users can upload an image to represent their event by clicking the "Upload an image" button. This image will be featured on the post.
+2. **Event Details Form**: This form allows posters to input essential details, including the event's name and a description, providing all the necessary information for potential attendees. 
+3. **Post Button**: Positioned at the bottom-right corner, the "Post" button allows users to publish their event once all the details are filled out.
 
 **Use Case**: 
 
-A user can review their activity, update their profile details, and view their event posts or RSVP history.
-
-## Followers and Following Screens
-
-The **Followers and Following Screens** show the lists of users the profile owner follows or is followed by.
-
-![Followers and Following Screens](Followers.png)
-
-Features include:
-1. **List**: Displays the usernames and profile pictures of followers or following accounts.
-3. **Back Button**:  A "Back" button lets users return to the event feed.
-
-**Use Case**: 
-
-A user can browse their followers or the people they follow and click on profiles to explore their content.
-
-## Edit Profile Modal
-
-![Edit Profile](Edit.png)
-
-The **Edit Profile Modal** allows users to update their account details.
-
-The key features include:
-1. **Profile Picture Update**: Users can upload a new profile picture.
-2. **Input Fields**:  Includes fields for updating the username and bio.
-3. **Save Changes**:   A "Done" button saves the updates and closes the modal.
-
-
-**Use Case**: 
-
-A user wanting to change their bio or profile picture can access this modal, make changes, and save them.
+After planning an event, a user can upload a relevant image, fill in the event name and description, and click on "Post" to share the event with others. 

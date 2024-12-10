@@ -5,9 +5,9 @@
 
 
 - **Top 3 Commits : Erika**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/a2a607839ec0e4c72a68af53ef399a69bb653f29#diff-e2eb93a61ffd7877ea5c751abcb3a618e8e2e9a2073a27f66d4114fe10819f86): Made the profile screen for when you click on another users account.
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/bcaae32c3dbf2495eacc3b2e0e66c48a1027c873): committed RSVP pages with overall layout for users to change and then review before submission
-  3. [commit 3](https://github.com/sophiatangg/CS326Team26/pull/46/commits/0ae60c018710e8b2499929bf658f13e4a388673d): Integrated the profile page with the followers page to easily interact back and forth
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/164c052847b3758280e0e74196ff704eb3167213): updated features to define two of them
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/61bf69fc92dd84f2d56da8b901a4074d51d412f0): updated problem.md to add more clarity
+  3. [commit 3](https://github.com/sophiatangg/CS326Team26/commit/50c8517807bb8b8e342a37a5522a371f6bff7976): Added everyone to the features they want to be assigned to
 
 ## Sophia Tang - Co-Project Manager / Time Keeper
 - **Role**: Co-manages the overall project timeline, ensures that milestones are met, and facilitates collaboration within the team alongside Erika. She is responsible for keeping team discussions productive focused on project goals. Sophia also manages the timing of all team activities, ensures that meetings start and end on time, and sends out reminders about upcoming meetings and deadlines.
@@ -37,9 +37,9 @@
 - **Role**: Proofreads team submissions and ensures that all deliverables adhere to project guidelines and meet the necessary quality standards. Mehek develops and maintains quality checklists, conducts regular reviews of documents before submission, and identifies areas for improvement within the team’s deliverables. 
 
 - **Top 3 Commits**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/pull/27#issue-2663928490): Took care of the overall UI and saw that it was even.
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/pull/30#issue-2665123514):Made some basic changes for smooth functioning of the application
-  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/pull/49#issue-2666818201): Edited features.md with new features that were not added previously.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/2e23a7385c2b8e7e90ed5caadd85197adf84a2ee): Proofread users.md and made minor edits in some sentences. Also removed a repeated paragraph.
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/pull/10/commits/73125b3af62f981cbcff168ed414e53bf1061f19): Proofread data.md and modified certain data values that might not be used.
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/0e41ddac1d528d5b3089ee155c905c4ec83c42e4): Made a separate folder for ui with images and the markdown file in it.
 
 
 ## Anne Sinkpon - Documentation Lead
@@ -47,9 +47,9 @@
 
 
 - **Top 3 Commits**:
-  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/0a544f8f936e57f0bad4363939c00417ff31a4fb): Users can edit their profile information.
-  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/bef1fee7b01aa24af518116fdb4bdc91e45dee9b): fixed issues with profile pic change.
-  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/a61b7209666fb9079a9ba5209b3f260bf6739ba8): added reference to profile storage.
+  1. [Commit 1](https://github.com/sophiatangg/CS326Team26/commit/8819766545965c269c54a7d9a8043827d8b3589a): Created files for the images (MainDashboard, Post and Profile) in `team`so they could easily be linked in `team/ui-diagrams.md`
+  2. [Commit 2](https://github.com/sophiatangg/CS326Team26/commit/2a19df3075743f73fb67cd4c3020d5b9388cdeab): Resolved image display issues by moving the images files to the `team/m2` directory.
+  3. [Commit 3](https://github.com/sophiatangg/CS326Team26/commit/effc6a7111f80f2eaa48261caa94097c8c6d800b): Updated the image file paths in `ui-diagrams.md` to ensure proper referencing and display.
 
 ## Mason Choi - Tech Lead
 - **Role**: Oversees the technical development of the project, makes key decisions regarding technologies and tools, and ensures that the application's architecture and code quality adhere to project requirements. Mason provides technical direction and expertise to ensure that the best practices are followed in development and implementation.
