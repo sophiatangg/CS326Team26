@@ -3,21 +3,21 @@
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #2C3B42; /* Dark background to contrast white text */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #event-form-section h2 {
     margin-bottom: 20px;
-    color: #37474F;
+    color: #FFFFFF; /* White text */
 }
 
 form label {
     display: block;
     font-weight: bold;
     margin-top: 15px;
-    color: #37474F;
+    color: #FFFFFF; /* White text */
 }
 
 form input[type="text"],
@@ -28,13 +28,20 @@ form textarea {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #ffffff; /* Darker background for inputs */
+    color: #000000; /* White text in inputs */
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: #E0E4E7; /* Lighter text for placeholders */
 }
 
 form button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #37474F;
-    color: #E0E4E7;
+    color: #FFFFFF; /* White text */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -47,36 +54,7 @@ form button:hover {
 
 #formMessage {
     margin-top: 15px;
-    color: green;
-}
-
-.hidden {
-    display: none;
-}
-
-#events-view .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-#events-view h2 {
-    color: #37474F;
-}
-
-#events-view #createEventButton {
-    padding: 10px 20px;
-    background-color: #37474F;
-    color: #E0E4E7;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#events-view #createEventButton:hover {
-    background-color: #2C3B42;
+    color: green; /* Green message text for success */
 }
 
 .hidden {
