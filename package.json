@@ -16,14 +16,15 @@
   "bugs": "",
   "keywords": [],
   "author": {
-    "name": "Anne-Colombe Sinkpon",
-    "email": "asinkpon@umass.edu"
+    "name": "Team 26",
+    "email": "Team26@gmail.com"
   },
   "contributors": [
 
   ],
   "scripts": {
-    "start-server": "http-server ./backend -p 3000"
+    "start-server": "http-server ./backend -p 3000",
+    "start": "live-server"
   },
   "dependencies": {
 

@@ -1,85 +1,55 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const UserFollowers = require('./Followers'); // Import UserFollowers table
-
-
-
-const User = sequelize.define('User', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    username: { 
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-    },
-    email: { 
-        type: DataTypes.STRING, 
-        allowNull: false, 
-        unique: true,
-        validate: {
-            // checks Email format 
-            isEmail: { 
-                msg: 'Must be a valid email address' 
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define('User', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        username: {
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: {
+                    msg: 'Must be a valid email address',
+                },
             },
-         }
-    },
-        
-    password: { 
-        type: DataTypes.STRING, 
-        allowNull: false },
-    profile_picture: { 
-        type: DataTypes.STRING,
-        allowNull: true,
-     },
-    bio: { 
-        type: DataTypes.TEXT 
-    },
-    picturename: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-    mime: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-    },
-);
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        profile_picture: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        bio: {
+            type: DataTypes.TEXT,
+        },
+    });
 
-/*
-Finding "followers" in openonvite.db (users who follow a specific user):
-Use the foreignKey: 'userId'.
-Look for rows in UserFollowers where userId = the target user's ID.
+    const UserFollowers = require('./Followers')(sequelize, DataTypes); // Import UserFollowers
 
+    // Define followers association
+    User.belongsToMany(User, {
+        as: 'Followers',
+        through: UserFollowers,
+        foreignKey: 'userId', // The key on the UserFollowers table representing the followed user
+        otherKey: 'followerId', // The key on the UserFollowers table representing the follower
+    });
 
-Finding "following" in openonvite.db (users a specific user follows):
-Use the foreignKey: 'followerId'.
-Look for rows in UserFollowers where followerId = the target user's ID.
-*/
-// user can follow and be followed by other users.
-User.belongsToMany(User, {
-    // Alias for how the follower relationship is referenced in application.
-    as: 'Followers', 
-    // Join table
-    through: UserFollowers, 
-    // Specifies the "followee"
-    foreignKey: 'userId', 
-    // Specifies the "Follower"
-    otherKey: 'followerId', 
-});
+    // Define following association
+    User.belongsToMany(User, {
+        as: 'Following',
+        through: UserFollowers,
+        foreignKey: 'followerId', // The key on the UserFollowers table representing the follower
+        otherKey: 'userId', // The key on the UserFollowers table representing the followed user
+    });
 
-User.belongsToMany(User, {
-    // alias for how the following relationship is referenced in application.
-    as: 'Following', 
-    //  join table that stores the connections between followers and those being followed.
-    through: UserFollowers, 
-    //In the UserFollowers table, links to the primary key (id) of the User model.
-    // Specifies the "follower"
-    foreignKey: 'followerId',
-    // Specifies the "followee"
-    otherKey: 'userId', 
-});
-
-User.hasMany(Event, { foreignKey: 'creator_id' });
+    return User;
+};
