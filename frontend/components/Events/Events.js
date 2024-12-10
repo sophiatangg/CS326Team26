@@ -268,13 +268,34 @@ export class Events extends BaseComponent {
     handleRsvp(event, color) {
         const button = event.target;
         const eventContainer = button.closest('.eventContainer');
-        const rsvpButtons = eventContainer.querySelectorAll('.rsvpButton');
+        const eventId = button.getAttribute('data-event-id');
+        const response = button.getAttribute('data-response');
 
         // Reset colors for all buttons
+        const rsvpButtons = eventContainer.querySelectorAll('.rsvpButton');
         rsvpButtons.forEach((btn) => (btn.style.backgroundColor = ''));
 
         // Highlight the selected button
         button.style.backgroundColor = color;
+
+        // If "Yes" is clicked, bring up the RSVP form
+        if (response === 'yes') {
+            const rsvpContainer = document.getElementById('rsvpContainer');
+            const eventSectionElem = document.getElementById('events');
+    
+            rsvpContainer.innerHTML = ''; // Clear existing content
+            rsvpContainer.classList.remove('hidden'); // Show the RSVP container
+            eventSectionElem.classList.add('hidden'); // Hide the event list
+    
+            // Render the RSVP input form
+            const rsvpForm = new RsvpInputInfo((rsvpDetails) => {
+                console.log('RSVP Details Submitted:', rsvpDetails);
+    
+                // Render the RSVP details after submission
+                this.showRsvpDetails(rsvpDetails);
+            });
+            rsvpContainer.appendChild(rsvpForm.render());
+        }
     }
 
     toggleEventForm(button, eventSectionElem, eventFormContainer) {
@@ -296,5 +317,14 @@ export class Events extends BaseComponent {
 
             button.textContent = 'Create Event';
         }
+    }
+
+    showRsvpDetails(rsvpDetails) {
+        const rsvpContainer = document.getElementById('rsvpContainer');
+        rsvpContainer.innerHTML = ''; // Clear the RSVP form
+    
+        // Render the RSVP details
+        const rsvpDetailsPage = new RsvpDetails(rsvpDetails);
+        rsvpContainer.appendChild(rsvpDetailsPage.render());
     }
 }
