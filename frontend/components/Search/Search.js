@@ -24,8 +24,7 @@ export class Search extends BaseComponent{
         <div><input type="checkbox" name="Academic" id="acad"><label for="acad">Academic</label></div>
         <div><input type="checkbox" name="Other/Misc" id="misc"><label for="misc">Other</label></div>`;
         searchBar.appendChild(bar);
-        
-        // container.appendChild(searchBar);
+        container.appendChild(searchBar);
         container.appendChild(filter);
         container.appendChild(feed);
         const docHeader = document.getElementById("viewContainer");

@@ -50,6 +50,9 @@ function loadView(view) {
         case 'signup':
             component = new signup();
             break;
+        case 'createAccount':
+            component = new createAccount();
+            break;
         default:
             console.error("View not found:", view);
             return;
@@ -84,7 +87,17 @@ function loadView(view) {
                 });
             }
         }
+        if(view === "signup"){
+            const createAcc = document.getElementById("create-acc");
+            if(createAcc){
+                createAcc.addEventListener("click", (event)=>{
+                event.preventDefault();
+                const view = event.target.getAttribute("data-view");
+                loadView(view);
+                });
+            }
+        }
     }
 }
 
-// export const mainRepository = ServiceFactory.get('local'); // create storage
+ export const mainRepository = ServiceFactory.get('local'); // create storage
