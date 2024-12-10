@@ -82,5 +82,4 @@ User.belongsToMany(User, {
     otherKey: 'userId', 
 });
 
-    return User;
-};
+User.hasMany(Event, { foreignKey: 'creator_id' });
