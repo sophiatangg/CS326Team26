@@ -82,4 +82,5 @@ User.belongsToMany(User, {
     otherKey: 'userId', 
 });
 
-module.exports = User;
+    return User;
+};

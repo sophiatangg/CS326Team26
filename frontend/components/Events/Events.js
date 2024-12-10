@@ -42,12 +42,31 @@ export class Events extends BaseComponent {
         const sortButton = document.createElement('button');
         sortButton.textContent = 'Sort Events';
         sortButton.classList.add('sort-events-button');
-        // sortButton.addEventListener('click', () => this.sortEvents());
+        sortButton.addEventListener('click', () => {
+            const sortOption = sortDropdown.value;
+            this.sortEvents(sortOption);
+        });
+
+        const filterInput = document.createElement('input');
+        filterInput.type = 'text';
+        filterInput.placeholder = 'Filter by keyword';
+        filterInput.id = 'filterInput';
+
+        const filterButton= document.createElement('button');
+        filterButton.textContent = 'Filter Events';
+        filterButton.classList.add('filter-events-button');
+        filterButton.addEventListener('click', () => {
+            const keyword = filterInput.value.trim().toLowerCase();
+            this.filterEvents(keyword);
+        });
+
 
         header.appendChild(title);
         header.appendChild(toggleButton);
         header.appendChild(sortDropdown);
         header.appendChild(sortButton);
+        header.appendChild(filterInput);
+        header.appendChild(filterButton);
 
         // Event form container, initially hidden
         const eventFormContainer = document.createElement('div');
@@ -193,6 +212,20 @@ export class Events extends BaseComponent {
             elem.append(eventHeader, eventTitle, eventImage, eventDetails, rsvpSection);
             eventSectionElem.appendChild(elem);
         });
+    }
+
+    filterEvents(keyword) {
+        this.events = this.events.filter((event) => {
+            return (
+                event.title.toLowerCase().includes(keyword) ||
+                event.desc.toLowerCase().includes(keyword) ||
+                event.category.toLowerCase().includes(keyword) ||
+                event.where.toLowerCase().includes(keyword)
+            );
+        });
+
+        const eventSectionElem = document.getElementById('events');
+        this.renderEvents(eventSectionElem);
     }
     
 
