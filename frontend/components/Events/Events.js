@@ -17,30 +17,30 @@ export class Events extends BaseComponent {
     render() {
         const container = document.createElement('section');
         container.id = 'events-view';
-
+    
         // Header with title and "Create Event" button
         const header = document.createElement('div');
         header.classList.add('header');
-
+    
         const title = document.createElement('h2');
         title.textContent = 'Events';
-
+    
         const toggleButton = document.createElement('button');
         toggleButton.textContent = 'Create Event';
         toggleButton.classList.add('toggle-button');
-
+    
         // Container for sort and search controls
         const controlsContainer = document.createElement('div');
         controlsContainer.classList.add('controls-container');
-
+    
         // Sorting Controls
         const sortContainer = document.createElement('div');
         sortContainer.classList.add('sort-container');
-
+    
         const sortLabel = document.createElement('label');
         sortLabel.setAttribute('for', 'sortOptions');
         sortLabel.textContent = 'Sort Events: ';
-
+    
         const sortDropdown = document.createElement('select');
         sortDropdown.id = 'sortOptions';
         const options = ['date', 'location', 'category'];
@@ -50,7 +50,7 @@ export class Events extends BaseComponent {
             opt.textContent = `By ${o.charAt(0).toUpperCase() + o.slice(1)}`;
             sortDropdown.appendChild(opt);
         });
-
+    
         const sortButton = document.createElement('button');
         sortButton.textContent = 'Apply Sort';
         sortButton.classList.add('sort-events-button');
@@ -58,24 +58,24 @@ export class Events extends BaseComponent {
             const sortOption = sortDropdown.value;
             this.sortEvents(sortOption);
         });
-
+    
         sortContainer.appendChild(sortLabel);
         sortContainer.appendChild(sortDropdown);
         sortContainer.appendChild(sortButton);
-
+    
         // Search/Filter Controls
         const filterContainer = document.createElement('div');
         filterContainer.classList.add('filter-container');
-
+    
         const filterLabel = document.createElement('label');
         filterLabel.setAttribute('for', 'filterInput');
         filterLabel.textContent = 'Search by Keyword: ';
-
+    
         const filterInput = document.createElement('input');
         filterInput.type = 'text';
         filterInput.placeholder = 'Type keyword...';
         filterInput.id = 'filterInput';
-
+    
         const filterButton= document.createElement('button');
         filterButton.textContent = 'Filter';
         filterButton.classList.add('filter-events-button');
@@ -83,47 +83,47 @@ export class Events extends BaseComponent {
             const keyword = filterInput.value.trim().toLowerCase();
             this.filterEvents(keyword);
         });
-
+    
         filterContainer.appendChild(filterLabel);
         filterContainer.appendChild(filterInput);
         filterContainer.appendChild(filterButton);
-
+    
         controlsContainer.appendChild(sortContainer);
         controlsContainer.appendChild(filterContainer);
-
+    
         // Append elements to the header
         header.appendChild(title);
         header.appendChild(toggleButton);
-
+    
         // Event form container, initially hidden
         const eventFormContainer = document.createElement('div');
         eventFormContainer.id = 'eventFormContainer';
         eventFormContainer.classList.add('hidden');
-
+    
         // Event section to hold the list of events
         const eventSectionElem = document.createElement('div');
         eventSectionElem.id = 'events';
-
+    
         // RSVP container for rendering RSVP form or details
         const rsvpContainer = document.createElement('div');
         rsvpContainer.id = 'rsvpContainer';
         rsvpContainer.classList.add('hidden');
-
+    
         // Populate events from MockEvents
         MockEvents.forEach((event) => {
             const elem = document.createElement('div');
             elem.id = `event-${event.id}`;
             elem.className = 'eventContainer';
-
+    
             // Create event header
             const eventHeader = document.createElement('div');
             eventHeader.className = 'eventHeader';
             eventHeader.textContent = `${event.username} posted an event`;
-
+    
             // Create event title
             const eventTitle = document.createElement('h3');
             eventTitle.textContent = event.title;
-
+    
             // Create event image
             const eventImage = document.createElement('div');
             eventImage.className = 'eventImage';
@@ -131,11 +131,11 @@ export class Events extends BaseComponent {
             image.src = event.cover.replace('./mockImages/', './static/event_images/');
             image.alt = event.title;
             eventImage.appendChild(image);
-
+    
             // Create event details
             const eventDetails = document.createElement('div');
             eventDetails.className = 'eventDetails';
-
+    
             const description = document.createElement('p');
             description.innerHTML = `<strong>Description:</strong> ${event.desc}`;
             const category = document.createElement('p');
@@ -144,46 +144,28 @@ export class Events extends BaseComponent {
             date.innerHTML = `<strong>When:</strong> ${event.date || 'TBD'}`;
             const location = document.createElement('p');
             location.innerHTML = `<strong>Where:</strong> ${event.where || 'TBD'}`;
-
+    
             eventDetails.append(description, category, date, location);
-
-            // Hide additional details initially
-            const additionalInfo = document.createElement('div');
-            additionalInfo.className = 'additionalInfo hidden';
-            additionalInfo.innerHTML = `
-                <p><strong>Additional Details:</strong> ${(event.time || event.time) ? '' : 'No additional details available.'}</p>
-                <p><strong>Category:</strong> ${event.category || 'TBD'}</p>
-                <p><strong>Time:</strong> ${event.time || 'TBD'}</p>
-            `;
-
-            // RSVP buttons
+    
             const rsvpSection = document.createElement('div');
             rsvpSection.className = 'rsvpSection';
-
+    
             const rsvpYes = this.createRsvpButton('Yes', 'green', event.id);
             const rsvpNo = this.createRsvpButton('No', 'red', event.id);
             const rsvpMaybe = this.createRsvpButton('Maybe', 'orange', event.id);
-
+    
             rsvpSection.append(rsvpYes, rsvpNo, rsvpMaybe);
-
-            // Add click functionality to expand/collapse details
-            elem.addEventListener('click', () => {
-                const isExpanded = additionalInfo.classList.contains('hidden');
-                additionalInfo.classList.toggle('hidden', !isExpanded);
-                elem.classList.toggle('expanded', isExpanded);
-            });
-
-            // Append all elements to the event container
-            elem.append(eventHeader, eventTitle, eventImage, eventDetails, additionalInfo, rsvpSection);
+    
+            elem.append(eventHeader, eventTitle, eventImage, eventDetails, rsvpSection);
             eventSectionElem.appendChild(elem);
         });
-
+    
         // Append all elements to the container
         container.append(header, controlsContainer, eventFormContainer, eventSectionElem, rsvpContainer);
-
+    
         // Add toggle event listener after elements are appended
-        toggleButton.addEventListener('click', () => this.toggleEventForm(toggleButton, eventSectionElem, eventFormContainer));
-
+        toggleButton.addEventListener('click', () => this.toggleEventForm(toggleButton, eventSectionElem, eventFormContainer, controlsContainer));
+    
         return container;
     }
 
@@ -325,19 +307,25 @@ export class Events extends BaseComponent {
         }
     }
 
-    toggleEventForm(button, eventSectionElem, eventFormContainer) {
-        this.isCreatingEvent = !this.isCreatingEvent;
-
+    toggleEventForm(button, eventSectionElem, eventFormContainer, controlsContainer) {
+        this.isCreatingEvent = !this.isCreatingEvent; // Toggle the state
+    
         if (this.isCreatingEvent) {
+            // Show the event form and hide the event list and controls
             eventFormContainer.innerHTML = '';
             const eventForm = new EventForm();
             eventFormContainer.appendChild(eventForm.render());
             eventFormContainer.classList.remove('hidden');
             eventSectionElem.classList.add('hidden');
+            controlsContainer.classList.add('hidden'); // Hide controls
+    
             button.textContent = 'Back to Browse Events';
         } else {
+            // Show the event list and controls, and hide the event form
             eventFormContainer.classList.add('hidden');
             eventSectionElem.classList.remove('hidden');
+            controlsContainer.classList.remove('hidden'); // Show controls
+    
             button.textContent = 'Create Event';
         }
     }
