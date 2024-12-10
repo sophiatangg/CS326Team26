@@ -15,6 +15,7 @@ exports.createEvent = async (req, res) => {
 
 exports.getEvents = async (req, res) => {
     try {
+        console.log("TEST");
         const events = await Event.findAll();
         res.status(200).json(events);
     } catch (error) {
