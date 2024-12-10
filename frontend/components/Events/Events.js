@@ -320,6 +320,8 @@ export class Events extends BaseComponent {
             controlsContainer.classList.add('hidden'); // Hide controls
     
             button.textContent = 'Back to Browse Events';
+            button.style.marginLeft = '20px'; // Add spacing around the button
+
         } else {
             // Show the event list and controls, and hide the event form
             eventFormContainer.classList.add('hidden');
