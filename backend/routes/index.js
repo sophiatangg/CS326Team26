@@ -1,7 +1,7 @@
 const express = require('express');
 const userRoutes = require('./userRoutes.js');
-const eventRoutes = require('./eventRoutes');
-const rsvpRoutes = require('./rsvpRoutes');
+const eventRoutes = require('./eventRoutes.js');
+const rsvpRoutes = require('./rsvpRoutes.js');
 
 const router = express.Router();
 

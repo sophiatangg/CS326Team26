@@ -64,7 +64,34 @@ export class RsvpDetails extends BaseComponent {
     return container;
   }
 
-  confirmRSVP() {
-    this.dispatchCustomEvent('rsvp-confirmed', { confirmed: true });
+  async confirmRSVP() {
+    try {
+      const response = await fetch('http://localhost:5050/api/rsvp', {
+        method: 'POST', // Ensure POST is used
+        headers: {
+         'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          rsvp_id: Math.random()*100 , 
+          user_id: 1, // [TODO]: Replace with actual user ID
+          event_id: 1, //[TODO]: Replace with actual event ID
+          response: 'yes', // Assume user clicked "Yes"
+          dietary_restrictions: this.details.dietaryRestrictions || [],
+          accessibility_needs: this.details.accessibilityNeeds || null,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save RSVP2');
+      }
+
+      const result = await response.json();
+      console.log('RSVP successfully saved:', result);
+      alert('Your RSVP has been confirmed!');
+    } catch (error) {
+      console.error('Error confirming RSVP:', error);
+      alert('Failed to confirm RSVP. Please try again later.');
+    }
   }
+
 }

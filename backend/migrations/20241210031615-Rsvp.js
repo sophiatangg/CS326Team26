@@ -12,7 +12,6 @@ module.exports = {
       rsvp_id: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -62,6 +61,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
+    
     await queryInterface.dropTable('Rsvp');
   },
 };

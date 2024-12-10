@@ -2,20 +2,28 @@ const { Rsvp } = require('../models'); // Import the Rsvp model
 
 // Create a new RSVP
 exports.createRsvp = async (req, res) => {
+
+    console.log("LOOK HERE");
+
     try {
         const { rsvp_id, user_id, event_id, response, dietary_restrictions, accessibility_needs } = req.body;
+
+        if (!user_id || !event_id || !response) {
+            return res.status(400).json({ error: 'Missing required fields: user_id, event_id, response' });
+        }
+
         const rsvp = await Rsvp.create({
             rsvp_id,
             user_id,
             event_id,
             response,
-            dietary_restrictions,
-            accessibility_needs,
+            dietary_restrictions: req.body.dietary_restrictions || [],
+            accessibility_needs: req.body.accessibility_needs || null,
         });
         res.status(201).json({ message: 'RSVP created', rsvp });
     } catch (error) {
         console.error('Error creating RSVP:', error);
-        res.status(500).json({ error: 'Error creating RSVP' });
+        res.status(500).json({ error: 'Error creating RSVP1' });
     }
 };
 

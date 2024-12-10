@@ -13,6 +13,20 @@ export class RsvpInputInfo extends BaseComponent {
     const container = document.createElement('div');
     container.classList.add('rsvp-container');
 
+    //backButton
+    const backButton = document.createElement('button');
+    backButton.textContent = 'Back to Events';
+    backButton.classList.add('buttons', 'back-button'); // Apply button styling
+    backButton.addEventListener('click', () => {
+      const rsvpContainer = document.getElementById('rsvpContainer');
+      const eventSectionElem = document.getElementById('events');
+    
+      rsvpContainer.classList.add('hidden'); // Hide the RSVP container
+      eventSectionElem.classList.remove('hidden'); // Show the events list
+    });
+    container.appendChild(backButton);
+
+
     // Header of the page displaying the event name
     const header = document.createElement('h1');
     header.classList.add('title', 'rsvp-title'); // Apply relevant styles
