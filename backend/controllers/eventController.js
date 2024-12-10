@@ -17,3 +17,27 @@ exports.getEvents = async (req, res) => {
         res.status(500).json({ error: 'Error fetching events' });
     }
 };
+
+exports.getFilteredEvents = async (req,res) => {
+    try{
+        const {catergory, location, date} = req.query;
+        const filterCriteria = {};
+        if (category) {
+            filterCriteria.catergory = catergory;
+        }
+        if (location) {
+            filterCriteria.location = location;
+        }  
+        if (date) {
+            filterCriteria.date = date; 
+        }
+        const events = await Event.findAll({
+            where: filterCriteria 
+        })
+        res.status(200).json(events);
+
+    }catch (error) {
+        res.status(500).json({ error: 'Error filtering events' });
+    }
+}
+
