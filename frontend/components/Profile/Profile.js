@@ -3,21 +3,20 @@ import { BaseComponent } from '../BaseComponent/BaseComponent.js';
 import { Events } from '../../eventhub/EventNames.js';
 import { ViewFollowers } from '../ViewFollowers/ViewFollowers.js';
 import { OtherProfile } from '../OtherProfile/OtherProfile.js';
-import { ServiceFactory } from '../../services/ServiceFactory.js';
+import { mainRepository } from '../../script.js';
 
 export class Profile extends BaseComponent {
     #container = null;
-    #user = {}; 
 
     constructor() {
         super();      
-        // this.user = {
-        //     username: 'Your username',
-        //     profileImage: './static/images/logo.png',
-        //     followers: 120,
-        //     following: 80,
-        //     bio: 'Enjoying life and posting events!',
-        //     };
+        this.user = {
+            username: 'Your username',
+            profileImage: './static/images/logo.png',
+            followers: 120,
+            following: 80,
+            bio: 'Enjoying life and posting events!',
+            };
         this.loadCSS('Profile');
     }
 
@@ -27,11 +26,8 @@ export class Profile extends BaseComponent {
         }
         this.#createContainer();   
         this.#attachEventListeners();
-        const userRepository = ServiceFactory.get('local'); // create storage
         return this.#container;
     }
-
-    // getData(data){}
 
     #createContainer() {
         // Create and configure the container element
@@ -45,15 +41,15 @@ export class Profile extends BaseComponent {
         header.classList.add('profile-info');
 
         profile_info.innerHTML = `
-            <img src="${this.#user.profileImage || './static/images/logo.png'}" id="picture" alt="Profile Picture">
-            <h2 id="username">${this.#user.username || 'Your username'}</h2>
+            <img src="${this.user.profileImage}" id="picture" alt="Profile Picture">
+            <h2 id="username">${this.user.username}</h2>
             <div class="follows">
                 <span>
-                    <button class="followers">${this.#user.followers || '120'} Followers</button>
-                    <button class="following">${this.#user.following || '80'} Following</button>
+                    <button class="followers">${this.user.followers} Followers</button>
+                    <button class="following">${this.user.following} Following</button>
                 </span>
             </div>
-            <p id="userbio">${this.#user.bio || 'No bio available.'}</p>
+            <p id="userbio">${this.user.bio || 'No bio available.'}</p>
             <button class="edit-profile">Edit Profile</button>
         `;
         header.appendChild(profile_info);
@@ -122,11 +118,6 @@ export class Profile extends BaseComponent {
         const hub = EventHub.getInstance();
 
         hub.subscribe(Events.StoreProfileInfo, (data) => this.#updateProfileInfo(data));
-        hub.subscribe(Events.LoadProfileInfoSuccess, (user)=> {
-            console.log("Function runs for callinf load");
-            this.#user = user;
-            this.#renderProfile();
-        });
 
         // Attach event listeners to the input and button elements
         this.#container.addEventListener('click', (event) =>{
@@ -163,7 +154,7 @@ export class Profile extends BaseComponent {
         this.#publishNewUser(usrname, bioinfo, file);
 
         // Clear inputs
-        this.#clearInputs(name, bio);
+        this.#clearInputs(name, bio, pfp);
         this.#closeModal("unique");
     }
 
@@ -173,7 +164,7 @@ export class Profile extends BaseComponent {
 
     }
 
-    #clearInputs(name, bio) {
+    #clearInputs(name, bio, pfp) {
         name.value = '';
         bio.value = '';
     }
@@ -187,7 +178,7 @@ export class Profile extends BaseComponent {
     //taken from OtherProfile.js
     #viewFollows(isFollowers) {
         // Create a new instance of ViewFollowers
-        const viewFollowers = new ViewFollowers(this.#user.username, isFollowers);
+        const viewFollowers = new ViewFollowers(this.user.username, isFollowers);
     
         // Attach the goBack callback to return to the profile view
         viewFollowers.goBack = () => this.#renderProfile();
