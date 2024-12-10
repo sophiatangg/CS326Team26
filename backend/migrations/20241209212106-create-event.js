@@ -1,4 +1,7 @@
 'use strict';
+
+const { use } = require('../routes');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -8,6 +11,9 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      username: {
+        type: Sequelize.STRING
       },
       title: {
         type: Sequelize.STRING
