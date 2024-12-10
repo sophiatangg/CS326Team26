@@ -1,0 +1,88 @@
+1. /controllers:
+Purpose: Contains the logic for handling requests and responses for specific routes.
+Separates busines logic from route definitions.
+
+Example: userController implements functions like register to hand user actions.
+Interacts with models like User to fetch/create/update data
+Usage:
+const { register, login } = require('../controllers/userController');
+router.post('/register', register); // Route to handle user registration
+
+2. /models
+Purpose: Defines the structure of tables using Sequelize.
+Handles interactions with db like queryings/updating/deleting records.
+
+Example: User.js defines schema for User table.
+Sets relationships between models.
+Uses Sequelize methodsd for CRUD operations according to MS04 documentation.
+Usage:
+const User = require('../models/User');
+const user = await User.findOne({ where: { email } });
+
+3. /routes
+Purpose: Defines API endpoints.
+Specified HTTP methods and paths for operations.
+
+Example: userRoutes.js maps HTTP reqests to specific controller functions.
+Groups related endpoints and can add middlware (e.g. auth) here.
+Usage: 
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
+
+4. /middlewares
+Purpose: Functions that run between request and response lifecycle. 
+Usually used for auth, logging, or request validation.
+
+Example: auth.js verifies JWT tokens to ensure user is authenticated.
+Adds authed user's info to request object.
+Usage:
+const { authenticate } = require('../middlewares/auth');
+router.post('/events', authenticate, createEvent); // Protect the event creation route
+
+5. /config
+Purpose: Stores config settings like db connection details.
+
+Example: databse.js configures Sequelize to connect to SQLite.
+Usage:
+const sequelize = require('../config/database');
+const { DataTypes } = require('sequelize');
+const User = sequelize.define('User', { username: DataTypes.STRING });
+
+6. /services
+Purpose: Contains reusable business logic that doesn't belong in controllers.
+Basically keeps the codebase more modular and maintainable.
+
+Example: emailService.js could handle tasks like sending emails for RSVP conf
+Usage:
+const { sendConfirmationEmail } = require('../services/emailService');
+await sendConfirmationEmail(user.email);
+
+7. /utils
+Purpose: Stores utility funcs -- pretty self explanatory
+
+Example: Could have a formatDate.js to standardize date formatting.
+Usage:
+const { formatDate } = require('../utils/formatDate');
+console.log(formatDate(new Date())); // Outputs a formatted date
+
+8. /tests
+Purpose: Contains unit and integration tests.
+
+Example: userController.test.js tests the register and login funcs of userController.js
+Mocks db calls to isolate and test just the controller logic.
+Usage:
+const request = require('supertest');
+const app = require('../server');
+
+describe('User Registration', () => {
+    it('should register a user successfully', async () => {
+        const res = await request(app)
+            .post('/api/users/register')
+            .send({ username: 'test', email: 'test@test.com', password: 'password' });
+        expect(res.status).toBe(201);
+    });
+});
+
+9. server.js
+Purpose: Entry point for backend.
+Sets up Express server, connects middleware, and mounts routes.
