@@ -2,9 +2,6 @@ const { Rsvp } = require('../models'); // Import the Rsvp model
 
 // Create a new RSVP
 exports.createRsvp = async (req, res) => {
-
-    console.log("LOOK HERE");
-
     try {
         const { rsvp_id, user_id, event_id, response, dietary_restrictions, accessibility_needs } = req.body;
 
