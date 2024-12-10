@@ -31,6 +31,88 @@
     background-color: #2C3B42;
 }
 
+/* Controls container for sorting and filtering */
+.controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sort-container, .filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-container label,
+.filter-container label {
+    font-weight: bold;
+    color: #FFF;
+    font-size: 16px;
+}
+
+#sortOptions {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: var(--secondary-aqua);
+    color: #FFF;
+    border: 0px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#sortOptions:hover {
+    background-color: #648d8c;
+    color: #FFF;
+}
+
+.sort-events-button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--secondary-aqua);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-events-button:hover {
+    background: #648d8c;
+}
+
+.filter-container input[type="text"] {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.filter-events-button {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    background: #de4558;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-events-button:hover {
+    background: #2C3B42;
+}
+
 #events {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -88,43 +170,3 @@
 .hidden {
     display: none !important;
 }
-
-
-#sortOptions {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 600;
-    background-color: var(--secondary-aqua);
-    color: #FFF;
-    border: 0px;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-#sortOptions:hover {
-    background-color: #648d8c;
-    color: #FFF;
-}
-
-/* Sort Events button styling */
-.sort-events-button {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background: var(--secondary-aqua);
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.sort-events-button:hover {
-    background: #648d8c;
-}
-
-
