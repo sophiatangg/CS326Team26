@@ -34,9 +34,18 @@
 **Point Value**: 2 points  
 **Team Member**: Sophia Tang
 
-### Feature Name: Event Search Bar
-**Description**: A search bar that allows users to search for events by keyword. The list of events updates dynamically based on the user's search term, and it fetches results from IndexedDB.
+### Feature Name: Event Finder
+**Description**: A search with filters that allows users to search for events. The list of events updates dynamically based on the user's search term and filters.
+
 **Point Value**: 3 points  
+
+**Team Member**: Mehek Shah
+
+### Feature Name: Sign Up or Login Page
+**Description**: Loads the sign in page when clicked on sign in and prompts the user to create an account if they do not have one aldeady.
+
+**Point Value**: 3 points
+
 **Team Member**: Mehek Shah
 
 ## Large Features (4-5 points)
@@ -49,7 +58,7 @@
 ### Feature Name: Event Display
 **Description**: A dynamic events default page that displays a feed of all upcoming events. The page fetches fetches events from IndexedDB, allowing users to view up-to-date event information. The page will update whenever a new event is added and updated accordingly when a user changes their event information. 
 **Point Value**: 5
-**Team Member**: Sophia Tang, Mason Choi
+**Team Member**: Sophia Tang, Mason Choi, Zhitong Liu
 
 ### Feature Name: Event Feed with Sorting and Filtering
 **Description**: A complex event feed that allows users to sort and filter events by date, location, or category. The feed fetches data from IndexedDB and updates dynamically when filters are applied. Users can interact with the feed to see events that match their interests and preferences.
