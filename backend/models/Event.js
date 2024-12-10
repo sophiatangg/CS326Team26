@@ -9,14 +9,15 @@ module.exports = (sequelize) => {
     }
 
     Event.init({
+        username:{ type: DataTypes.STRING, allowNull: false },
         title: { type: DataTypes.STRING, allowNull: false },
-        description: DataTypes.TEXT,
-        location: { type: DataTypes.STRING, allowNull: false },
-        start_time: { type: DataTypes.DATE, allowNull: false },
-        end_time: { type: DataTypes.DATE, allowNull: false },
+        desc: DataTypes.TEXT,
         category: DataTypes.STRING,
-        cover_image: DataTypes.STRING,
-        creator_id: { type: DataTypes.INTEGER, allowNull: false },
+        date:{ type: DataTypes.DATE, allowNull: false },
+        cover: DataTypes.STRING,
+        time:{ type: DataTypes.STRING, allowNull: false },
+        where: { type: DataTypes.STRING, allowNull: false },
+
     }, {
         sequelize,
         modelName: 'Event',
