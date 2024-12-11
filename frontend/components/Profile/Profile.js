@@ -8,17 +8,13 @@ import { ServiceFactory } from '../../services/ServiceFactory.js';
 export class Profile extends BaseComponent {
     #container = null;
     #user = {}; 
+    #loggedin = false;
 
     constructor() {
         super();      
-        // this.user = {
-        //     username: 'Your username',
-        //     profileImage: './static/images/logo.png',
-        //     followers: 120,
-        //     following: 80,
-        //     bio: 'Enjoying life and posting events!',
-        //     };
         this.loadCSS('Profile');
+        // const hub = EventHub.getInstance();
+        // hub.subscribe(Events.LoadProfileInfoFailure, (message) => this.#userNotLoggedInError(message));
     }
 
     render() {
@@ -27,11 +23,14 @@ export class Profile extends BaseComponent {
         }
         this.#createContainer();   
         this.#attachEventListeners();
-        const userRepository = ServiceFactory.get('local'); // create storage
+        //const userRepository = ServiceFactory.get('local'); // create storage
         return this.#container;
     }
 
-    // getData(data){}
+    #setLogin(isLoggedIn){
+        this.#loggedin = isLoggedIn;
+    }
+
 
     #createContainer() {
         // Create and configure the container element
@@ -39,18 +38,18 @@ export class Profile extends BaseComponent {
         this.#container.id = 'profile';
         this.#container.className = 'profile-screen';
         const header = document.createElement('div');
-        header.classList.add('header');
+        header.classList.add('top-of-page');
 
         const profile_info = document.createElement('div');
         header.classList.add('profile-info');
 
         profile_info.innerHTML = `
-            <img src="${this.#user.profileImage || './static/images/logo.png'}" id="picture" alt="Profile Picture">
+            <img src="${this.#user.profile_picture || './static/images/logo.png'}" id="picture" alt="Profile Picture">
             <h2 id="username">${this.#user.username || 'Your username'}</h2>
             <div class="follows">
                 <span>
-                    <button class="followers">${this.#user.followers || '120'} Followers</button>
-                    <button class="following">${this.#user.following || '80'} Following</button>
+                    <button class="followers">${this.#user.Followers? this.#user.Followers.length: '0'} Followers</button>
+                    <button class="following">${this.#user.Following? this.#user.Following.length: '0'} Following</button>
                 </span>
             </div>
             <p id="userbio">${this.#user.bio || 'No bio available.'}</p>
@@ -123,15 +122,18 @@ export class Profile extends BaseComponent {
 
         hub.subscribe(Events.StoreProfileInfo, (data) => this.#updateProfileInfo(data));
         hub.subscribe(Events.LoadProfileInfoSuccess, (user)=> {
-            console.log("Function runs for callinf load");
             this.#user = user;
             this.#renderProfile();
         });
+        hub.subscribe(Events.LoadProfileInfoFailure, (message) => this.#userNotLoggedInError(message));
+        hub.subscribe(Events.UpdateProfileInfoFailure, (message) => this.#userNotLoggedInError(message));
+        hub.publish(Events.LoadProfileInfo);
 
         // Attach event listeners to the input and button elements
         this.#container.addEventListener('click', (event) =>{
             if (event.target.matches(".edit-profile")){
-                this.#openEditModal(this.#container.id);
+                if (this.#loggedin)
+                    this.#openEditModal(this.#container.id);
             }
             if (event.target.matches(".done-btn")){
                 const usernameInput = document.getElementById('UsernameInput');
@@ -141,13 +143,22 @@ export class Profile extends BaseComponent {
             }            
             // Handle "Followers" button click
             if (event.target.matches('.followers')) {
-                this.#viewFollows(true); 
+                if (this.#loggedin)
+                    this.#viewFollows(true); 
             }
             // Handle "Following" button click
             if (event.target.matches('.following')) {
-                this.#viewFollows(false); 
+                if (this.#loggedin)
+                    this.#viewFollows(false); 
             }
         })
+    }
+
+    #userNotLoggedInError(message){
+        const error_message = document.createElement('p');
+        error_message.className = "loginerror";
+        error_message.innerHTML = message;
+        this.#container.appendChild(error_message);
     }
 
     #handleProfileEdit(name, bio, chosenpfp){
