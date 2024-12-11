@@ -4,6 +4,13 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Ensure the layout remains consistent */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
 }
 
 /* Main container for the screen */
@@ -15,6 +22,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    padding-bottom: 20px; /* Add padding to avoid overlapping */
 }
 
 /* Header styles */
@@ -53,6 +61,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-bottom: 50px;
 }
 
 /* Individual person card */
