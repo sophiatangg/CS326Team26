@@ -15,6 +15,12 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#email {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
 button {
     background-color: #007BFF;
     color: white;

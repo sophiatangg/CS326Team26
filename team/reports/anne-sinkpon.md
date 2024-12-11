@@ -55,3 +55,10 @@
 - **Details**: added reference to profile storage.
 - **Links to Commit**:
 [Commit](https://github.com/sophiatangg/CS326Team26/commit/a61b7209666fb9079a9ba5209b3f260bf6739ba8)
+
+### Dec 7, 2024
+
+- **Task**: Profile Info Persistence
+- **Details**: Made sure profile info still shows up after user goes to a different page and comes back.
+- **Links to Commit**:
+[Commit](https://github.com/sophiatangg/CS326Team26/pull/65/commits/55768f2609515842565961caae9feebb2b870914)

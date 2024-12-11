@@ -1,4 +1,6 @@
-const User = require('../models/User');
+const db = require('../models'); // Adjust the path as needed
+const User = db.User; // Access the User model
+
 const UserFollowers = require('../models/Followers');
 
 
@@ -32,7 +34,7 @@ exports.updateUserProfile = async (req, res, next) => {
             user: currentUser,
         });
     } catch (error) {
-        next(error);
+        return res.status(404).json({ error });
     }
 };
   
@@ -76,7 +78,7 @@ exports.getConnectedUserProfileInfo = async (req, res) => {
             user: currentUser,
         });
     } catch (error) {
-        next(error);
+        return res.status(404).json({ error, message: error.message });
     }
   };
 

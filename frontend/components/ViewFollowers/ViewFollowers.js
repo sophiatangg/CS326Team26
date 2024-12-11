@@ -1,34 +1,26 @@
 import { BaseComponent } from '../BaseComponent/BaseComponent.js';
+import { Events } from '../../eventhub/EventNames.js';
+import { EventHub } from '../../eventhub/EventHub.js';
 
 export class ViewFollowers extends BaseComponent {
     constructor(userName, isFollowers) {
         super();
         this.userName = userName; // The name of the user
         this.isFollowers = isFollowers; // Boolean flag to determine if we show followers or following
-        this.data = [
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-            { name: 'Alice', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Bob', profileImage: 'https://via.placeholder.com/50' },
-            { name: 'Charlie', profileImage: 'https://via.placeholder.com/50' }, 
-        ];
+        const hub = EventHub.getInstance();
+        hub.subscribe(Events.getUserFollowersSuccess);
+        hub.subscribe(Events.getUserFollowingSuccess);
+        if (isFollowers){
+            hub.publish(Events.getUserFollowers, this.username);
+        } else {
+            hub.publish(Events.getUserFollowing, this.username);
+        }
+        this.data = [];
         this.loadCSS('ViewFollowers'); // Load the corresponding CSS
+    }
+
+    setFollowers(data){
+        this.data = data;
     }
 
     render() {

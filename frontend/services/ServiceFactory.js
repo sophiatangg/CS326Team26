@@ -1,4 +1,5 @@
 import { localService } from "./localUserService.js";
+import { remoteUserService } from "./remoteUserService.js";
 
 /**
  * Factory class to create instances of repository services.
@@ -25,6 +26,8 @@ export class ServiceFactory {
   static get(repoType = 'local') { // default is local
     if (repoType === 'local') {
       return new localService();
+    } else if (repoType === "remote") {
+      return new remoteUserService();
     }
     else {
       throw new Error('Invalid repository type');

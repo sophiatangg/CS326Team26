@@ -6,6 +6,9 @@ import { Profile } from './components/Profile/Profile.js';
 import { EventSorting } from './components/EventSorting/EventSorting.js';
 import { signup } from './components/SignUp/signup.js';
 import { ServiceFactory } from './services/ServiceFactory.js';
+import { createAccount
+ } from './components/create Account/createAccount.js';
+
 
 document.addEventListener("DOMContentLoaded", () => {
     loadView("home");
@@ -50,9 +53,9 @@ function loadView(view) {
         case 'signup':
             component = new signup();
             break;
-        case 'createAccount':
-            component = new createAccount();
-            break;
+        // case 'createAccount':
+        //     component = new createAccount();
+        //     break;
         default:
             console.error("View not found:", view);
             return;
@@ -87,17 +90,17 @@ function loadView(view) {
                 });
             }
         }
-        if(view === "signup"){
-            const createAcc = document.getElementById("create-acc");
-            if(createAcc){
-                createAcc.addEventListener("click", (event)=>{
-                event.preventDefault();
-                const view = event.target.getAttribute("data-view");
-                loadView(view);
-                });
-            }
-        }
+        // if(view === "signup"){
+        //     const createAcc = document.getElementById("create-acc");
+        //     if(createAcc){
+        //         createAcc.addEventListener("click", (event)=>{
+        //         event.preventDefault();
+        //         const view = event.target.getAttribute("data-view");
+        //         loadView(view);
+        //         });
+        //     }
+        // }
     }
 }
 
- export const mainRepository = ServiceFactory.get('local'); // create storage
+export const profileRepository = ServiceFactory.get('remote'); // create storage
