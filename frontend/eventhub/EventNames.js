@@ -12,6 +12,12 @@ export const Events = {
     LoadOtherProfilesInfoSuccess: 'LoadOtherProfilesInfoSuccess',
     LoadOtherProfilesInfoFailure: 'LoadOtherProfilesInfoFailure',
 
+    goBack: "goBack",
+    goBackSuccess: "goBackSuccess",
+    goBackFailure: "goBackFailure",
+
+    LoggedIn : 'Loggedin',
+
     LoadPosts: 'LoadPosts',
     LoadPostsSuccess: 'LoadPostsSuccess',
     LoadPostsFailure: 'LoadPostsFailure',
@@ -23,6 +29,27 @@ export const Events = {
     StoreProfileInfo: 'StoreProfileInfo',
     StoreProfileInfoSuccess: 'StoreProfileInfoSuccess',
     StoreProfileInfoFailure: 'StoreProfileInfoFailure',
+
+    followUser: 'followUser',
+    followUserSuccess: 'followUserSuccess',
+    followUserFailure: 'followUserFailure',
+
+    unfollowUser: 'unfollowUser',
+    unfollowUserSuccess: 'unfollowUserSuccess',
+    unfollowUserFailure: 'unfollowUserFailure',
+
+    getUserFollowers: 'getUserFollowers',
+    getUserFollowersSuccess : 'getUserFollowersSuccess',
+    getUserFollowersFailure : 'getUserFollowersFailure',
+
+    getUserFollowing: 'getUserFollowing',
+    getUserFollowingSuccess : 'getUserFollowingSuccess',
+    getUserFollowingFailure : 'getUserFollowingFailure',
+
+
+    UpdateProfileInfo: 'UpdateProfileInfo',
+    UpdateProfileInfoSuccess: 'UpdateProfileInfoSuccess',
+    UpdateProfileInfoFailure: 'UpdateProfileInfoFailure',
 
     User: 'User',
 
