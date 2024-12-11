@@ -13,6 +13,11 @@ export class remoteUserService extends Service {
     this.subscribe(Events.UpdateProfileInfo, data => {
       this.#updateProfile(data);
     });
+    this.subscribe(Events.LoggedIn, token => {
+      this.#setToken(token);
+    });
+    this.subscribe(Events.SignUp, (credentials) => {this.#signUp(credentials)});
+    this.subscribe(Events.LogIn, (credentials) => {this.#LogIn(credentials)});
     this.subscribe(Events.LoadProfileInfo, () => {
       this.#initUser();
     });
@@ -43,6 +48,59 @@ export class remoteUserService extends Service {
   #getToken(){
     return this.#token;
   }
+  async #signUp(credentials) {
+    try {
+        const response = await fetch("http://localhost:5000/api/users/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(credentials),
+        });
+  
+        if (!response.ok) {
+            this.publish(Events.SignUpFailure, response.message);
+            throw new Error("Failed to signUp");
+        }
+  
+        // Parse the profile data
+        const data = await response.json();
+  
+        // Publish the registered up user profile information
+        this.publish(Events.SignUpSuccessful, 'Sign up succesful, please Log in.');
+  
+        return data.user;
+    } catch (error) {
+      this.publish(Events.SignUpFailure, error);
+    }
+  }
+
+  async #LogIn(credentials) {
+    try {
+        const response = await fetch("http://localhost:5000/api/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        });
+  
+        if (!response.ok) {
+            this.publish(Events.LogInFailure, response.message);
+            throw new Error("Failed to Log in");
+        }
+  
+        // Parse the profile data
+        const data = await response.json();
+  
+        this.publish(Events.LogInSuccessful, 'Successfully logged in.');
+        // Publish the registered up user profile information
+        this.publish(Events.LoggedIn, data.token);
+  
+        return;
+    } catch (error) {
+      this.publish(Events.LogInFailure, error.message);
+    }
+  }
+
   // The #initTasks() method is an async method that fetches the authenticated user's profile
   async #initUser() {
     try {
