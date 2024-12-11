@@ -11,6 +11,7 @@ export class signup extends BaseComponent {
     render() {
         const container = document.createElement("div");
         container.classList.add("container");
+    
         const form = document.createElement("div");
         form.classList.add("form");
 

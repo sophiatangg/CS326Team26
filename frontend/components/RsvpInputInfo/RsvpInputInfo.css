@@ -1,139 +1,134 @@
 .rsvp-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally within the container */
+  align-items: center;
   justify-content: center;
-  background-color: #fff;
-  border-radius: 2rem;
-  padding: 20px;
-  width: fit-content;
-  height: fit-content;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
   font-family: 'Instrument Sans', sans-serif;
-}
-
-.rsvp-content {
-  align-self: center;
-  display: flex;
-  max-width: 100%;
-  flex: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-  color: #000;
+  color: #333;
   text-align: center;
   font-size: 24px;
   font-weight: 600;
-  margin-top: 1rem;
+  margin-bottom: 20px;
 }
 
 .rsvp-title {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
-  margin: 0;
-  width: 100%;
+  color: #444;
 }
 
 .container {
+  width: 100%;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
-  width: 100%;
-  font-size: 18px;
-  color: #5e5e5e;
-  font-weight: 500;
+  align-items: flex-start;
 }
 
 .restriction-row {
   display: flex;
-  margin-top: 20px;
   width: 100%;
+  gap: 16px;
   align-items: center;
-  gap: 18px; 
-  justify-content: start;
+  margin-top: 12px;
   flex-wrap: nowrap;
 }
 
 .input-boxes {
-  border: 1px solid #5e5e5e;
-  background-color: #fff;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #fff;
 }
 
 .description-input {
-  flex: 1; /* Allows the description input to take the remaining space */
+  flex: 1;
   min-width: 240px;
 }
 
 .accessibility-input {
-  width: 49rem;
-  min-height: 3rem;
-}
-
-.type-label {
-  position: absolute;
-  z-index: 0;
-  left: 14px;
-  top: 13px;
-  width: 41px;
-  height: 21px;
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  resize: vertical;
 }
 
 .buttons {
-  background-color: #881c1b;
+  background-color: #2C3B42;
   color: #fff;
-  border-radius: 40px;
-  padding: 1rem;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 20px;
-  width: fit-content;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  background-color: #2C3B42;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
 }
 
 .review-button {
-  position: absolute;
-  min-height: 55px;
-  font-weight: 500;
-  right: 43px;
-  bottom: 5rem;
-  height: 55px;
+  align-self: center;
+  margin-top: 20px;
 }
 
+.add-restriction-button {
+  margin-top: 20px;
+  align-self: flex-end;
+}
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
+  .rsvp-container {
+    padding: 20px;
+    width: 100%;
+  }
+
   .restriction-row {
-    max-width: 100%;
-    flex-wrap: wrap; 
-    white-space: initial;
-  }
-
-  .rsvp-title {
-    max-width: 100%;
-  }
-
-  .restrictions-container {
-    max-width: 100%;
-  }
-
-  .type-selection {
-    width: 100%; 
+    flex-wrap: wrap;
   }
 
   .input-boxes {
     width: 100%;
   }
 
-  .review-button {
-    white-space: initial;
-    padding: 0 20px;
+  .description-input {
+    min-width: 100%;
   }
 
   .accessibility-input {
-    max-width: 100%;
-    padding-right: 20px;
+    min-height: 60px;
   }
 
-  .accessibility-input-container {
-    max-width: 100%;
+  .buttons {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
   }
 }

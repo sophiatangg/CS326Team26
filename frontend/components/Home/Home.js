@@ -29,7 +29,7 @@ export class Home extends BaseComponent {
         const explore = document.createElement("a");
         explore.innerHTML = "Explore Events";
         explore.classList.add("btn-secondary")
-        explore.setAttribute("data-view", "Search");
+        explore.setAttribute("data-view", "events");
         const btnDiv = document.createElement("div");
         btnDiv.classList.add("cta-buttons")
         btnDiv.appendChild(signUp);

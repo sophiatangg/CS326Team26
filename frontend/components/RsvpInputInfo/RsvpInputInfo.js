@@ -1,151 +1,143 @@
 import { BaseComponent } from '../BaseComponent/BaseComponent.js';
 
 export class RsvpInputInfo extends BaseComponent {
-  constructor(onSubmitCallback) {
-    super();
-    this.onSubmitCallback = onSubmitCallback; // Callback function to handle form submission and put it into the rsvpDetails
-    if (this.cssLoaded) return; // if CSS isn't loaded yet, load it
-      this.loadCSS('RsvpInputInfo'); 
-  }
+    constructor(onSubmitCallback) {
+        super();
+        this.onSubmitCallback = onSubmitCallback; // Callback function to handle form submission
+        if (this.cssLoaded) return; // Ensure CSS is loaded only once
+        this.loadCSS('RsvpInputInfo');
+    }
 
-  render() {
-    // Main container for the entire RSVP form
-    const container = document.createElement('div');
-    container.classList.add('rsvp-container');
+    render() {
+        // Main container for the RSVP form
+        const container = document.createElement('div');
+        container.classList.add('rsvp-container');
 
-    // Header of the page displaying the event name
-    const header = document.createElement('h1');
-    header.classList.add('title', 'rsvp-title'); // Apply relevant styles
-    header.textContent = 'RSVP to Event Name'; // TODO: Replace 'Event Name' dynamically
-    container.appendChild(header);
+        // Back to Events Button
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Back to Events';
+        backButton.classList.add('buttons', 'back-button');
+        backButton.addEventListener('click', () => {
+            const rsvpContainer = document.getElementById('rsvpContainer');
+            const eventSectionElem = document.getElementById('events');
 
-    // Section for entering the user's name
-    const nameSectionContainer = document.createElement('div');
-    nameSectionContainer.classList.add('container');
+            rsvpContainer.classList.add('hidden'); // Hide RSVP container
+            eventSectionElem.classList.remove('hidden'); // Show events list
+        });
+        container.appendChild(backButton);
 
-    // Subtitle for the "Your Name" section
-    const nameTitle = document.createElement('h2');
-    nameTitle.classList.add('title'); // Apply subtitle styling
-    nameTitle.textContent = 'Your Name'; // Display the subtitle
-    nameSectionContainer.appendChild(nameTitle);
+        // Title
+        const header = document.createElement('h1');
+        header.classList.add('title', 'rsvp-title');
+        header.textContent = 'RSVP to Event'; // Dynamically update event name if available
+        container.appendChild(header);
 
-    // Input field for the user's name
-    const nameInput = document.createElement('input');
-    nameInput.type = 'text'; // Define input type
-    nameInput.classList.add('input-boxes'); // Apply consistent input styling
-    nameInput.placeholder = 'Enter your name'; // Placeholder text for the input
-    nameInput.setAttribute('aria-label', 'Your Name'); // Accessibility label
-    nameSectionContainer.appendChild(nameInput);
+        // Name Input Section
+        const nameSectionContainer = document.createElement('div');
+        nameSectionContainer.classList.add('container');
 
-    container.appendChild(nameSectionContainer); // Add the name section to the main container
+        const nameTitle = document.createElement('h2');
+        nameTitle.classList.add('title');
+        nameTitle.textContent = 'Your Name';
+        nameSectionContainer.appendChild(nameTitle);
 
-    // Section for dietary restrictions
-    const restrictionsContainer = document.createElement('div');
-    restrictionsContainer.classList.add('container');
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.classList.add('input-boxes');
+        nameInput.placeholder = 'Enter your name';
+        nameInput.setAttribute('aria-label', 'Your Name');
+        nameSectionContainer.appendChild(nameInput);
 
-    // Title for the "Dietary Restrictions" section
-    const restrictionsTitle = document.createElement('h2');
-    restrictionsTitle.classList.add('title');
-    restrictionsTitle.textContent = 'Dietary Restrictions';
-    restrictionsContainer.appendChild(restrictionsTitle);
+        container.appendChild(nameSectionContainer);
 
-    // Form to hold dietary restriction inputs
-    const form = document.createElement('form');
-    restrictionsContainer.appendChild(form);
+        // Dietary Restrictions Section
+        const restrictionsContainer = document.createElement('div');
+        restrictionsContainer.classList.add('container');
 
-    // Function to create a new row for dietary restrictions
-    const createRestrictionRow = () => {
-      const restrictionRow = document.createElement('div');
-      restrictionRow.classList.add('restriction-row'); // Styling for restriction rows
+        const restrictionsTitle = document.createElement('h2');
+        restrictionsTitle.classList.add('title');
+        restrictionsTitle.textContent = 'Dietary Restrictions';
+        restrictionsContainer.appendChild(restrictionsTitle);
 
-      // Dropdown menu for the type of dietary restriction
-      const select = document.createElement('select');
-      select.classList.add('input-boxes', 'type-selection'); // Apply input styles
-      select.innerHTML = `
-        <option value="">Select Type</option>
-        <option value="Food">Food</option>
-        <option value="Skin">Skin</option>
-        <option value="Pet">Pet</option>
-        <option value="Other">Other</option>
-      `;
-      restrictionRow.appendChild(select);
+        const form = document.createElement('form');
+        restrictionsContainer.appendChild(form);
 
-      // Input for the description of the restriction
-      const descriptionInput = document.createElement('input');
-      descriptionInput.type = 'text';
-      descriptionInput.classList.add('input-boxes', 'description-input'); // Apply input styles
-      descriptionInput.placeholder = 'Description'; // Placeholder text
-      descriptionInput.setAttribute('aria-label', 'Description'); // Accessibility label
-      restrictionRow.appendChild(descriptionInput);
+        // Create a new dietary restriction row
+        const createRestrictionRow = () => {
+            const restrictionRow = document.createElement('div');
+            restrictionRow.classList.add('restriction-row');
 
-      return restrictionRow; // Return the created row
-    };
+            const select = document.createElement('select');
+            select.classList.add('input-boxes', 'type-selection');
+            select.innerHTML = `
+                <option value="">Select Type</option>
+                <option value="Food">Food</option>
+                <option value="Skin">Skin</option>
+                <option value="Pet">Pet</option>
+                <option value="Other">Other</option>
+            `;
+            restrictionRow.appendChild(select);
 
-    // Add the first restriction row by default
-    const initialRestrictionRow = createRestrictionRow();
-    form.appendChild(initialRestrictionRow);
+            const descriptionInput = document.createElement('input');
+            descriptionInput.type = 'text';
+            descriptionInput.classList.add('input-boxes', 'description-input');
+            descriptionInput.placeholder = 'Description';
+            descriptionInput.setAttribute('aria-label', 'Description');
+            restrictionRow.appendChild(descriptionInput);
 
-    // Button to add more dietary restriction rows
-    const addRestrictionBtn = document.createElement('button');
-    addRestrictionBtn.type = 'button'; // Prevent form submission
-    addRestrictionBtn.classList.add('buttons'); // Apply button styling
-    addRestrictionBtn.textContent = 'Add Restriction'; // Button label
+            return restrictionRow;
+        };
 
-    // Add functionality to dynamically add more restriction rows
-    addRestrictionBtn.addEventListener('click', () => {
-      const newRestrictionRow = createRestrictionRow(); // Create a new row
-      form.appendChild(newRestrictionRow); // Append it to the form
-    });
+        // Add initial dietary restriction row
+        form.appendChild(createRestrictionRow());
 
-    restrictionsContainer.appendChild(addRestrictionBtn); // Add the button to the section
+        // Button to add more dietary restriction rows
+        const addRestrictionBtn = document.createElement('button');
+        addRestrictionBtn.type = 'button';
+        addRestrictionBtn.classList.add('buttons');
+        addRestrictionBtn.textContent = 'Add Restriction';
+        addRestrictionBtn.addEventListener('click', () => {
+            const newRow = createRestrictionRow();
+            form.appendChild(newRow);
+        });
+        restrictionsContainer.appendChild(addRestrictionBtn);
 
-    // Section for accessibility needs
-    const accessibilityTitle = document.createElement('h2');
-    accessibilityTitle.classList.add('title');
-    accessibilityTitle.textContent = 'Accessibility Needs'; // Section title
-    restrictionsContainer.appendChild(accessibilityTitle);
+        container.appendChild(restrictionsContainer);
 
-    const accessibilityInputContainer = document.createElement('div');
-    accessibilityInputContainer.classList.add('container'); // Styling container
+        // Accessibility Needs Section
+        const accessibilityTitle = document.createElement('h2');
+        accessibilityTitle.classList.add('title');
+        accessibilityTitle.textContent = 'Accessibility Needs';
+        restrictionsContainer.appendChild(accessibilityTitle);
 
-    // Textarea for entering accessibility needs
-    const accessibilityInput = document.createElement('textarea');
-    accessibilityInput.classList.add('input-boxes', 'accessibility-input'); // Apply input styles
-    accessibilityInput.placeholder = 'Describe Here'; // Placeholder text
-    accessibilityInput.setAttribute('aria-label', 'Describe accessibility needs'); // Accessibility label
-    accessibilityInputContainer.appendChild(accessibilityInput);
+        const accessibilityInput = document.createElement('textarea');
+        accessibilityInput.classList.add('input-boxes', 'accessibility-input');
+        accessibilityInput.placeholder = 'Describe here';
+        accessibilityInput.setAttribute('aria-label', 'Accessibility Needs');
+        restrictionsContainer.appendChild(accessibilityInput);
 
-    restrictionsContainer.appendChild(accessibilityInputContainer); // Add to restrictions section
+        // Review Button
+        const reviewButton = document.createElement('button');
+        reviewButton.classList.add('buttons', 'review-button');
+        reviewButton.textContent = 'Review';
+        reviewButton.addEventListener('click', () => {
+            const dietaryRestrictions = [];
+            form.querySelectorAll('.restriction-row').forEach((row) => {
+                const type = row.querySelector('.type-selection').value;
+                const description = row.querySelector('.description-input').value;
+                if (type || description) {
+                    dietaryRestrictions.push({ type, description });
+                }
+            });
 
-    container.appendChild(restrictionsContainer); // Add the restrictions section to the main container
+            const userName = nameInput.value;
+            const accessibilityNeeds = accessibilityInput.value;
 
-    // Button to review the entered information
-    const reviewButton = document.createElement('button');
-    reviewButton.classList.add('buttons', 'review-button'); // Apply button styling
-    reviewButton.textContent = 'Review'; // Button label
+            this.onSubmitCallback({ userName, dietaryRestrictions, accessibilityNeeds });
+        });
 
-    // Event listener to handle the review action
-    reviewButton.addEventListener('click', () => {
-      const dietaryRestrictions = [];
+        container.appendChild(reviewButton);
 
-      // Gather information from all restriction rows
-      form.querySelectorAll('.restriction-row').forEach(row => {
-        const type = row.querySelector('.type-selection').value; // Get selected type
-        const description = row.querySelector('.description-input').value; // Get description
-        if (type || description) {
-          dietaryRestrictions.push({ type, description }); // Add to the list if valid
-        }
-      });
-
-      const userName = nameInput.value; // Get the entered name
-      const accessibilityNeeds = accessibilityInput.value; // Get accessibility needs
-
-      // Call the provided callback with the collected information
-      this.onSubmitCallback({ userName, dietaryRestrictions, accessibilityNeeds });
-    });
-
-    container.appendChild(reviewButton); // Add the review button to the main container
-
-    return container; // Return the completed form container
-  }
+        return container;
+    }
 }

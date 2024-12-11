@@ -11,12 +11,12 @@ module.exports = (sequelize) => {
     Event.init({
         username:{ type: DataTypes.STRING, allowNull: false },
         title: { type: DataTypes.STRING, allowNull: false },
-        desc: DataTypes.TEXT,
+        description: DataTypes.TEXT,
         category: DataTypes.STRING,
-        date:{ type: DataTypes.DATE, allowNull: false },
-        cover: DataTypes.STRING,
-        time:{ type: DataTypes.STRING, allowNull: false },
-        where: { type: DataTypes.STRING, allowNull: false },
+        start_time:{ type: DataTypes.DATE, allowNull: false },
+        end_time:{ type: DataTypes.DATE, allowNull: false },
+        cover_image: DataTypes.STRING,
+        location: { type: DataTypes.STRING, allowNull: false },
 
     }, {
         sequelize,
