@@ -14,7 +14,7 @@ body {
   align-items: center;
 }
 
-section .header {
+section .top-of-page {
     padding: 10px;
     width: 100%;
     text-align: center;
@@ -37,6 +37,10 @@ section .header {
     margin-bottom: 15px;
 }
 
+.loginerror{
+  margin-top: 20px;
+  color: white;
+}
 .profile-info h2 {
     font: 22px;
     margin-bottom: 5px;
