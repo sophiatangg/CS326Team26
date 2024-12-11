@@ -4,8 +4,10 @@ import Base64 from "../utility/base64.js";
 
 export class remoteUserService extends Service {
   #token;
+  loggedin;
   constructor() {
     super();
+    this.loggedin = false;
     // this.#initUser();
   }
 
@@ -13,11 +15,14 @@ export class remoteUserService extends Service {
     this.subscribe(Events.UpdateProfileInfo, data => {
       this.#updateProfile(data);
     });
-    this.subscribe(Events.LoggedIn, token => {
+    this.subscribe(Events.LoggedIn, isLoggedIn => {
+      this.#setLogin(isLoggedIn);
+      const token = sessionStorage.getItem('token');
       this.#setToken(token);
     });
-    this.subscribe(Events.SignUp, (credentials) => {this.#signUp(credentials)});
-    this.subscribe(Events.LogIn, (credentials) => {this.#LogIn(credentials)});
+    // this.subscribe(Events.LoggedIn, token => {
+    //   this.#setToken(token);
+    // });
     this.subscribe(Events.LoadProfileInfo, () => {
       this.#initUser();
     });
@@ -40,71 +45,19 @@ export class remoteUserService extends Service {
       this.#getUserFollowing(username);
     });
   }
+
+  #setLogin(isLoggedIn){
+    this.loggedin = isLoggedIn;
+  }
+
   #setToken(token){
     this.#token = token;
-    this.publish(Events.LoggedIn, true);
-  }
-
-  #getToken(){
-    return this.#token;
-  }
-  async #signUp(credentials) {
-    try {
-        const response = await fetch("http://localhost:5000/api/users/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(credentials),
-        });
-  
-        if (!response.ok) {
-            this.publish(Events.SignUpFailure, response.message);
-            throw new Error("Failed to signUp");
-        }
-  
-        // Parse the profile data
-        const data = await response.json();
-  
-        // Publish the registered up user profile information
-        this.publish(Events.SignUpSuccessful, 'Sign up succesful, please Log in.');
-  
-        return data.user;
-    } catch (error) {
-      this.publish(Events.SignUpFailure, error);
-    }
-  }
-
-  async #LogIn(credentials) {
-    try {
-        const response = await fetch("http://localhost:5000/api/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-        });
-  
-        if (!response.ok) {
-            this.publish(Events.LogInFailure, response.message);
-            throw new Error("Failed to Log in");
-        }
-  
-        // Parse the profile data
-        const data = await response.json();
-  
-        this.publish(Events.LogInSuccessful, 'Successfully logged in.');
-        // Publish the registered up user profile information
-        this.publish(Events.LoggedIn, data.token);
-  
-        return;
-    } catch (error) {
-      this.publish(Events.LogInFailure, error.message);
-    }
   }
 
   // The #initTasks() method is an async method that fetches the authenticated user's profile
   async #initUser() {
     try {
-        if (!this.#getToken()){
+        if (!this.loggedin){
           //have to delay it in case profile takes too long to load 
           // so the event doesn't publish to no subscribers
           setTimeout(() => {
@@ -113,11 +66,12 @@ export class remoteUserService extends Service {
         return;
         }
         // Fetch the authenticated user's profile
-        const response = await fetch("/api/users/profile", {
+        console.log(this.#token);
+        const response = await fetch("http://localhost:5050/api/users/profile", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${this.#getToken()}`, 
+                "Authorization": `Bearer ${this.#token}`, 
             },
         });
 
@@ -137,7 +91,9 @@ export class remoteUserService extends Service {
           );
         }
         // Publish the user profile information
-        this.publish(Events.LoadProfileInfoSuccess, data.user);
+        setTimeout(() => {
+          this.publish(Events.LoadProfileInfoSuccess, data.user);
+      }, 100); // Delay publishing to allow subscribers to initialize
     } catch (error) {
         console.error("Error loading user profile:", error.message);
         this.publish(Events.LoadOtherProfilesInfoFailure,  'You are not logged in, you need to log in to see your profile.');
@@ -146,16 +102,16 @@ export class remoteUserService extends Service {
 
 async #updateProfile(update) {
   try {
-    if (!this.#getToken()){
+    if (!this.loggedin){
       this.publish(Events.LoadProfileInfoFailure, 'You are not logged in, you need to log in to update profile.');
       return;
     }
       // Fetch the authenticated user's profile
-      const response = await fetch("/api/users/profileupdate", {
+      const response = await fetch("http://localhost:5050/api/users/profileupdate", {
           method: "PUT",
           headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${this.#getToken()}`, 
+              "Authorization": `Bearer ${this.#token}`, 
           },
           body: JSON.stringify(update),
       });
@@ -198,7 +154,7 @@ async #getAnotherUserProfile(username) {
   try {
       await this.#toBase64(update);
       // Fetch the other user's profile
-      const response = await fetch(`/api/users/otherprofile/${username}`, {
+      const response = await fetch(`http://localhost:5050/api/users/otherprofile/${username}`, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
@@ -225,15 +181,15 @@ async #getAnotherUserProfile(username) {
 
 async #followUser(username) {
   try {
-    if (!this.#getToken()){
+    if (!this.loggedin){
       throw new Error('You are not logged in, you need to be logged in to follow this profile');
     }
       // Fetch the authenticated user's profile
-      const response = await fetch(`/api/users/follow/${username}`, {
+      const response = await fetch(`http://localhost:5050/api/users/follow/${username}`, {
           method: "PUT",
           headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${this.#getToken()}`, 
+              "Authorization": `Bearer ${this.#token}`, 
           }
       });
 
@@ -256,15 +212,15 @@ async #followUser(username) {
 
 async #unfollowUser(username) {
   try {
-    if (!this.#getToken()){
+    if (!this.loggedin){
       throw new Error('You are not logged in, you need to be logged in to unfollow this profile');
     }
       // Fetch the authenticated user's profile
-      const response = await fetch(`/api/users/unfollow/${username}`, {
+      const response = await fetch(`http://localhost:5050/api/users/unfollow/${username}`, {
           method: "PUT",
           headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${this.#getToken()}`, 
+              "Authorization": `Bearer ${this.#token}`, 
           }
       });
 
@@ -287,8 +243,11 @@ async #unfollowUser(username) {
 
 async #getUserFollowers(username) {
   try {
+    if (!this.loggedin){
+      throw new Error('You are not logged in, you need to be logged in to see followers.');
+    }
       // Fetch the other user's profile
-      const response = await fetch(`/api/users/followers/${username}`, {
+      const response = await fetch(`http://localhost:5050/api/users/followers/${username}`, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
@@ -315,7 +274,10 @@ async #getUserFollowers(username) {
 async #getUserFollowing(username) {
   try {
       // Fetch the other user's profile
-      const response = await fetch(`/api/users/following/${username}`, {
+      if (!this.loggedin){
+        throw new Error('You are not logged in, you need to be logged in to see followings.');
+      }
+      const response = await fetch(`http://localhost:5050/api/users/following/${username}`, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
