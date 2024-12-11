@@ -9,6 +9,7 @@ export class Profile extends BaseComponent {
     #container = null;
     #user = {}; 
     #loggedin = false;
+    #token = null;
 
     constructor() {
         super();      
@@ -122,17 +123,24 @@ export class Profile extends BaseComponent {
 
         hub.subscribe(Events.StoreProfileInfo, (data) => this.#updateProfileInfo(data));
         hub.subscribe(Events.LoadProfileInfoSuccess, (user)=> {
+            console.log("here");
+            // get here
             this.#user = user;
             this.#renderProfile();
         });
+        if (!this.#loggedin){
+            hub.publish(Events.LoadProfileInfo);
+            this.#setLogin(true);
+        }
+        // hub.subscribe(Events.isLoggedIn,(token)=> this.#setLogin(token));
         hub.subscribe(Events.LoadProfileInfoFailure, (message) => this.#userNotLoggedInError(message));
         hub.subscribe(Events.UpdateProfileInfoFailure, (message) => this.#userNotLoggedInError(message));
-        hub.publish(Events.LoadProfileInfo);
+        // hub.publish(Events.LoadProfileInfo);
 
         // Attach event listeners to the input and button elements
         this.#container.addEventListener('click', (event) =>{
             if (event.target.matches(".edit-profile")){
-                if (this.#loggedin)
+                // if (this.#loggedin)
                     this.#openEditModal(this.#container.id);
             }
             if (event.target.matches(".done-btn")){
@@ -244,6 +252,7 @@ export class Profile extends BaseComponent {
             viewContainer.innerHTML = ''; // Clear previous content in viewContainer
             viewContainer.appendChild(this.#container); // Make sure this current container is attached in the correct spot
         }
+
     }
 
 }
