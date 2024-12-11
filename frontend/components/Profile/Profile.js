@@ -203,7 +203,7 @@ export class Profile extends BaseComponent {
         // Attach the goBack callback to return to the profile view
         viewFollowers.goBack = () => this.#renderProfile();
         viewFollowers.viewProfile = (person) => this.#switchToProfile(person, viewFollowers);
-    
+
         // Render the ViewFollowers page inside the container
         const profileContainer = document.querySelector('.profile-screen');
         profileContainer.innerHTML = '';
@@ -217,7 +217,7 @@ export class Profile extends BaseComponent {
         const otherProfile = new OtherProfile(
             {
                 username: person.name,
-                profileImage: person.profileImage,
+                profileImage: person.profile_picture,
                 followers: Math.floor(Math.random() * 500),
                 following: Math.floor(Math.random() * 500), 
                 bio: 'This is a bio of ' + person.name 
