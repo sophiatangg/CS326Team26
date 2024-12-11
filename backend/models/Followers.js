@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Users', // Ensure this matches the table name of your `User` model
+                model: 'Users', 
                 key: 'id',
             },
         },
@@ -20,13 +20,28 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Users', // Ensure this matches the table name of your `User` model
+                model: 'Users', 
                 key: 'id',
             },
         },
     }, {
         timestamps: true, // Include createdAt and updatedAt
     });
+
+    // Define associations
+    UserFollowers.associate = (models) => {
+        // Association for the followee
+        UserFollowers.belongsTo(models.User, {
+            as: 'User', // Alias for the user being followed
+            foreignKey: 'userId',
+        });
+
+        // Association for the follower
+        UserFollowers.belongsTo(models.User, {
+            as: 'Follower', // Alias for the follower
+            foreignKey: 'followerId',
+        });
+    };
 
     return UserFollowers;
 };

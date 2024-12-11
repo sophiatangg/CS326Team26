@@ -4,50 +4,49 @@ const UserFollowers = require('./Followers'); // Import UserFollowers table
 const Event = require('./Event');
 
 
-
-const User = sequelize.define('User', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    username: { 
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-    },
-    email: { 
-        type: DataTypes.STRING, 
-        allowNull: false, 
-        unique: true,
-        validate: {
-            // checks Email format 
-            isEmail: { 
-                msg: 'Must be a valid email address' 
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define('User', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        username: { 
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false,
+        },
+        email: { 
+            type: DataTypes.STRING, 
+            allowNull: false, 
+            unique: true,
+            validate: {
+                isEmail: { 
+                    msg: 'Must be a valid email address',
+                },
             },
-         }
-    },
-        
-    password: { 
-        type: DataTypes.STRING, 
-        allowNull: false },
-    profile_picture: { 
-        type: DataTypes.STRING,
-        allowNull: true,
-     },
-    bio: { 
-        type: DataTypes.TEXT 
-    },
-    picturename: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-    mime: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-    },
-);
+        },
+        password: { 
+            type: DataTypes.STRING, 
+            allowNull: false,
+        },
+        profile_picture: { 
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        bio: { 
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        picturename: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        mime: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+    });
 
 /*
 Finding "followers" in openonvite.db (users who follow a specific user):
@@ -88,5 +87,5 @@ User.associate = (models) => {
     User.hasMany(models.Event, { foreignKey: 'creator_id' });
 };
 
-module.exports = User;
-
+return User;
+};
