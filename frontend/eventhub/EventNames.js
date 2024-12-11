@@ -18,6 +18,14 @@ export const Events = {
 
     LoggedIn : 'Loggedin',
 
+    SignUp : 'SignUp',
+    SignUpSuccessful : 'SignUpSuccessful',
+    SignUpFailure : 'SignUpSuccessful',
+
+    LogIn: 'LogIn',
+    LogInSuccessful : 'LogInSuccessful',
+    LogInFailure : 'LogInSuccessful',
+
     LoadPosts: 'LoadPosts',
     LoadPostsSuccess: 'LoadPostsSuccess',
     LoadPostsFailure: 'LoadPostsFailure',
