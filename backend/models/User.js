@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const UserFollowers = require('./Followers'); // Import UserFollowers table
+const Event = require('./Event');
 
 
 
@@ -59,27 +60,33 @@ Use the foreignKey: 'followerId'.
 Look for rows in UserFollowers where followerId = the target user's ID.
 */
 // user can follow and be followed by other users.
-User.belongsToMany(User, {
-    // Alias for how the follower relationship is referenced in application.
-    as: 'Followers', 
-    // Join table
-    through: UserFollowers, 
-    // Specifies the "followee"
-    foreignKey: 'userId', 
-    // Specifies the "Follower"
-    otherKey: 'followerId', 
-});
+User.associate = (models) => {
+    // Followers and Following associations
+    User.belongsToMany(models.User, {
+        // Alias for how the follower relationship is referenced in application.
+        as: 'Followers',
+        // Join table
+        through: models.UserFollowers,
+        // Specifies the "followee"
+        foreignKey: 'userId',
+        // Specifies the "Follower"
+        otherKey: 'followerId',
+    });
 
-User.belongsToMany(User, {
-    // alias for how the following relationship is referenced in application.
-    as: 'Following', 
-    //  join table that stores the connections between followers and those being followed.
-    through: UserFollowers, 
-    //In the UserFollowers table, links to the primary key (id) of the User model.
-    // Specifies the "follower"
-    foreignKey: 'followerId',
-    // Specifies the "followee"
-    otherKey: 'userId', 
-});
+    User.belongsToMany(models.User, {
+        // alias for how the following relationship is referenced in application.
+        as: 'Following',
+        //  join table that stores the connections between followers and those being followed.
+        through: models.UserFollowers,
+        // Specifies the "follower"
+        foreignKey: 'followerId',
+        // Specifies the "followee"
+        otherKey: 'userId',
+    });
 
-User.hasMany(Event, { foreignKey: 'creator_id' });
+    // Events created by the user
+    User.hasMany(models.Event, { foreignKey: 'creator_id' });
+};
+
+module.exports = User;
+
